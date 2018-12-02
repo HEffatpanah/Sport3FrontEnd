@@ -101,7 +101,7 @@ class App extends Component {
 
 
             <div>
-                <Template {...this.props} template={{column_1: news, column_2: sport_news, column_3: onGoing}} />
+                <Template {...this.props} template={{column_1: news, column_2: sport_news, column_3: onGoing, width_1:4, width_2:8, width_3:4}} />
             </div>
         );
     }

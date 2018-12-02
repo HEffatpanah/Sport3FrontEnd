@@ -78,7 +78,7 @@ class Navbar extends Component {
                     >Home</Menu.Item>
                     <Menu.Item
                         name='teams'
-                        path = '/'
+                        path = '/teams'
                         active={activeItem === 'teams'}
                         onClick={this.handleItemClick}
                     >Teams</Menu.Item>
@@ -156,13 +156,13 @@ export default class Template extends Component {
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row columns={3} style={secondstyle}>
-                        <Grid.Column width={4}>
+                        <Grid.Column width={this.props.template.width_1}>
                             <div>{this.props.template.column_1}</div>
                         </Grid.Column>
-                        <Grid.Column width={8}>
+                        <Grid.Column width={this.props.template.width_2}>
                             <div>{this.props.template.column_2}</div>
                         </Grid.Column>
-                        <Grid.Column width={4}>
+                        <Grid.Column width={this.props.template.width_3}>
                             <div>{this.props.template.column_3}</div>
                         </Grid.Column>
                     </Grid.Row>
