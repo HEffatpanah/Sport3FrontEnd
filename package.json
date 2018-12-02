@@ -5,6 +5,7 @@
   "dependencies": {
     "app-root-path": "^2.1.0",
     "history": "^4.7.2",
+	"lodash": "^4.17.11", 
     "react": "^16.6.3",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.3",
@@ -13,7 +14,8 @@
     "react-scripts": "2.1.1",
     "react-select": "^2.1.2",
     "react-slideshow-image": "^1.0.8",
-    "semantic-ui-react": "^0.83.0"
+    "semantic-ui-react": "^0.83.0",
+    "lodash": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
