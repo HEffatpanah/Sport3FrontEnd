@@ -10,7 +10,7 @@ import {
 
 class Navbar extends Component {
     state = {
-        activeItem: 'Home',
+        activeItem: this.props.location.pathname,
         setName:false,
         name:'Login',
         change:false,
