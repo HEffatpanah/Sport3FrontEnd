@@ -137,19 +137,20 @@ export default class Template extends Component {
     render() {
         const firststyle = {
             // 'border': '1px solid brown',
-            'height': '10%'
+            'height': '12%'
         };
         const secondstyle = {
             // 'border': '1px solid brown',
-            'height': '80%'
+            'height': '78%',
+            'padding': '0vh 5vw',
         };
         const thirdstyle = {
             // 'border': '1px solid brown',
             'height': '10%'
         };
         return (
-            <div style={{ 'padding': '20px','height': '100vh' }}>
-                <Grid  style={{ 'height': '100%' }}>
+            <div style={{'height': '100vh' }}>
+                <Grid  style={{ 'height': '100%', backgroundColor:'#c9c9c9' }}>
                     <Grid.Row columns={1} style={firststyle}>
                         <Grid.Column >
                             <Navbar {...this.props}/>

@@ -1,96 +1,210 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import { Table } from 'semantic-ui-react'
+import {Segment, Table} from 'semantic-ui-react'
 import Template from '../components/template'
+import Select from 'react-select';
 
 
-const tableData = [
-  { result:'Wine', date:'1998', score:3, wld:"win"  },
-  { result:'Wine', date:'1998', score:3, wld:"win"  },
-  { result:'Wine', date:'1998', score:3, wld:"win"  },
-  { result:'Wine', date:'1998', score:3, wld:"win"  },
+const matchData = [
+    { result:'3-0', date:'1998-09-12', score:3, status:"win"  },
+    { result:'3-0', date:'1998-09-12', score:3, status:"win"  },
+    { result:'3-0', date:'1998-09-12', score:3, status:"win"  },
+    { result:'3-0', date:'1998-09-12', score:3, status:"win"  },
 ]
 
-class TableExampleSortable extends Component {
-  state = {
-    column: null,
-    data: tableData,
-    direction: null,
-  }
-
-  handleSort = clickedColumn => () => {
-    const { column, data, direction } = this.state
-
-    if (column !== clickedColumn) {
-      this.setState({
-        column: clickedColumn,
-        data: _.sortBy(data, [clickedColumn]),
-        direction: 'ascending',
-      })
-
-      return
+class MatchesTable extends Component {
+    state = {
+        column: null,
+        data: matchData,
+        direction: null,
     }
 
-    this.setState({
-      data: data.reverse(),
-      direction: direction === 'ascending' ? 'descending' : 'ascending',
-    })
-  }
+    handleSort = clickedColumn => () => {
+        const { column, data, direction } = this.state
 
-  render() {
-    const { column, data, direction } = this.state
+        if (column !== clickedColumn) {
+            this.setState({
+                column: clickedColumn,
+                data: _.sortBy(data, [clickedColumn]),
+                direction: 'ascending',
+            })
 
-    return (
-      <Table sortable celled fixed>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell
-              sorted={column === 'result' ? direction : null}
-              onClick={this.handleSort('result')}
-            >
-              Result
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'date' ? direction : null}
-              onClick={this.handleSort('date')}
-            >
-              Date
-            </Table.HeaderCell>
-            <Table.HeaderCell
-              sorted={column === 'score' ? direction : null}
-              onClick={this.handleSort('score')}
-            >
-              Score
-            </Table.HeaderCell>
-              <Table.HeaderCell
-              sorted={column === 'win/lose/draw' ? direction : null}
-              onClick={this.handleSort('win/lose/draw')}
-            >
-              Win/Lose/Draw
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-        <Table.Body>
-          {_.map(data, ({ result, date, score, wld}) => (
-            <Table.Row key={result}>
-              <Table.Cell>{result}</Table.Cell>
-              <Table.Cell>{date}</Table.Cell>
-              <Table.Cell>{score}</Table.Cell>
-              <Table.Cell>{wld}</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-      </Table>
-    )
-  }
+            return
+        }
+
+        this.setState({
+            data: data.reverse(),
+            direction: direction === 'ascending' ? 'descending' : 'ascending',
+        })
+    }
+
+    render() {
+        const { column, data, direction } = this.state
+
+        return (
+            <Table sortable celled fixed style={{}}>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell
+                            sorted={column === 'result' ? direction : null}
+                            onClick={this.handleSort('result')}
+                        >
+                            Result
+                        </Table.HeaderCell>
+                        <Table.HeaderCell
+                            sorted={column === 'date' ? direction : null}
+                            onClick={this.handleSort('date')}
+                        >
+                            Date
+                        </Table.HeaderCell>
+                        <Table.HeaderCell
+                            sorted={column === 'score' ? direction : null}
+                            onClick={this.handleSort('score')}
+                        >
+                            Score
+                        </Table.HeaderCell>
+                        <Table.HeaderCell
+                            sorted={column === 'win/lose/draw' ? direction : null}
+                            onClick={this.handleSort('win/lose/draw')}
+                        >
+                            Status</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                    {_.map(data, ({ result, date, score, status}) => (
+                        <Table.Row key={result}>
+                            <Table.Cell>{result}</Table.Cell>
+                            <Table.Cell>{date}</Table.Cell>
+                            <Table.Cell>{score}</Table.Cell>
+                            <Table.Cell>{status}</Table.Cell>
+                        </Table.Row>
+                    ))}
+                </Table.Body>
+            </Table>
+        )
+    }
 }
 
-class App extends Component {
-  render(){
-    return(
-        <Template {...this.props} template={{column_2: <TableExampleSortable/>, width_1:4, width_2:8, width_3:4}} />
+const image_style={
+    height:'50%',
+    width:'50%',
+}
 
-    )
-  }
+const membersData = [
+    { name:'ali', age:'22', position:'forward', photo:<img style={image_style} src={require('../images/horse.jpg')}/>},
+    { name:'mahdi', age:'25', position:'defence', photo:<img style={image_style} src={require('../images/horse.jpg')}/>},
+    { name:'taha', age:'21', position:'forward', photo:<img style={image_style} src={require('../images/horse.jpg')}/>},
+    { name:'mammad', age:'29', position:'defence', photo:<img style={image_style} src={require('../images/horse.jpg')}/>},
+]
+
+class TeamMembers extends Component{
+    state = {
+        column: null,
+        // data: _.sortBy(membersData, ['name']),
+        data: membersData,
+        direction: null,
+        filterItem: null,
+    }
+
+    handleSort = clickedColumn => () => {
+        const { column, data, direction } = this.state
+
+        if (column !== clickedColumn) {
+            this.setState({
+                column: clickedColumn,
+                data: _.sortBy(data, [clickedColumn]),
+                direction: 'ascending',
+            })
+
+            return
+        }
+
+        this.setState({
+            data: data.reverse(),
+            direction: direction === 'ascending' ? 'descending' : 'ascending',
+        })
+    }
+    handleSelectorChange = (selectedOption) => {
+        this.setState({ filterItem:selectedOption.value });
+
+    };
+    render() {
+        const options = [
+            { value: 'forward', label: 'forward' },
+            { value: 'defence', label: 'defence' },
+        ];
+
+        const body = _.map(this.state.data, ({ name, age, position, photo}) => {
+            if(this.state.filterItem===null || position===this.state.filterItem)
+                return (
+                    <Table.Row>
+                        <Table.Cell>{name}</Table.Cell>
+                        <Table.Cell>{age}</Table.Cell>
+                        <Table.Cell>{position}</Table.Cell>
+                        <Table.Cell style={{textAlign: 'center'}}>{photo}</Table.Cell>
+                    </Table.Row>
+                )
+        });
+
+        const { column, data, direction } = this.state;
+        return (
+            <div>
+                <Segment>
+                    <Select placeholder='Select Position' search selection options={options} onChange={this.handleSelectorChange}/>
+                    <Table sortable celled fixed style={{}}>
+                        <Table.Header >
+                            <Table.Row>
+                                <Table.HeaderCell
+                                    sorted={column === 'name' ? direction : null}
+                                    onClick={this.handleSort('name')}
+                                >
+                                    Name
+                                </Table.HeaderCell>
+                                <Table.HeaderCell
+                                    sorted={column === 'age' ? direction : null}
+                                    onClick={this.handleSort('age')}
+                                >
+                                    Age
+                                </Table.HeaderCell>
+                                <Table.HeaderCell
+                                    sorted={column === 'position' ? direction : null}
+                                    onClick={this.handleSort('position')}
+                                >
+                                    Position
+                                </Table.HeaderCell>
+                                <Table.HeaderCell>
+                                    Photo</Table.HeaderCell>
+                            </Table.Row>
+                        </Table.Header>
+                        <Table.Body>{body}
+                        </Table.Body>
+                    </Table>
+                </Segment>
+            </div>
+        )
+    }
+}
+
+const news =
+            <Segment>
+
+                <a id="ew" href="https://www.google.com">news</a><br/>
+                <a href="https://www.google.com">ews</a><br/>
+                <a href="https://www.google.com">news</a><br/>
+                <a href="https://www.google.com">news</a><br/>
+                <a href="https://www.google.com">news</a><br/>
+                <a href="https://www.google.com">news</a><br/>
+                <a href="https://www.google.com">news</a><br/>
+                <a href="https://www.google.com">news</a><br/>
+            </Segment>;
+
+
+class App extends Component {
+    render(){
+        return(
+            <Template {...this.props} template={{column_1: <MatchesTable/>, column_2:<TeamMembers/>, column_3:news, width_1:4, width_2:8, width_3:4}} />
+
+        )
+    }
 }
 export default App
