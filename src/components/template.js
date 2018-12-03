@@ -88,6 +88,12 @@ class Navbar extends Component {
                         active={activeItem === 'players'}
                         onClick={this.handleItemClick}
                     >Players</Menu.Item>
+                    <Menu.Item
+                        name='news'
+                        path = '/news'
+                        active={activeItem === 'news'}
+                        onClick={this.handleItemClick}
+                    >News</Menu.Item>
                     {Login_Logout()}
                 </Menu>
             </Segment>
@@ -142,7 +148,8 @@ export default class Template extends Component {
         const secondstyle = {
             // 'border': '1px solid brown',
             'height': '78%',
-            'padding': '0vh 5vw',
+            paddingLeft: '2.5vw',
+            paddingRight: '2.5vw'
         };
         const thirdstyle = {
             // 'border': '1px solid brown',

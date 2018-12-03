@@ -86,8 +86,8 @@ class MatchesTable extends Component {
 }
 
 const image_style={
-    height:'50%',
-    width:'50%',
+    height:'8vh',
+    width:'5vw',
 }
 
 const membersData = [
