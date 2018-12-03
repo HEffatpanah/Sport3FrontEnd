@@ -30,16 +30,16 @@ class Navbar extends Component {
         }
     };
     render() {
-        if(this.state.first){
-            const a = this.props.location.pathname.substr(1);
-            if (a) {
-                this.setState({first: false, activeItem: a})
-            }
-            else{
-                this.setState({first: false, activeItem: 'home'})
-            }
-
-        }
+        // if(this.state.first){
+        //     const a = this.props.location.pathname.substr(1);
+        //     if (a) {
+        //         this.setState({first: false, activeItem: a})
+        //     }
+        //     else{
+        //         this.setState({first: false, activeItem: 'home'})
+        //     }
+        //
+        // }
 
         if(localStorage.getItem('username')!==null && !this.state.setName){
             this.setState({setName:true,name:localStorage.getItem('username')})
@@ -65,7 +65,7 @@ class Navbar extends Component {
                 return(
                     <Menu.Item
                         name='login'
-                        active={activeItem === 'login'}
+                        active={this.props.location.pathname === '/login'}
                         onClick={this.handleItemClick}
                         path = '/login'
                         position={'right'}
@@ -74,32 +74,31 @@ class Navbar extends Component {
                 )
             }
         };
-        const { activeItem } = this.state;
         return (
 
             <Menu inverted style={{height:'100%'}}>
                 <Menu.Item
                     name='home'
                     path = '/'
-                    active={activeItem === 'home'}
+                    active={this.props.location.pathname === '/'}
                     onClick={this.handleItemClick}
                 >Home</Menu.Item>
                 <Menu.Item
                     name='teams'
                     path = '/teams'
-                    active={activeItem === 'teams'}
+                    active={this.props.location.pathname === '/teams'}
                     onClick={this.handleItemClick}
                 >Teams</Menu.Item>
                 <Menu.Item
                     name='players'
                     path = '/'
-                    active={activeItem === 'players'}
+                    active={this.props.location.pathname === '/players'}
                     onClick={this.handleItemClick}
                 >Players</Menu.Item>
                 <Menu.Item
                     name='news'
                     path = '/news'
-                    active={activeItem === 'news'}
+                    active={this.props.location.pathname === '/news'}
                     onClick={this.handleItemClick}
                 >News</Menu.Item>
                 <Dropdown text='Sports' simple item>
