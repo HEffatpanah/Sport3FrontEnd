@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import {Segment, Table} from 'semantic-ui-react'
+import {Checkbox, Grid, Segment, Table} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 
@@ -85,6 +85,13 @@ class MatchesTable extends Component {
     }
 }
 
+const center_vertically={
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-50%)',
+}
+
+
 const image_style={
     height:'8vh',
     width:'5vw',
@@ -104,6 +111,7 @@ class TeamMembers extends Component{
         data: membersData,
         direction: null,
         filterItem: null,
+        filterEnable:false,
     }
 
     handleSort = clickedColumn => () => {
@@ -128,6 +136,14 @@ class TeamMembers extends Component{
         this.setState({ filterItem:selectedOption.value });
 
     };
+    handleCheckBox = () => {
+        if(this.state.filterEnable){
+            this.setState({filterEnable:false})
+        }
+        else{
+            this.setState({filterEnable:true})
+        }
+    };
     render() {
         const options = [
             { value: 'forward', label: 'forward' },
@@ -135,8 +151,20 @@ class TeamMembers extends Component{
         ];
 
         const body = _.map(this.state.data, ({ name, age, position, photo}) => {
-            if(this.state.filterItem===null || position===this.state.filterItem)
+            if(this.state.filterEnable){
+                if(position===this.state.filterItem)
                 return (
+                    <Table.Row>
+                        <Table.Cell>{name}</Table.Cell>
+                        <Table.Cell>{age}</Table.Cell>
+                        <Table.Cell>{position}</Table.Cell>
+                        <Table.Cell style={{textAlign: 'center'}}>{photo}</Table.Cell>
+                    </Table.Row>
+                )
+            }
+
+            else
+                return(
                     <Table.Row>
                         <Table.Cell>{name}</Table.Cell>
                         <Table.Cell>{age}</Table.Cell>
@@ -150,35 +178,48 @@ class TeamMembers extends Component{
         return (
             <div>
                 <Segment>
-                    <Select placeholder='Select Position' search selection options={options} onChange={this.handleSelectorChange}/>
-                    <Table sortable celled fixed style={{}}>
-                        <Table.Header >
-                            <Table.Row>
-                                <Table.HeaderCell
-                                    sorted={column === 'name' ? direction : null}
-                                    onClick={this.handleSort('name')}
-                                >
-                                    Name
-                                </Table.HeaderCell>
-                                <Table.HeaderCell
-                                    sorted={column === 'age' ? direction : null}
-                                    onClick={this.handleSort('age')}
-                                >
-                                    Age
-                                </Table.HeaderCell>
-                                <Table.HeaderCell
-                                    sorted={column === 'position' ? direction : null}
-                                    onClick={this.handleSort('position')}
-                                >
-                                    Position
-                                </Table.HeaderCell>
-                                <Table.HeaderCell>
-                                    Photo</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body>{body}
-                        </Table.Body>
-                    </Table>
+                    <Grid>
+                        <Grid.Row columns={2}>
+                            <Grid.Column width={13}>
+                                <Select placeholder='Select Position' search selection options={options} onChange={this.handleSelectorChange}/>
+                            </Grid.Column>
+                            <Grid.Column width={3}>
+                                <Checkbox style={center_vertically} label='Filter' onChange={this.handleCheckBox} />
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row columns={1}>
+                            <Grid.Column>
+                                <Table sortable celled fixed style={{}}>
+                                    <Table.Header >
+                                        <Table.Row>
+                                            <Table.HeaderCell
+                                                sorted={column === 'name' ? direction : null}
+                                                onClick={this.handleSort('name')}
+                                            >
+                                                Name
+                                            </Table.HeaderCell>
+                                            <Table.HeaderCell
+                                                sorted={column === 'age' ? direction : null}
+                                                onClick={this.handleSort('age')}
+                                            >
+                                                Age
+                                            </Table.HeaderCell>
+                                            <Table.HeaderCell
+                                                sorted={column === 'position' ? direction : null}
+                                                onClick={this.handleSort('position')}
+                                            >
+                                                Position
+                                            </Table.HeaderCell>
+                                            <Table.HeaderCell>
+                                                Photo</Table.HeaderCell>
+                                        </Table.Row>
+                                    </Table.Header>
+                                    <Table.Body>{body}
+                                    </Table.Body>
+                                </Table>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
                 </Segment>
             </div>
         )
@@ -186,17 +227,17 @@ class TeamMembers extends Component{
 }
 
 const news =
-            <Segment>
+    <Segment>
 
-                <a id="ew" href="https://www.google.com">news</a><br/>
-                <a href="https://www.google.com">ews</a><br/>
-                <a href="https://www.google.com">news</a><br/>
-                <a href="https://www.google.com">news</a><br/>
-                <a href="https://www.google.com">news</a><br/>
-                <a href="https://www.google.com">news</a><br/>
-                <a href="https://www.google.com">news</a><br/>
-                <a href="https://www.google.com">news</a><br/>
-            </Segment>;
+        <a id="ew" href="https://www.google.com">news</a><br/>
+        <a href="https://www.google.com">ews</a><br/>
+        <a href="https://www.google.com">news</a><br/>
+        <a href="https://www.google.com">news</a><br/>
+        <a href="https://www.google.com">news</a><br/>
+        <a href="https://www.google.com">news</a><br/>
+        <a href="https://www.google.com">news</a><br/>
+        <a href="https://www.google.com">news</a><br/>
+    </Segment>;
 
 
 class App extends Component {
