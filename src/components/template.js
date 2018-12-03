@@ -77,7 +77,7 @@ class Navbar extends Component {
         const { activeItem } = this.state;
         return (
 
-            <Menu inverted >
+            <Menu inverted style={{height:'100%'}}>
                 <Menu.Item
                     name='home'
                     path = '/'
@@ -157,11 +157,11 @@ export default class Template extends Component {
     render() {
         const firststyle = {
             // 'border': '1px solid brown',
-            'height': '12%'
+            'height': '8%'
         };
         const secondstyle = {
             // 'border': '1px solid brown',
-            'height': '78%',
+            'height': '82%',
             paddingLeft: '2.5vw',
             paddingRight: '2.5vw'
         };
@@ -177,16 +177,8 @@ export default class Template extends Component {
                             <Navbar {...this.props}/>
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row columns={3} style={secondstyle}>
-                        <Grid.Column width={this.props.template.width_1}>
-                            <div>{this.props.template.column_1}</div>
-                        </Grid.Column>
-                        <Grid.Column width={this.props.template.width_2}>
-                            <div>{this.props.template.column_2}</div>
-                        </Grid.Column>
-                        <Grid.Column width={this.props.template.width_3}>
-                            <div>{this.props.template.column_3}</div>
-                        </Grid.Column>
+                    <Grid.Row  style={secondstyle}>
+                        {this.props.template.body}
                     </Grid.Row>
                     <Grid.Row columns={1} style={thirdstyle}>
                         <Grid.Column >
