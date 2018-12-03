@@ -2,8 +2,6 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import {Checkbox, Grid, Segment, Table, Dropdown, Input} from 'semantic-ui-react'
 import Template from '../components/template'
-import Select from 'react-select';
-
 
 const matchData = [
     { result:'3-0', date:'1998-09-12', score:3, status:"win"  },
@@ -237,7 +235,10 @@ class TeamMembers extends Component{
     }
 }
 
-const news =
+
+class App extends Component {
+    render(){
+        const news =
     <Segment>
 
         <a id="ew" href="https://www.google.com">news</a><br/>
@@ -249,12 +250,23 @@ const news =
         <a href="https://www.google.com">news</a><br/>
         <a href="https://www.google.com">news</a><br/>
     </Segment>;
+        const body =
+            <Grid style={{width:'100%'}}>
+                <Grid.Row columns={3}>
+                    <Grid.Column width={4}>
+                        <Matches/>
+                    </Grid.Column>
+                    <Grid.Column width={8}>
+                        <TeamMembers/>
+                    </Grid.Column>
+                    <Grid.Column width={4}>
+                        {news}
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>;
 
-
-class App extends Component {
-    render(){
         return(
-            <Template {...this.props} template={{column_1: <Matches/>, column_2:<TeamMembers/>, column_3:news, width_1:4, width_2:8, width_3:4}} />
+            <Template {...this.props} template={{body:body}} />
 
         )
     }
