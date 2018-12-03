@@ -21,6 +21,14 @@ class Navbar extends Component {
         if(this.props.location.pathname!==path)
             this.props.history.push(path);
     };
+    handleDropdownitemClick = (e, {value}) => {
+        if (value === 'football'){
+            this.props.history.push("/footballMatches");
+        }
+        else if (value === 'basketball'){
+            this.props.history.push("/basketballMatches");
+        }
+    };
     render() {
         if(this.state.first){
             const a = this.props.location.pathname.substr(1);
@@ -68,35 +76,41 @@ class Navbar extends Component {
         };
         const { activeItem } = this.state;
         return (
-            <Segment inverted>
-                <Menu inverted style={{height:'10px'}} secondary>
-                    <Menu.Item
-                               name='home'
-                               path = '/'
-                               active={activeItem === 'home'}
-                               onClick={this.handleItemClick}
-                    >Home</Menu.Item>
-                    <Menu.Item
-                        name='teams'
-                        path = '/teams'
-                        active={activeItem === 'teams'}
-                        onClick={this.handleItemClick}
-                    >Teams</Menu.Item>
-                    <Menu.Item
-                        name='players'
-                        path = '/'
-                        active={activeItem === 'players'}
-                        onClick={this.handleItemClick}
-                    >Players</Menu.Item>
-                    <Menu.Item
-                        name='news'
-                        path = '/news'
-                        active={activeItem === 'news'}
-                        onClick={this.handleItemClick}
-                    >News</Menu.Item>
-                    {Login_Logout()}
-                </Menu>
-            </Segment>
+
+            <Menu inverted >
+                <Menu.Item
+                    name='home'
+                    path = '/'
+                    active={activeItem === 'home'}
+                    onClick={this.handleItemClick}
+                >Home</Menu.Item>
+                <Menu.Item
+                    name='teams'
+                    path = '/teams'
+                    active={activeItem === 'teams'}
+                    onClick={this.handleItemClick}
+                >Teams</Menu.Item>
+                <Menu.Item
+                    name='players'
+                    path = '/'
+                    active={activeItem === 'players'}
+                    onClick={this.handleItemClick}
+                >Players</Menu.Item>
+                <Menu.Item
+                    name='news'
+                    path = '/news'
+                    active={activeItem === 'news'}
+                    onClick={this.handleItemClick}
+                >News</Menu.Item>
+                <Dropdown text='Sports' simple item>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={this.handleDropdownitemClick}  value='football'>Football</Dropdown.Item>
+                        <Dropdown.Item onClick={this.handleDropdownitemClick}  value='basketball'>Basketball</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                {Login_Logout()}
+            </Menu>
+
 
 
         )

@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import React, { Component } from 'react'
-import {Checkbox, Grid, Segment, Table} from 'semantic-ui-react'
+import {Checkbox, Grid, Segment, Table, Dropdown, Input} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 
@@ -12,7 +12,7 @@ const matchData = [
     { result:'3-0', date:'1998-09-12', score:3, status:"win"  },
 ]
 
-class MatchesTable extends Component {
+class Matches extends Component {
     state = {
         column: null,
         data: matchData,
@@ -42,7 +42,7 @@ class MatchesTable extends Component {
         const { column, data, direction } = this.state
 
         return (
-            <Table sortable celled fixed style={{}}>
+            <Table sortable celled fixed color={'#1b5b78'} inverted>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell
@@ -180,15 +180,26 @@ class TeamMembers extends Component{
                 <Segment>
                     <Grid>
                         <Grid.Row columns={2}>
-                            <Grid.Column width={13}>
-                                <Select placeholder='Select Position' search selection options={options} onChange={this.handleSelectorChange}/>
-                            </Grid.Column>
-                            <Grid.Column width={3}>
-                                <Checkbox style={center_vertically} label='Filter' onChange={this.handleCheckBox} />
+                            {/*<Grid.Column width={13}>*/}
+                                {/*<Select placeholder='Select Position' search selection options={options} onChange={this.handleSelectorChange}/>*/}
+                            {/*</Grid.Column>*/}
+                            {/*<Grid.Column width={3}>*/}
+                            {/*<Checkbox style={center_vertically} label='Filter' onChange={this.handleCheckBox} />*/}
+                            {/*</Grid.Column>*/}
+                            <Grid.Column style={{textAlign:'right'}} width={16}>
+                            <Dropdown text='Filter Posts' icon='filter'>
+                                <Dropdown.Menu>
+                                    {/*<Input icon='search' iconPosition='left' className='search' />*/}
+                                    {/*<Dropdown.Divider />*/}
+                                    <Dropdown.Menu scrolling>
+                                        {options.map(option => <Dropdown.Item key={option.value} {...option} />)}
+                                    </Dropdown.Menu>
+                                </Dropdown.Menu>
+                            </Dropdown>
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row columns={1}>
-                            <Grid.Column>
+                        <Grid.Column>
                                 <Table sortable celled fixed style={{}}>
                                     <Table.Header >
                                         <Table.Row>
@@ -243,7 +254,7 @@ const news =
 class App extends Component {
     render(){
         return(
-            <Template {...this.props} template={{column_1: <MatchesTable/>, column_2:<TeamMembers/>, column_3:news, width_1:4, width_2:8, width_3:4}} />
+            <Template {...this.props} template={{column_1: <Matches/>, column_2:<TeamMembers/>, column_3:news, width_1:4, width_2:8, width_3:4}} />
 
         )
     }
