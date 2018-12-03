@@ -110,7 +110,7 @@ class TeamMembers extends Component{
         direction: null,
         filterItem: null,
         filterEnable:false,
-    }
+    };
 
     handleSort = clickedColumn => () => {
         const { column, data, direction } = this.state
@@ -120,7 +120,7 @@ class TeamMembers extends Component{
                 column: clickedColumn,
                 data: _.sortBy(data, [clickedColumn]),
                 direction: 'ascending',
-            })
+            });
 
             return
         }
@@ -129,7 +129,7 @@ class TeamMembers extends Component{
             data: data.reverse(),
             direction: direction === 'ascending' ? 'descending' : 'ascending',
         })
-    }
+    };
     handleSelectorChange = (selectedOption) => {
         this.setState({ filterItem:selectedOption.value });
 

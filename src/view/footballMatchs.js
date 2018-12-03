@@ -1,100 +1,27 @@
-import _ from 'lodash'
-import React, { Component } from 'react'
-import { Table } from 'semantic-ui-react'
-import Template from '../components/template'
+import React,{Component} from "react";
 
-const tableData = [
-    { name: 'John', age: 15, gender: 'Male' },
-    { name: 'Amber', age: 40, gender: 'Female' },
-    { name: 'Leslie', age: 25, gender: 'Female' },
-    { name: 'Ben', age: 70, gender: 'Male' },
-]
+import { Menu,Grid, Dropdown, Icon} from 'semantic-ui-react'
 
-class TableExampleSortable extends Component {
-    state = {
-        column: null,
-        data: tableData,
-        direction: null,
-    }
 
-    handleSort = clickedColumn => () => {
-        const { column, data, direction } = this.state
-
-        if (column !== clickedColumn) {
-            this.setState({
-                column: clickedColumn,
-                data: _.sortBy(data, [clickedColumn]),
-                direction: 'ascending',
-            })
-
-            return
-        }
-
-        this.setState({
-            data: data.reverse(),
-            direction: direction === 'ascending' ? 'descending' : 'ascending',
-        })
+export default  class matche extends Component {
+    constructor(prop) {
+        super(prop);
+        this.state = {
+            matchInformation: {},
+        };
+        let tmp = this.state.matchInformation;
+        tmp['goal'] = ['ali', 'mamad'];
+        this.setState({matchInformation: tmp});
+        tmp['card'] = 'jafar';
+        this.setState({matchInformation: tmp});
     }
 
     render() {
-        const { column, data, direction } = this.state
+        console.log(this.state.matchInformation['card']);
+        console.log(this.state.matchInformation['goal']);
 
         return (
-            <Table sortable celled fixed>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell
-                            sorted={column === 'corner' ? direction : null}
-                            onClick={this.handleSort('corner')}
-                        >
-                            Corner
-                        </Table.HeaderCell>
-                        <Table.HeaderCell
-                            sorted={column === 'fault' ? direction : null}
-                            onClick={this.handleSort('fault')}
-                        >
-                            Fault
-                        </Table.HeaderCell>
-                        <Table.HeaderCell
-                            sorted={column === 'goalposition' ? direction : null}
-                            onClick={this.handleSort('goalposition')}
-                        >
-                            Goal position
-                        </Table.HeaderCell>
-                        <Table.HeaderCell
-                            sorted={column === 'goalnumber' ? direction : null}
-                            onClick={this.handleSort('goalnumber')}
-                        >
-                            Goal number
-                        </Table.HeaderCell>
-                        <Table.HeaderCell
-                            sorted={column === 'ownershippercentage' ? direction : null}
-                            onClick={this.handleSort('ownershippercentage')}
-                        >
-                            Ownership percentage
-                        </Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                    {_.map(data, ({ age, gender, name }) => (
-                        <Table.Row key={name}>
-                            <Table.Cell>{name}</Table.Cell>
-                            <Table.Cell>{age}</Table.Cell>
-                            <Table.Cell>{gender}</Table.Cell>
-                        </Table.Row>
-                    ))}
-                </Table.Body>
-            </Table>
-        )
+            <Menu m={{matchInformation: this.state.matchInformation, summary:false}}/>
+        );
     }
 }
-
-class App extends Component {
-    render(){
-        return(
-            <Template {...this.props} template={{column_2:<TableExampleSortable/>,  width_1:4, width_2:8, width_3:4}} />
-
-        )
-    }
-}
-export default App

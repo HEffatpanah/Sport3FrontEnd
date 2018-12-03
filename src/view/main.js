@@ -3,8 +3,13 @@ import { Tab, Segment, Dropdown, Grid} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 
-
-
+// class news extends Component{
+//     render() {
+//         return (
+//
+//         );
+//     }
+// }
 
 
 class App extends Component {
@@ -12,11 +17,10 @@ class App extends Component {
         super(props);
         this.getTodoList = this.getTodoList.bind(this);
         this.state = {
-            Fnews: ['ali'],
+            Fnews: ['ali', 'taha'],
             Bnews: '',
             selectedSport : "football"
         };
-        this.state.Fnews.push('mammad');
     }
     getTodoList() {
         return this.state.Fnews.map((fnews,i) => {
@@ -24,31 +28,28 @@ class App extends Component {
         });
     }
     handleSelectorChange = (selectedOption) => {
-        this.setState({ selectedOption });
-        console.log(selectedOption.value);
-        if(selectedOption.value === "football"){
-            this.setState({selectedSport:"football"})
-        }
-        else{
-            this.setState({selectedSport:"basketball"})
-        }
+        this.setState({selectedSport:selectedOption.value});
     };
     render() {
 
-        const footballNews = [
+        const footballMatches = [
             { menuItem: 'favorite', render: () => <Tab.Pane><ul>{this.getTodoList()}</ul></Tab.Pane> },
             { menuItem: 'new', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
         ];
-        const basketballNews = [
+        const basketballMatches = [
             { menuItem: 'favorite', render: () => <Tab.Pane><ul>{this.getTodoList()}</ul></Tab.Pane> },
             { menuItem: 'new', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
         ];
+        const pansMap = {
+            "football":footballMatches,
+            "basketball":basketballMatches,
+        };
         // const myTab = () => {
         //     if(this.state.selectedSport === "football"){
         //         return (
         //             <div>
         //                 <div>{this.state.selectedSport}</div>
-        //                 <Tab panes={footballNews}/>
+        //                 <Tab panes={footballMatches}/>
         //             </div>
         //         )
         //     }
@@ -56,7 +57,7 @@ class App extends Component {
         //         return (
         //             <div>
         //                 <div>{this.state.selectedSport}</div>
-        //                 <Tab panes={basketballNews}/>
+        //                 <Tab panes={basketballMatches}/>
         //             </div>
         //         )
         //     }
@@ -65,11 +66,11 @@ class App extends Component {
         //     <div>
         //         <Segment>
         //             <div>Football</div>
-        //             <Tab panes={footballNews} />
+        //             <Tab panes={footballMatches} />
         //         </Segment>
         //         <Segment>
         //             <div>Basketball</div>
-        //             <Tab panes={basketballNews} />
+        //             <Tab panes={basketballMatches} />
         //         </Segment>
         //     </div>;
         const options = [
@@ -89,29 +90,30 @@ class App extends Component {
                 <a href="https://www.google.com">news</a><br/>
             </Segment>;
 
-        const Matches =
+        const MatchesTable =
             <Segment>
-                <Tab panes={footballNews}/>
+                <Tab panes={pansMap[this.state.selectedSport]}/>
             </Segment>;
-
+        const Selectbar =
+            <Select placeholder='Select Sport'  search selection options={options} onChange={this.handleSelectorChange}/>;
         const body =
             <Grid style={{width:'100%'}}>
-                <Grid.Row columns={1} style={{height:'10%'}}>
-                    <Grid.Column width={3}>
+                <Grid.Row columns={1}>
+                    <Grid.Column width={4}>
                         <Segment>
-                            <Select placeholder='Select Sport' search selection options={options} onChange={this.handleSelectorChange}/>
+                            {Selectbar}
                         </Segment>
                     </Grid.Column>
                 </Grid.Row>
-                <Grid.Row columns={3} style={{height:'90%'}}>
+                <Grid.Row columns={3} style={{height:'87%'}}>
                     <Grid.Column width={4}>
                         {news}
                     </Grid.Column>
                     <Grid.Column width={8}>
-                        {Matches}
+                        {MatchesTable}
                     </Grid.Column>
                     <Grid.Column width={4}>
-                        <div>adv</div>
+                        <Segment>adv</Segment>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;
