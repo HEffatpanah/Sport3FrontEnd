@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tab, Segment, Dropdown, Grid} from 'semantic-ui-react'
+import { Tab, Segment, Grid} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 
@@ -120,7 +120,7 @@ class App extends Component {
 
         return (
             <div>
-                <Template {...this.props} template={{body:body}} />
+                <Template {...this.props}body={body}  />
             </div>
         );
     }

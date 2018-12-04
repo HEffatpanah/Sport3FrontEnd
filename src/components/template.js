@@ -150,9 +150,7 @@ class Footer extends Component{
 
 
 export default class Template extends Component {
-    constructor(prop){
-        super(prop);
-    }
+
     render() {
         const firststyle = {
             // 'border': '1px solid brown',
@@ -177,7 +175,7 @@ export default class Template extends Component {
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row  style={secondstyle}>
-                        {this.props.template.body}
+                        {this.props.body}
                     </Grid.Row>
                     <Grid.Row columns={1} style={thirdstyle}>
                         <Grid.Column >

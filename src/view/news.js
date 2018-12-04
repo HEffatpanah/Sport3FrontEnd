@@ -7,9 +7,6 @@ import {Grid, Segment} from 'semantic-ui-react'
 
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         const advertise = <Segment>advertise</Segment>;
