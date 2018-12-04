@@ -2,77 +2,27 @@ import React, { Component } from 'react';
 import { Tab, Segment, Grid} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
+import MatchesSummaryTable from "../components/matchSummary";
 
-// class news extends Component{
-//     render() {
-//         return (
-//
-//         );
-//     }
-// }
-
+const matchData = [
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
+];
 
 class App extends Component {
     constructor(props) {
         super(props);
-        this.getTodoList = this.getTodoList.bind(this);
         this.state = {
-            Fnews: ['ali', 'taha'],
-            Bnews: '',
             selectedSport : "football"
         };
-    }
-    getTodoList() {
-        return this.state.Fnews.map((fnews,i) => {
-            return <li key={i}>{fnews}</li>
-        });
     }
     handleSelectorChange = (selectedOption) => {
         this.setState({selectedSport:selectedOption.value});
     };
     render() {
 
-        const footballMatches = [
-            { menuItem: 'favorite', render: () => <Tab.Pane><ul>{this.getTodoList()}</ul></Tab.Pane> },
-            { menuItem: 'new', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
-        ];
-        const basketballMatches = [
-            { menuItem: 'favorite', render: () => <Tab.Pane><ul>{this.getTodoList()}</ul></Tab.Pane> },
-            { menuItem: 'new', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
-        ];
-        const pansMap = {
-            "football":footballMatches,
-            "basketball":basketballMatches,
-        };
-        // const myTab = () => {
-        //     if(this.state.selectedSport === "football"){
-        //         return (
-        //             <div>
-        //                 <div>{this.state.selectedSport}</div>
-        //                 <Tab panes={footballMatches}/>
-        //             </div>
-        //         )
-        //     }
-        //     else{
-        //         return (
-        //             <div>
-        //                 <div>{this.state.selectedSport}</div>
-        //                 <Tab panes={basketballMatches}/>
-        //             </div>
-        //         )
-        //     }
-        // }
-        // const sport_news =
-        //     <div>
-        //         <Segment>
-        //             <div>Football</div>
-        //             <Tab panes={footballMatches} />
-        //         </Segment>
-        //         <Segment>
-        //             <div>Basketball</div>
-        //             <Tab panes={basketballMatches} />
-        //         </Segment>
-        //     </div>;
         const options = [
             { value: 'football', label: 'football' },
             { value: 'basketball', label: 'basketball' },
@@ -90,10 +40,6 @@ class App extends Component {
                 <a href="https://www.google.com">news</a><br/>
             </Segment>;
 
-        const MatchesTable =
-            <Segment>
-                <Tab panes={pansMap[this.state.selectedSport]}/>
-            </Segment>;
         const Selectbar =
             <Select placeholder='Select Sport'  search selection options={options} onChange={this.handleSelectorChange}/>;
         const body =
@@ -110,7 +56,7 @@ class App extends Component {
                         {news}
                     </Grid.Column>
                     <Grid.Column width={8}>
-                        {MatchesTable}
+                        <MatchesSummaryTable matchesData={matchData}/>
                     </Grid.Column>
                     <Grid.Column width={4}>
                         <Segment>adv</Segment>
