@@ -4,7 +4,7 @@ import _ from "lodash";
 
 
 
-class MatcheInfo extends Component {
+class MatchInfo extends Component {
 
     render() {
 
@@ -12,7 +12,7 @@ class MatcheInfo extends Component {
 
         return (
             <Table.Row>
-                <Table.Cell onClick={this.asdf}>{info['owerTeamGoal']+'-'+info['opponentTeamGoal']}</Table.Cell>
+                <Table.Cell>{info['owerTeamGoal']+'-'+info['opponentTeamGoal']}</Table.Cell>
                 <Table.Cell>{info['date']}</Table.Cell>
                 <Table.Cell>{info['score']}</Table.Cell>
                 <Table.Cell>{info['status']}</Table.Cell>
@@ -50,7 +50,7 @@ export default class MatchesTable extends Component{
         return(
             this.state.matchesData.map((data) => {
                     return(
-                        <MatcheInfo matchData={data}/>
+                        <MatchInfo matchData={data}/>
                     )
                 }
             )
@@ -59,12 +59,10 @@ export default class MatchesTable extends Component{
     render() {
         const {matchesData, column, direction} = this.state;
         return (
-            <Table sortable celled fixed color={'#1b5b78'} inverted>
+            <Table sortable celled fixed inverted>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell
-                            // sorted={column === 'result' ? direction : null}
-                            // onClick={this.handleSort('result')}
                         >
                             Result
                         </Table.HeaderCell>

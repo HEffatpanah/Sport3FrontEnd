@@ -2,7 +2,7 @@ import _ from 'lodash'
 import React, { Component } from 'react'
 import {Grid, Segment, Table, Dropdown, Button} from 'semantic-ui-react'
 import Template from '../components/template'
-import MatchesTable from '../components/team/matcheInfo'
+import MatchesTable from '../components/team/matchInfo'
 import TeamMembers from "../components/team/teamMember";
 
 const matchData = [

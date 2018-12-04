@@ -56,7 +56,7 @@ class LoginForm extends Component {
                       </Message>
                   </Grid.Column>
               </Grid>
-      return <Template {...this.props} template={{body: loginForm,}} />
+      return <Template {...this.props} body={loginForm}/>
   }
 
 }

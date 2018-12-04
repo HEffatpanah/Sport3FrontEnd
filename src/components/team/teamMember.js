@@ -33,17 +33,11 @@ export default class TeamMembers extends Component{
     };
 
     handleFilter = (selectedOption, {value}) => {
-        this.setState({ filterItem: value });
-        // console.log(this.state)
+        this.setState({ filterItem: value, filterEnable:true });
 
     };
     handleCheckBox = () => {
-        if(this.state.filterEnable){
-            this.setState({filterEnable:false})
-        }
-        else{
-            this.setState({filterEnable:true})
-        }
+        this.setState({filterEnable:!this.state.filterEnable});
     };
     render() {
         const options = [
@@ -81,7 +75,7 @@ export default class TeamMembers extends Component{
                     <Grid>
                         <Grid.Row columns={2}>
                             <Grid.Column>
-                                <Checkbox slider label='filter enable' onClick={this.handleCheckBox}/>
+                                <Checkbox slider label='filter enable' checked={this.state.filterEnable} onClick={this.handleCheckBox}/>
                             </Grid.Column>
                             <Grid.Column style={{textAlign:'right'}}>
                                 <Dropdown  text='Filter Positions' icon='filter'>
