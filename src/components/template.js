@@ -1,5 +1,6 @@
 import React,{Component} from "react";
 
+
 import { Menu,Grid, Dropdown, Icon} from 'semantic-ui-react'
 
 import {
@@ -41,11 +42,11 @@ class Navbar extends Component {
             if(localStorage.getItem('username') !== null) {
                 return (
 
-                        <Dropdown text={this.state.name} item pointing={'right top'}>
-                            <Dropdown.Menu >
-                                <Dropdown.Item onClick={Logout}>Logout<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
+                    <Dropdown text={this.state.name} item pointing={'right top'}>
+                        <Dropdown.Menu >
+                            <Dropdown.Item onClick={Logout}>Logout<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
 
                 )
             }
@@ -109,27 +110,29 @@ class Footer extends Component{
     render(){
         return(
 
-                <Segment inverted vertical style={{ padding: '5em 0em'}}>
+            <Segment inverted vertical style={{ padding: '5em 0em'}}>
 
-                        <Grid >
-                            <Grid.Row columns={1}>
-                                <Grid.Column style={{textAlign: 'center'}}>
-                                    <Icon name={'telegram'}/>
-                                    <Icon name={'google plus circle'}/>
-                                </Grid.Column>
-                            </Grid.Row>
-                            <Grid.Row>
-                                <Grid.Column style={{textAlign: 'center'}}>
-                                    <div>
-                                        ProducedBy : HosseinEffatPanah & AliAsgharKhani
-                                        <br/>
-                                        <a href={'https://sharif.ir'}>SUT</a>
-                                    </div>
-                                </Grid.Column>
-                            </Grid.Row>
-                        </Grid>
+                <Grid >
+                    <Grid.Row columns={1}>
+                        <Grid.Column style={{textAlign: 'center'}}>
+                            <Icon name={'telegram'} size='big'/>
+                            <Icon name={'google plus circle'}size='big' />
+                            <Icon name={'react'} size='big'/>
+                            {/*<Icon link={'rocket'}/>*/}
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column style={{textAlign: 'center'}}>
+                            <div>
+                                ProducedBy : HosseinEffatPanah & AliAsgharKhani
+                                <br/>
+                                <a href={'https://sharif.ir'}>SUT</a>
+                            </div>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
 
-                </Segment>
+            </Segment>
 
         )
     }
@@ -141,17 +144,19 @@ export default class Template extends Component {
 
     render() {
         const firststyle = {
-            backgroundColor:'#e8e8e8',
+            backgroundColor:'#cde8e5',
+
             height:'7vh'
         };
         const secondstyle = {
             paddingLeft: '2.5vw',
             paddingRight: '2.5vw',
-            backgroundColor:'#e8e8e8',
+            backgroundColor:'#cde8e5',
             height:'100%'
         };
         const thirdstyle = {
-            backgroundColor:'#e8e8e8',
+            backgroundColor:'#cde8e5',
+
             height:'15vh',
         };
         return (

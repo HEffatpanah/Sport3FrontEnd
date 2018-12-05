@@ -26,7 +26,6 @@ export default class MatchesSummaryTable extends Component{
     state ={
         matchesData:this.props.matchesData,
     };
-
     getTableData (){
         return(
             this.state.matchesData.map((data) => {
@@ -40,11 +39,11 @@ export default class MatchesSummaryTable extends Component{
     render() {
         const footballMatches = [
             { menuItem: 'favorite', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
-            { menuItem: 'new', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
+            { menuItem: 'all', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
         ];
         const basketballMatches = [
             { menuItem: 'favorite', render: () => <Tab.Pane>{this.getTodoList()}</Tab.Pane> },
-            { menuItem: 'new', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
+            { menuItem: 'all', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
         ];
         const pansMap = {
             "football":footballMatches,
@@ -52,13 +51,11 @@ export default class MatchesSummaryTable extends Component{
         };
         const MatchesTable =
             <Segment>
-                <Tab panes={pansMap["football"]}/>
+                <Tab panes={pansMap[this.props.sport]}/>
             </Segment>;
         return (
             <Table>
-                {/*<Table.Body>*/}
                     {MatchesTable}
-                {/*</Table.Body>*/}
             </Table>
         );
     }

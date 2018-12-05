@@ -4,6 +4,8 @@ import Template from '../components/template'
 import Select from 'react-select';
 import MatchesSummaryTable from "../components/matchSummary";
 import Adv from "../components/advertisement";
+import Newssummery from '../components/newsSummery'
+
 
 const matchData = [
     { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
@@ -43,7 +45,7 @@ class App extends Component {
 
         const Selectbar =
             <Select placeholder='Select Sport'  search selection options={options} onChange={this.handleSelectorChange}/>;
-        const body =
+        let body =
             <Grid style={{width:'100%'}}>
                 <Grid.Row columns={1}>
                     <Grid.Column width={4}>
@@ -54,10 +56,12 @@ class App extends Component {
                 </Grid.Row>
                 <Grid.Row columns={3} style={{height:'87%'}}>
                     <Grid.Column width={4}>
-                        {news}
+                        <Segment>
+                            <Newssummery/>
+                        </Segment>
                     </Grid.Column>
                     <Grid.Column width={10}>
-                        <MatchesSummaryTable matchesData={matchData}/>
+                        <MatchesSummaryTable matchesData={matchData} sport={this.state.selectedSport}/>
                     </Grid.Column>
                     <Grid.Column width={2}>
                         <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
@@ -67,7 +71,7 @@ class App extends Component {
 
         return (
             <div>
-                <Template {...this.props}body={body}  />
+                <Template {...this.props} body={body}  />
             </div>
         );
     }
