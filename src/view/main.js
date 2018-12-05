@@ -3,6 +3,7 @@ import { Tab, Segment, Grid} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 import MatchesSummaryTable from "../components/matchSummary";
+import Adv from "../components/advertisement";
 
 const matchData = [
     { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
@@ -55,11 +56,11 @@ class App extends Component {
                     <Grid.Column width={4}>
                         {news}
                     </Grid.Column>
-                    <Grid.Column width={8}>
+                    <Grid.Column width={10}>
                         <MatchesSummaryTable matchesData={matchData}/>
                     </Grid.Column>
-                    <Grid.Column width={4}>
-                        <Segment>adv</Segment>
+                    <Grid.Column width={2}>
+                        <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;

@@ -10,6 +10,7 @@ import Page4 from './view/teams';
 import Page5 from './view/footballMatchs';
 import Page6 from './view/basketballMatchs';
 import Page7 from './components/match/timeLine';
+import Page8 from './view/signup';
 
 const history = createBrowserHistory();
 
@@ -25,6 +26,7 @@ export default class App extends Component {
                     <Route exact path='/footballMatches' component={Page5} />
                     <Route exact path='/basketballMatches' component={Page6} />
                     <Route exact path='/ali' component={Page7} />
+                    <Route exact path='/signup' component={Page8} />
                 </Switch>
             </Router>
         );

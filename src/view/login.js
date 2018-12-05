@@ -1,63 +1,72 @@
 import React ,{Component} from 'react';
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
+import {Button, Form, Grid, Header, Icon, Message, Segment} from 'semantic-ui-react';
 import Template from "../components/template";
+import _ from 'lodash'
+
+const members=[
+    {user:'ali', pass:'123'},
+    {user:'hossein', pass:'456'},
+]
 
 class LoginForm extends Component {
-  constructor(prop){
-    super(prop);
-    this.state={
-      path:'/login'
-    }
-    this.handleSubmit=this.handleSubmit.bind(this);
-  }
+    constructor(prop){
+        super(prop);
 
-  handleSubmit(event) {
-    console.log(4);
-    if(event.target.user.value==='admin'&& event.target.pass.value==='admin')
-    {
-      console.log(this.state.path);
-      this.setState({
-        path:'/'
-      });
-        localStorage.setItem('username',event.target.user.value);
-        this.props.history.goBack();
+        this.handleSubmit=this.handleSubmit.bind(this);
     }
-    else {
-      alert('wrong user')
+    state={
+            path:'/login',
+            loginData:members,
+            hiddenLoginError:true,
+        }
+    handleSubmit(event) {
+        let userAuth = false;
+        _.map(this.state.loginData, ({user, pass}) => {
+            if(event.target.user.value === user && pass === event.target.pass.value)
+            {
+                localStorage.setItem('username',event.target.user.value);
+                this.props.history.goBack();
+                userAuth = true;
+            }
+        });
+        if(!userAuth){
+            this.setState({hiddenLoginError:false})
+        }
+
+
     }
-  }
 
-  render() {
-      const loginForm =
-              <Grid textAlign='center' style={{width:'100%', height: '100%'}} verticalAlign='middle'>
-                  <Grid.Column style={{maxWidth: 450}}>
-                      <Header as='h2' color='teal' textAlign='center'>
-                          {/* <Image src='/logo.png' /> Log-in to your account */}
-                      </Header>
-                      <Form size='large' onSubmit={this.handleSubmit}>
-                          <Segment stacked>
-                              <Form.Input name='user' fluid icon='user' iconPosition='left' placeholder='Username'
-                                          required/>
-                              <Form.Input name='pass' required
-                                          fluid
-                                          icon='lock'
-                                          iconPosition='left'
-                                          placeholder='Password'
-                                          type='password'
-                              />
+    render() {
+        const loginForm =
+            <Grid textAlign='center' style={{width:'100%', height: '100%'}} verticalAlign='middle'>
+                <Grid.Column style={{maxWidth: 450}}>
+                    <Message hidden={this.state.hiddenLoginError} error={true} >
+                        User or Pass wrong!
+                    </Message>
+                    <Form size='large' onSubmit={this.handleSubmit}>
+                        <Segment stacked>
+                            <Form.Input name='user' fluid icon='user' iconPosition='left' placeholder='Username'
+                                        required/>
+                            <Form.Input name='pass' required
+                                        fluid
+                                        icon='lock'
+                                        iconPosition='left'
+                                        placeholder='Password'
+                                        type='password'
+                            />
 
-                              <Button type='submit' color='teal' fluid size='large'>
-                                  Login
-                              </Button>
-                          </Segment>
-                      </Form>
-                      <Message>
-                          New to us? <a href='https://www.google.com'>Sign Up</a>
-                      </Message>
-                  </Grid.Column>
-              </Grid>
-      return <Template {...this.props} body={loginForm}/>
-  }
+                            <Button type='submit' color='teal' fluid size='large'>
+                                Login
+                            </Button>
+                        </Segment>
+                    </Form>
+                    <Message>
+                        New to us? <a href='../signup'>Sign Up</a>
+                    </Message>
+                </Grid.Column>
+            </Grid>
+        return <Template {...this.props} body={loginForm}/>
+    }
 
 }
 export default LoginForm

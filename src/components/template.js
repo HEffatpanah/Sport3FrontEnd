@@ -30,35 +30,23 @@ class Navbar extends Component {
         }
     };
     render() {
-        // if(this.state.first){
-        //     const a = this.props.location.pathname.substr(1);
-        //     if (a) {
-        //         this.setState({first: false, activeItem: a})
-        //     }
-        //     else{
-        //         this.setState({first: false, activeItem: 'home'})
-        //     }
-        //
-        // }
-
         if(localStorage.getItem('username')!==null && !this.state.setName){
             this.setState({setName:true,name:localStorage.getItem('username')})
         }
         const Logout = () => {
             localStorage.clear();
             this.setState({change:!this.state.change});
-            console.log('here');
         };
         const Login_Logout =() => {
             if(localStorage.getItem('username') !== null) {
                 return (
-                    <Menu.Item position={'right'}>
-                        <Dropdown item text={this.state.name} >
-                            <Dropdown.Menu>
-                                <Dropdown.Item onClick={Logout}><Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
+
+                        <Dropdown text={this.state.name} item pointing={'right top'}>
+                            <Dropdown.Menu >
+                                <Dropdown.Item onClick={Logout}>Logout<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                    </Menu.Item>
+
                 )
             }
             else{
@@ -168,7 +156,7 @@ export default class Template extends Component {
         };
         return (
             <div style={{'height': '100vh' }}>
-                <Grid  style={{ 'height': '100%', backgroundColor:'#c9c9c9' }}>
+                <Grid  style={{ 'height': '100%', backgroundColor:'#e8e8e8' }}>
                     <Grid.Row columns={1} style={firststyle}>
                         <Grid.Column >
                             <Navbar {...this.props}/>

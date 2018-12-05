@@ -1,96 +1,52 @@
-import {Timeline, TimelineEvent} from 'react-event-timeline';
+
 import React,{Component} from "react";
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+
 import 'react-vertical-timeline-component/style.min.css';
-import {Icon} from "semantic-ui-react";
+import Timeline from 'react-horizontal-timeline';
 
-export default class asd extends Component{
-    render() {
-        return (
-            <VerticalTimeline>
-                <VerticalTimelineElement
-                    // className="vertical-timeline-element--work"
-                    date="2011 - present"
-                    iconStyle={{  }}
-icon={<Icon name='home' size='big'/>}                >
-                    <h3 className="vertical-timeline-element-title">Creative Director</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
-                    <p>
-                        Creative Direction, User Experience, Visual Design, Project Management, Team Leading
-                    </p>
-                </VerticalTimelineElement>
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--work"
-                    date="2010 - 2011"
-                    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-icon={<Icon name='users' />}                >
-                    <h3 className="vertical-timeline-element-title">Art Director</h3>
-                    <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                    <p>
-                        Creative Direction, User Experience, Visual Design, SEO, Online Marketing
-                    </p>
-                </VerticalTimelineElement>
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--work"
-                    date="2008 - 2010"
-                    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-                    icon={<Icon name='users' />}
+const data = [
+  { name: "Wake up", dataType: "user-data", date: "2012-09-28T07:00:00", isSelected: false, isNotPermitted: false, r: 7, cy: 50, cx: 0, activity: { name: "Example Activity A", startTime: "2012-09-28T06:50:00", endTime: "2012-09-28T11:45:00" }  },
+  { name: "Breakfast", dataType: "user-data", date: "2012-09-28T07:30:00", isSelected: false, isNotPermitted: false, r: 7, cy: 50, cx: 0, activity: { name: "Example Activity A", startTime: "2012-09-28T06:50:00", endTime: "2012-09-28T11:45:00" } },
+  { name: "Leave kids at school", dataType: "user-data", date: "2012-09-28T07:45:00", isSelected: false, isNotPermitted: false, r: 7, cy: 50, cx: 0, activity: { name: "Example Activity A", startTime: "2012-09-28T06:50:00", endTime: "2012-09-28T11:45:00" } },
+  { name: "Check email", dataType: "user-data", date: "2012-09-28T08:00:00", isSelected: false, isNotPermitted: false, r: 7, cy: 50, cx: 0, activity: { name: "Example Activity A", startTime: "2012-09-28T06:50:00", endTime: "2012-09-28T11:45:00" } },
+  { name: "Lunch", dataType: "user-data", date: "2012-09-28T11:30:00", isSelected: false, isNotPermitted: false, r: 7, cy: 50, cx: 0, activity: { name: "Example Activity A", startTime: "2012-09-28T06:50:00", endTime: "2012-09-28T11:45:00" } },
+  { name: "Send report", dataType: "user-data", date: "2012-09-28T13:15:00", isSelected: false, isNotPermitted: true, r: 7, cy: 50, cx: 0, activity: null },
+  { name: "Pick kids", dataType: "user-data", date: "2012-09-28T17:16:00", isSelected: false, isNotPermitted: true, r: 7, cy: 50, cx: 0, activity: null },
+  { name: "Dinner", dataType: "user-data", date: "2012-09-28T18:13:00", isSelected: false, isNotPermitted: false, r: 7, cy: 50, cx: 0, activity: { name: "Example Activity B", startTime: "2012-09-28T17:45:00", endTime: "2012-09-28T20:30:00" } },
+  { name: "Watch a movie", dataType: "user-data", date: "2012-09-28T20:16:00", isSelected: false, isNotPermitted: false, r: 7, cy: 50, cx: 0, activity: { name: "Example Activity B", startTime: "2012-09-28T17:45:00", endTime: "2012-09-28T20:30:00" } },
+  { name: "Go to sleep", dataType: "user-data", date: "2012-09-28T22:00:00", isSelected: false, isNotPermitted: true, r: 7, cy: 50, cx: 0, activity: null },
+  { name: "Example system event A", dataType: "system-data", date: "2012-09-28T14:30:20", isSelected: false, isNotPermitted: true, y: 42, cx: 0 },
+  { name: "Example system event B", dataType: "system-data", date: "2012-09-28T17:45:00", isSelected: false, isNotPermitted: true, y: 42, cx: 0 },
+  { name: "Example system event C", dataType: "system-data", date: "2012-09-28T19:00:15", isSelected: false, isNotPermitted: false, y: 42, cx: 0 },
+  { name: "Example system event D", dataType: "system-data", date: "2012-09-28T22:20:00", isSelected: false, isNotPermitted: false, y: 42, cx: 0 }
+]
 
-                >
-                    <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
-                    <p>
-                        User Experience, Visual Design
-                    </p>
-                </VerticalTimelineElement>
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--work"
-                    date="2006 - 2008"
-                    iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-icon={<Icon name='users' />}                >
-                    <h3 className="vertical-timeline-element-title">Web Designer</h3>
-                    <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
-                    <p>
-                        User Experience, Visual Design
-                    </p>
-                </VerticalTimelineElement>
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--education"
-                    date="April 2013"
-                    iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-icon={<Icon name='users' />}                >
-                    <h3 className="vertical-timeline-element-title">Content Marketing for Web, Mobile and Social Media</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Online Course</h4>
-                    <p>
-                        Strategy, Social Media
-                    </p>
-                </VerticalTimelineElement>
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--education"
-                    date="November 2012"
-                    iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-icon={<Icon name='users' />}                >
-                    <h3 className="vertical-timeline-element-title">Agile Development Scrum Master</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Certification</h4>
-                    <p>
-                        Creative Direction, User Experience, Visual Design
-                    </p>
-                </VerticalTimelineElement>
-                <VerticalTimelineElement
-                    className="vertical-timeline-element--education"
-                    date="2002 - 2006"
-                    iconStyle={{ background: 'rgb(233, 30, 99)', color: '#fff' }}
-icon={<Icon name='users' />}                >
-                    <h3 className="vertical-timeline-element-title">Bachelor of Science in Interactive Digital Media Visual Imaging</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Bachelor Degree</h4>
-                    <p>
-                        Creative Direction, Visual Design
-                    </p>
-                </VerticalTimelineElement>
-                <VerticalTimelineElement
-                    iconStyle={{ background: 'rgb(16, 204, 82)', color: '#fff' }}
-icon={<Icon name='users' />}                />
-            </VerticalTimeline>
-        );
-    }
+const activityDataSample = [
+  undefined,
+  { name: "Example Activity A", startTime: "2012-09-28T06:50:00", endTime: "2012-09-28T11:45:00" },
+  { name: "Example Activity B", startTime: "2012-09-28T10:50:00", endTime: "2012-09-28T13:45:00" },
+  { name: "Example Activity C", startTime: "2012-09-28T16:50:00", endTime: "2012-09-28T17:45:00" }
+]
+
+export default class App extends Component {
+
+  render() {
+    return (
+      <div>
+        {/*<div className="App">*/}
+          {/*<header className="App-header">*/}
+            {/*/!*<img src={logo} className="App-logo" alt="logo" />*!/*/}
+            {/*<h1 className="App-title">Welcome to React</h1>*/}
+          {/*</header>*/}
+        {/*</div>*/}
+
+        <Timeline
+          data={data}
+          activityObject={activityDataSample[0]}
+          eventTypeObject={{userEvents: true, systemEvents: true}}
+        />
+
+      </div>
+    );
+  }
 }
