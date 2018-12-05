@@ -9,7 +9,7 @@ export default class Adv extends Component{
             width:'auto'
         }
         return (
-            <a href={this.props.link} target={"_blank"}><Image src={this.props.advertisement}/></a>
+            <a href={this.props.link} target={"_blank"}><Image src={this.props.advertisement} style={{width:'100%'}}/></a>
         );
     }
 }

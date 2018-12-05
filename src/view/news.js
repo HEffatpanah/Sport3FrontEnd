@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Template from '../components/template'
 import {Grid, Segment} from 'semantic-ui-react'
-
+import Adv from '../components/advertisement'
 
 
 
@@ -31,10 +31,10 @@ class App extends Component {
                 const body =
             <Grid style={{width:'100%'}}>
                 <Grid.Row columns={3}>
-                    <Grid.Column width={4}>
-                        {advertise}
+                    <Grid.Column width={2}>
+                        <Adv link={'http://www.yjc.ir/fa/ads/redirect/a/929'} advertisement={'https://cdn.yjc.ir/files/adv/3955_459.gif'}/>
                     </Grid.Column>
-                    <Grid.Column width={8}>
+                    <Grid.Column width={10}>
                         {news}
                     </Grid.Column>
                     <Grid.Column width={4}>
@@ -44,7 +44,7 @@ class App extends Component {
             </Grid>;
         return (
             <div>
-                <Template {...this.props} template={{body:body}}/>
+                <Template {...this.props} body={body}/>
             </div>);
     }
 }

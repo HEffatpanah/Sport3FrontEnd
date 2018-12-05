@@ -108,10 +108,10 @@ class Navbar extends Component {
 class Footer extends Component{
     render(){
         return(
-            <div>
-                <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
-                    <Container textAlign='center'>
-                        <Grid>
+
+                <Segment inverted vertical style={{ padding: '5em 0em'}}>
+
+                        <Grid >
                             <Grid.Row columns={1}>
                                 <Grid.Column style={{textAlign: 'center'}}>
                                     <Icon name={'telegram'}/>
@@ -119,7 +119,7 @@ class Footer extends Component{
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row>
-                                <Grid.Column>
+                                <Grid.Column style={{textAlign: 'center'}}>
                                     <div>
                                         ProducedBy : HosseinEffatPanah & AliAsgharKhani
                                         <br/>
@@ -128,9 +128,9 @@ class Footer extends Component{
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
-                    </Container>
+
                 </Segment>
-            </div>
+
         )
     }
 }
@@ -141,23 +141,23 @@ export default class Template extends Component {
 
     render() {
         const firststyle = {
-            // 'border': '1px solid brown',
-            'height': '8%'
+            backgroundColor:'#e8e8e8',
+            height:'7vh'
         };
         const secondstyle = {
-            // 'border': '1px solid brown',
-            'height': '82%',
             paddingLeft: '2.5vw',
-            paddingRight: '2.5vw'
+            paddingRight: '2.5vw',
+            backgroundColor:'#e8e8e8',
+            height:'100%'
         };
         const thirdstyle = {
-            // 'border': '1px solid brown',
-            'height': '10%'
+            backgroundColor:'#e8e8e8',
+            height:'15vh',
         };
         return (
             <div style={{'height': '100vh' }}>
-                <Grid  style={{ 'height': '100%', backgroundColor:'#e8e8e8' }}>
-                    <Grid.Row columns={1} style={firststyle}>
+                <Grid  style={{ 'height': '100%'}}>
+                    <Grid.Row style={firststyle}>
                         <Grid.Column >
                             <Navbar {...this.props}/>
                         </Grid.Column>
@@ -165,7 +165,7 @@ export default class Template extends Component {
                     <Grid.Row  style={secondstyle}>
                         {this.props.body}
                     </Grid.Row>
-                    <Grid.Row columns={1} style={thirdstyle}>
+                    <Grid.Row style={thirdstyle}>
                         <Grid.Column >
                             <Footer/>
                         </Grid.Column>
