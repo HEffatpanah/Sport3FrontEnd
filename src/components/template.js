@@ -174,7 +174,7 @@ export default class Template extends Component {
                         <Grid.Column >
                             <img style={{float:'right'}} src={require("../images/2.png")}/>
                             <img style={{float:'center',marginTop:'5vh'}} src={require("../images/6.png")}/>
-                            <img style={{float:'left',marginTop:'5vh'}} src={require("../images/5.png")}/>
+                            <img style={{float:'left',marginLeft:'1vw',marginTop:'4vh'}} src={require("../images/7.jpg")}/>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row style={firststyle}>

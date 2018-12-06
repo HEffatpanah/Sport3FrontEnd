@@ -27,13 +27,24 @@ export default class MatchesSummaryTable extends Component{
         matchesData:this.props.matchesData,
     };
     getTableData (){
-        return(
-            this.state.matchesData.map((data) => {
+        const v=this.state.matchesData.map((data) => {
                     return(
                         <MatchSummary matchData={data}/>
                     )
                 }
             )
+        return(
+            <Table>
+             <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>TeamName</Table.HeaderCell>
+                        <Table.HeaderCell>Result</Table.HeaderCell>
+                        <Table.HeaderCell>TeamName</Table.HeaderCell>
+                        <Table.HeaderCell>Date</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>{v}</Table.Body>
+            </Table>
         )
     };
     render() {
