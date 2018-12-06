@@ -27,9 +27,9 @@ class SignupForm extends Component{
     handleSubmit(event) {
         event.preventDefault();
 
-        console.log(event.target.uname.value)
-        console.log(event.target.pass.value)
-        console.log(event.target.email.value)
+        console.log(event.target.uname.value);
+        console.log(event.target.pass.value);
+        console.log(event.target.email.value);
         // console.log(e)
         // alert('asf');
     }

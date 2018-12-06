@@ -42,7 +42,7 @@ export default class MatchesSummaryTable extends Component{
             { menuItem: 'all', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
         ];
         const basketballMatches = [
-            { menuItem: 'favorite', render: () => <Tab.Pane>{this.getTodoList()}</Tab.Pane> },
+            { menuItem: 'favorite', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
             { menuItem: 'all', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
         ];
         const pansMap = {
