@@ -41,12 +41,13 @@ class Navbar extends Component {
         const Login_Logout =() => {
             if(localStorage.getItem('username') !== null) {
                 return (
-
+                    <Menu.Item position='left' style={{height:'inherit'}}>
                     <Dropdown text={this.state.name} item pointing={'right top'}>
                         <Dropdown.Menu >
-                            <Dropdown.Item onClick={Logout}>Logout<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
+                            <Dropdown.Item onClick={Logout}>خروج<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
+                    </Menu.Item>
 
                 )
             }
@@ -57,7 +58,7 @@ class Navbar extends Component {
                         active={this.props.location.pathname === '/login'}
                         onClick={this.handleItemClick}
                         path = '/login'
-                        position={'right'}
+                        position={'left'}
                     ><Icon name='user'/></Menu.Item>
 
                 )
@@ -65,38 +66,38 @@ class Navbar extends Component {
         };
         return (
 
-            <Menu inverted style={{height:'100%'}}>
-                <Menu.Item
-                    name='home'
-                    path = '/'
-                    active={this.props.location.pathname === '/'}
-                    onClick={this.handleItemClick}
-                >Home</Menu.Item>
-                <Menu.Item
-                    name='teams'
-                    path = '/teams'
-                    active={this.props.location.pathname === '/teams'}
-                    onClick={this.handleItemClick}
-                >Teams</Menu.Item>
-                <Menu.Item
-                    name='players'
-                    path = '/'
-                    active={this.props.location.pathname === '/players'}
-                    onClick={this.handleItemClick}
-                >Players</Menu.Item>
+            <Menu inverted style={{height:'100%', maxHeight: '2em'}}>
+                {Login_Logout()}
+                <Dropdown text='ورزش ها' simple item>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={this.handleDropdownitemClick}  value='football'>فوتبال</Dropdown.Item>
+                        <Dropdown.Item onClick={this.handleDropdownitemClick}  value='Basketball'>بسکتبال</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
                 <Menu.Item
                     name='news'
                     path = '/news'
                     active={this.props.location.pathname === '/news'}
                     onClick={this.handleItemClick}
-                >News</Menu.Item>
-                <Dropdown text='Sports' simple item>
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={this.handleDropdownitemClick}  value='football'>Football</Dropdown.Item>
-                        <Dropdown.Item onClick={this.handleDropdownitemClick}  value='basketball'>Basketball</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                {Login_Logout()}
+                >اخبار</Menu.Item>
+                <Menu.Item
+                    name='players'
+                    path = '/players'
+                    active={this.props.location.pathname === '/players'}
+                    onClick={this.handleItemClick}
+                >بازیکنان</Menu.Item>
+                <Menu.Item
+                    name='teams'
+                    path = '/teams'
+                    active={this.props.location.pathname === '/teams'}
+                    onClick={this.handleItemClick}
+                    >تیم ها</Menu.Item>
+                <Menu.Item
+                    name='home'
+                    path = '/'
+                    active={this.props.location.pathname === '/'}
+                    onClick={this.handleItemClick}
+                >خانه</Menu.Item>
             </Menu>
 
 
@@ -174,7 +175,7 @@ export default class Template extends Component {
                         <Grid.Column >
                             <img style={{float:'right'}} src={require("../images/2.png")}/>
                             <img style={{float:'center',marginTop:'5vh'}} src={require("../images/6.png")}/>
-                            <img style={{float:'left',marginLeft:'1vw',marginTop:'4vh'}} src={require("../images/7.jpg")}/>
+                            <img style={{float:'left',marginTop:'2vh'}} src={require("../images/7.jpg")}/>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row style={firststyle}>

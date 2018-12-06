@@ -37,10 +37,10 @@ export default class MatchesSummaryTable extends Component{
             <Table>
              <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>TeamName</Table.HeaderCell>
-                        <Table.HeaderCell>Result</Table.HeaderCell>
-                        <Table.HeaderCell>TeamName</Table.HeaderCell>
-                        <Table.HeaderCell>Date</Table.HeaderCell>
+                        <Table.HeaderCell>نام تیم</Table.HeaderCell>
+                        <Table.HeaderCell>نتیجه</Table.HeaderCell>
+                        <Table.HeaderCell>نام تیم</Table.HeaderCell>
+                        <Table.HeaderCell>تاریخ</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>{v}</Table.Body>
@@ -49,12 +49,12 @@ export default class MatchesSummaryTable extends Component{
     };
     render() {
         const footballMatches = [
-            { menuItem: 'favorite', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
-            { menuItem: 'all', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
+            { menuItem: 'مورد علاقه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
+            { menuItem: 'همه', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
         ];
         const basketballMatches = [
-            { menuItem: 'favorite', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
-            { menuItem: 'all', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
+            { menuItem: 'مورد علاقه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
+            { menuItem: 'همه', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
         ];
         const pansMap = {
             "football":footballMatches,
@@ -62,10 +62,10 @@ export default class MatchesSummaryTable extends Component{
         };
         const MatchesTable =
             <Segment>
-                <Tab panes={pansMap[this.props.sport]}/>
+                <Tab panes={pansMap[this.props.sport]} />
             </Segment>;
         return (
-            <Table>
+            <Table style={{direction:'rtl'}}>
                     {MatchesTable}
             </Table>
         );

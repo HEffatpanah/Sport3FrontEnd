@@ -36,7 +36,7 @@ export default class NewsDetail extends Component {
                                     </p>
                                 </Comment.Text>
                                 <Comment.Actions>
-                                    <Comment.Action>Reply</Comment.Action>
+                                    <Comment.Action>پاسخ</Comment.Action>
                                 </Comment.Actions>
                             </Comment.Content>
                         </Comment>
@@ -67,17 +67,17 @@ export default class NewsDetail extends Component {
         const image_body = this.props.newDetail['body'];
         const moreImagesUrl = this.props.newDetail['moreImagesUrl'];
         const news_image =
-            <img src={require("../../" + image_url)} style={{"width": "10vw", "height": "9vh", "float": "right", margin:'0.4em'}}/>;
+            <img src={require("../../" + image_url)} style={{"width": "10vw", "height": "9vh", "float": "left", margin:'0.4em'}}/>;
 
         const news = <Segment style={{"overflow": "auto"}}>
             <div>{news_image}</div>
             <div><header style={{"text-decoration": "underline", display:'inline-block'}}><h2>{image_title}</h2></header>
-                <div style={{float:'right', fontSize:'0.6em'}}>date : {image_dateTime}</div>
+                <div style={{float:'left', fontSize:'0.6em'}}>date : {image_dateTime}</div>
             </div>
             <div>{image_body}</div>
             <div>{this.getMoreImages()}</div>
-            <div style={{clear:'both'}}><strong>source</strong></div>
-            <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both'}}><strong>tags</strong>&ensp; :&ensp;  {this.getTages()}</div>
+            <div style={{clear:'both'}}><strong>منابع</strong></div>
+            <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both'}}><strong>تگ ها</strong>&ensp; :&ensp;  {this.getTages()}</div>
         </Segment>;
         const comments =
             <Segment>
@@ -85,7 +85,7 @@ export default class NewsDetail extends Component {
                     {this.getComment()}
                     <Form reply>
                         <Form.TextArea />
-                        <Button content='Add Comment' labelPosition='left' icon='edit' primary />
+                        <Button content='افزودن نظر' labelPosition='left' icon='edit' primary />
                     </Form>
                 </Comment.Group>
             </Segment>;
@@ -114,7 +114,7 @@ export default class NewsDetail extends Component {
                 />
             </Form>
         </Segment>;
-        return (<Segment>
+        return (<Segment style={{direction:'rtl'}}>
                 {news}
                 {comments}
 

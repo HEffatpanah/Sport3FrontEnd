@@ -54,8 +54,8 @@ class App extends Component {
     render() {
 
         const options = [
-            { value: 'football', label: 'football' },
-            { value: 'basketball', label: 'basketball' },
+            { value: 'football', label: 'فوتبال' },
+            { value: 'basketball', label: 'بسکتبال' },
         ];
         // const news =
         //     <Segment>
@@ -71,10 +71,10 @@ class App extends Component {
         //     </Segment>;
 
         const Selectbar =
-            <Select placeholder='Select Sport'  search selection options={options} onChange={this.handleSelectorChange}/>;
+            <Select placeholder='انتخاب ورزش'  search selection options={options} onChange={this.handleSelectorChange} style={{textAlign:'right'}}/>;
         let body =
             <Grid style={{width:'100%'}}>
-                <Grid.Row columns={1}>
+                <Grid.Row columns={1} style={{justifyContent:'end'}}>
                     <Grid.Column width={4}>
                         <Segment>
                             {Selectbar}
@@ -82,16 +82,16 @@ class App extends Component {
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={3} style={{height:'87%'}}>
-                    <Grid.Column width={4}>
-                        <Segment>
-                            <Newssummery newsData={newsData}/>
-                        </Segment>
+                    <Grid.Column width={2}>
+                        <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
                     </Grid.Column>
                     <Grid.Column width={10}>
                         <MatchesSummaryTable matchesData={matchData} sport={this.state.selectedSport}/>
                     </Grid.Column>
-                    <Grid.Column width={2}>
-                        <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
+                    <Grid.Column width={4}>
+                        <Segment>
+                            <Newssummery newsData={newsData}/>
+                        </Segment>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;

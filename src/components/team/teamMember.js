@@ -12,13 +12,14 @@ export default class TeamMembers extends Component{
         direction: null,
         filterItem: null,
         filterEnable:false,
+        column:null
     };
 
     handleSort = clickedColumn => () => {
-        const {matchesData, column, direction} = this.state;
+        const {data, column, direction} = this.state;
         if (column !== clickedColumn) {
             this.setState({
-                matchesData:_.sortBy(matchesData, [clickedColumn]),
+                data:_.sortBy(data, [clickedColumn]),
                 column: clickedColumn,
                 direction: 'ascending',
             });
@@ -27,7 +28,7 @@ export default class TeamMembers extends Component{
         }
 
         this.setState({
-            matchesData: matchesData.reverse(),
+            data: data.reverse(),
             direction: direction === 'ascending' ? 'descending' : 'ascending',
         })
     };
@@ -39,18 +40,28 @@ export default class TeamMembers extends Component{
     handleCheckBox = () => {
         this.setState({filterEnable:!this.state.filterEnable});
     };
+    static getMemberName(name, isPlayer){
+        if(isPlayer){
+            return(
+                <a style={{color:'#00339e'}} href={'/players/'+name}>{name}</a>
+            );
+        }
+        else{
+            return name;
+        }
+    }
     render() {
         const options = [
-            { text:'forward', value: 'forward', style:{textAlign:'center'}},
-            { text:'defence', value: 'defence', style:{textAlign:'center'}},
+            { text:'حمله', value: 'حمله', style:{textAlign:'center'}},
+            { text:'دفاع', value: 'دفاع', style:{textAlign:'center'}},
         ];
-
-        const body = _.map(this.state.data, ({ name, age, position, photo}) => {
+        const {column, direction} = this.state;
+        const body = _.map(this.state.data, ({ name, age, position, photo, isPlayer}) => {
             if(this.state.filterEnable){
                 if(position===this.state.filterItem)
                     return (
-                        <Table.Row>
-                            <Table.Cell>{name}</Table.Cell>
+                        <Table.Row style={{direction:'rtl'}}>
+                            <Table.Cell>{TeamMembers.getMemberName(name, isPlayer)}</Table.Cell>
                             <Table.Cell>{age}</Table.Cell>
                             <Table.Cell>{position}</Table.Cell>
                             <Table.Cell style={{textAlign: 'center'}}>{photo}</Table.Cell>
@@ -61,7 +72,7 @@ export default class TeamMembers extends Component{
             else
                 return(
                     <Table.Row>
-                        <Table.Cell>{name}</Table.Cell>
+                        <Table.Cell>{TeamMembers.getMemberName(name, isPlayer)}</Table.Cell>
                         <Table.Cell>{age}</Table.Cell>
                         <Table.Cell>{position}</Table.Cell>
                         <Table.Cell style={{textAlign: 'center'}}>{photo}</Table.Cell>
@@ -71,14 +82,14 @@ export default class TeamMembers extends Component{
 
         return (
             <div>
-                <Segment>
-                    <Grid>
+                <Segment style={{direction:'rtl'}}>
+                    <Grid style={{backgroundColor:'#f8ffc8'}}>
                         <Grid.Row columns={2}>
                             <Grid.Column>
-                                <Checkbox slider label='filter enable' checked={this.state.filterEnable} onClick={this.handleCheckBox}/>
+                                <Checkbox slider label='فعال کردن فیلتر' checked={this.state.filterEnable} onClick={this.handleCheckBox}/>
                             </Grid.Column>
-                            <Grid.Column style={{textAlign:'right'}}>
-                                <Dropdown  text='Filter Positions' icon='filter'>
+                            <Grid.Column style={{textAlign:'left'}}>
+                                <Dropdown  text='فیلتر پست ها' icon='filter'>
                                     <Dropdown.Menu >
                                         {/*<Dropdown placeholder='Select Sport' search selection options={options} onChange={(e,{value}) => {console.log(value)}}/>*/}
                                         <Dropdown.Menu scrolling >
@@ -90,29 +101,29 @@ export default class TeamMembers extends Component{
                         </Grid.Row>
                         <Grid.Row columns={1}>
                             <Grid.Column>
-                                <Table sortable celled fixed style={{}}>
+                                <Table sortable celled fixed style={{backgroundColor:'#008b3f'}}>
                                     <Table.Header >
                                         <Table.Row>
                                             <Table.HeaderCell
-                                                // sorted={column === 'name' ? direction : null}
+                                                sorted={column === 'name' ? direction : null}
                                                 onClick={this.handleSort('name')}
                                             >
-                                                Name
+                                                نام
                                             </Table.HeaderCell>
                                             <Table.HeaderCell
-                                                // sorted={column === 'age' ? direction : null}
+                                                sorted={column === 'age' ? direction : null}
                                                 onClick={this.handleSort('age')}
                                             >
-                                                Age
+                                                سن
                                             </Table.HeaderCell>
                                             <Table.HeaderCell
-                                                // sorted={column === 'position' ? direction : null}
+                                                sorted={column === 'position' ? direction : null}
                                                 onClick={this.handleSort('position')}
                                             >
-                                                Position
+                                                پست
                                             </Table.HeaderCell>
                                             <Table.HeaderCell>
-                                                Photo</Table.HeaderCell>
+                                                عکس</Table.HeaderCell>
                                         </Table.Row>
                                     </Table.Header>
                                     <Table.Body>{body}

@@ -59,30 +59,30 @@ export default class MatchesTable extends Component{
     render() {
         const {matchesData, column, direction} = this.state;
         return (
-            <Table sortable celled fixed inverted>
+            <Table sortable celled fixed style={{backgroundColor:'#008b3f'}}>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell
                         >
-                            Result
+                            نتیجه
                         </Table.HeaderCell>
                         <Table.HeaderCell
                             sorted={column === 'date' ? direction : null}
                             onClick={this.handleSort('date')}
                         >
-                            Date
+                            تاریخ
                         </Table.HeaderCell>
                         <Table.HeaderCell
                             sorted={column === 'score' ? direction : null}
                             onClick={this.handleSort('score')}
                         >
-                            Score
+                            امتیاز
                         </Table.HeaderCell>
                         <Table.HeaderCell
                             sorted={column === 'win/lose/draw' ? direction : null}
                             onClick={this.handleSort('win/lose/draw')}
                         >
-                            Status</Table.HeaderCell>
+                            وضعیت</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>

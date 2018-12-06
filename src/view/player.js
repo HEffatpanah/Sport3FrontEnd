@@ -1,18 +1,19 @@
-import _ from 'lodash'
+// import _ from 'lodash'
 import React, { Component } from 'react'
 import {Grid, Segment, Table, Dropdown, Button} from 'semantic-ui-react'
 import Template from '../components/template'
-import MatchesTable from '../components/team/matchInfo'
-import TeamMembers from "../components/team/teamMember";
+// import Statistics from '../components/player/statistics'
+import PlayerInfoTable from "../components/player/playerInfo";
 import Newssummery from '../components/news/newsSummery'
 
-
-
-const matchData = [
-    { owerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"win"  },
-    { owerTeamGoal:'2', opponentTeamGoal:'0', date:'1998-09-12', score:1, status:"win"  },
-    { owerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"win"  },
-    { owerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"win"  },
+const playerData = [
+    { name:'ali', age:23, height:180, weight:78, currentTeam:'tractor',nationality :'Iran', position:'forward' },
+    { name:'ali', age:23, height:180, weight:78, currentTeam:'tractor',nationality :'Iran', position:'forward' },
+    { name:'ali', age:23, height:180, weight:78, currentTeam:'tractor',nationality :'Iran', position:'forward' },
+    { name:'ali', age:23, height:180, weight:78, currentTeam:'tractor',nationality :'Iran', position:'forward' },
+    { name:'ali', age:23, height:180, weight:78, currentTeam:'tractor',nationality :'Iran', position:'forward' },
+    { name:'ali', age:23, height:180, weight:78, currentTeam:'tractor',nationality :'Iran', position:'forward' },
+    { name:'ali', age:23, height:180, weight:78, currentTeam:'tractor',nationality :'Iran', position:'forward' },
 ];
 
 // const center_vertically={
@@ -53,11 +54,11 @@ const image_style={
 }
 
 const membersData = [
-    { name:'ali', age:'22', position:'حمله', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
-    { name:'mahdi', age:'25', position:'دفاع', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
-    { name:'taha', age:'21', position:'حمله', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
-    { name:'mammad', age:'29', position:'دفاع', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
-    { name:'mammad', age:'29', position:'مربی', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:false},
+    { name:'ali', age:'22', position:'forward', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
+    { name:'mahdi', age:'25', position:'defence', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
+    { name:'taha', age:'21', position:'forward', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
+    { name:'mammad', age:'29', position:'defence', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
+    { name:'mammad', age:'29', position:'coach', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:false},
 ]
 
 
@@ -87,14 +88,14 @@ class App extends Component {
         const body =
             <Grid style={{width:'100%'}}>
                 <Grid.Row columns={3}>
-                    <Grid.Column width={4}>
-                        <MatchesTable matchesData={matchData}/>
+                    <Grid.Column width={3}>
+                        <Segment><Newssummery newsData={newsData}/></Segment>
                     </Grid.Column>
                     <Grid.Column width={8}>
-                        <TeamMembers teamMembersData={membersData}/>
+
                     </Grid.Column>
-                    <Grid.Column width={4}>
-                        <Segment><Newssummery newsData={newsData}/></Segment>
+                    <Grid.Column width={5}>
+                        <PlayerInfoTable playerData={playerData}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;
