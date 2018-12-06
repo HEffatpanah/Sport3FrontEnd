@@ -51,6 +51,7 @@ export default class NewsDetail extends Component {
     getMoreImages(){
         return (
             this.props.newDetail['moreImagesUrl'].map(({url}) => {
+                console.log(url);
                     return(
                         <div>
                         <Image src={require("../../" + url)} style={{"width": "30vw", "height": "30vh", margin:'auto'}}/>
@@ -76,7 +77,7 @@ export default class NewsDetail extends Component {
                 <div style={{float:'right', fontSize:'0.6em'}}>date : {image_dateTime}</div>
             </div>
             <div>{image_body}</div>
-            {/*{this.getMoreImages()}*/}
+            {this.getMoreImages()}
             <div style={{clear:'both'}}><strong>source</strong></div>
             <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both'}}><strong>tags</strong>&ensp; :&ensp;  {this.getTages()}</div>
         </Segment>;

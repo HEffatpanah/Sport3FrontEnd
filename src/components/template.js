@@ -146,11 +146,13 @@ export default class Template extends Component {
         const zerostyle = {
             color:'#bec8dc',
             'text-align': 'center',
+            backgroundColor: '#ffffff',
             margin:0,
             padding:0,
             border:0,
         };
         const firststyle = {
+            backgroundColor:'#ffffff',
             margin:0,
             padding:0,
             border:0,
@@ -159,7 +161,7 @@ export default class Template extends Component {
             paddingLeft: '2.5vw',
             paddingRight: '2.5vw',
             backgroundImage: 'url(' + require('../images/1.png') + ')',
-            'background-size':'cover',
+            // 'background-size':'cover',
             minHeight:'100%',
         };
         const thirdstyle = {
