@@ -4,7 +4,7 @@ import Template from '../components/template'
 import Select from 'react-select';
 import MatchesSummaryTable from "../components/matchSummary";
 import Adv from "../components/advertisement";
-import Newssummery from '../components/newsSummery'
+import Newssummery from '../components/news/newsSummery'
 
 
 const matchData = [

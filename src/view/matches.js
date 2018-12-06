@@ -40,11 +40,13 @@ class matches extends Component {
                     </Grid.Row>
                 </Grid.Column>
             </Grid>
+        return(<div></div>);
     }
 }
 
 export default class App extends Component{
     render() {
+        const body="ali";
         return (
             <Template body={body}/>
         );

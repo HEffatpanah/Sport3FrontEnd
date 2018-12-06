@@ -4,7 +4,7 @@ import {Grid, Segment, Table, Dropdown, Button} from 'semantic-ui-react'
 import Template from '../components/template'
 import MatchesTable from '../components/team/matchInfo'
 import TeamMembers from "../components/team/teamMember";
-import Newssummery from '../components/newsSummery'
+import Newssummery from '../components/news/newsSummery'
 
 
 
