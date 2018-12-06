@@ -143,31 +143,47 @@ class Footer extends Component{
 export default class Template extends Component {
 
     render() {
+        const zerostyle = {
+            color:'#bec8dc',
+            'text-align': 'center',
+            margin:0,
+            padding:0,
+            border:0,
+        };
         const firststyle = {
             backgroundColor:'#cde8e5',
-
-            height:'7vh'
+            margin:0,
+            padding:0,
+            border:0,
         };
         const secondstyle = {
             paddingLeft: '2.5vw',
             paddingRight: '2.5vw',
-            backgroundColor:'#cde8e5',
-            height:'100%'
+            backgroundImage: 'url(' + require('../images/1.png') + ')',
+            'background-size':'cover',
+            minHeight:'100%',
+            margin:0,
+            padding:0,
+            border:0,
         };
         const thirdstyle = {
-            backgroundColor:'#cde8e5',
-
             height:'15vh',
         };
         return (
             <div style={{'height': '100vh' }}>
                 <Grid  style={{ 'height': '100%'}}>
+                    <Grid.Row style={zerostyle}>
+                        <Grid.Column >
+                            <img style={{float:'right'}} src={require("../images/2.png")}/>
+                            <img style={{float:'left',marginTop:'30px'}} src={require("../images/5.png")}/>
+                        </Grid.Column>
+                    </Grid.Row>
                     <Grid.Row style={firststyle}>
                         <Grid.Column >
                             <Navbar {...this.props}/>
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row  style={secondstyle}>
+                    <Grid.Row style={secondstyle}>
                         {this.props.body}
                     </Grid.Row>
                     <Grid.Row style={thirdstyle}>
