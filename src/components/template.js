@@ -162,9 +162,6 @@ export default class Template extends Component {
             backgroundImage: 'url(' + require('../images/1.png') + ')',
             'background-size':'cover',
             minHeight:'100%',
-            margin:0,
-            padding:0,
-            border:0,
         };
         const thirdstyle = {
             height:'15vh',
@@ -175,7 +172,8 @@ export default class Template extends Component {
                     <Grid.Row style={zerostyle}>
                         <Grid.Column >
                             <img style={{float:'right'}} src={require("../images/2.png")}/>
-                            <img style={{float:'left',marginTop:'30px'}} src={require("../images/5.png")}/>
+                            <img style={{float:'center',marginTop:'5vh'}} src={require("../images/6.png")}/>
+                            <img style={{float:'left',marginTop:'5vh'}} src={require("../images/5.png")}/>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row style={firststyle}>
