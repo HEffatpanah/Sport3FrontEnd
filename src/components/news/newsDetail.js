@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {Segment, Form, Input, TextArea, Button, Comment, Image, Divider} from "semantic-ui-react";
 
-
 export default class NewsDetail extends Component {
     getSources() {
         return (
