@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {List, Segment} from "semantic-ui-react";
+import {Segment, Form, Input, TextArea, Button, Comment, Image, Divider} from "semantic-ui-react";
 
 
 export default class NewsDetail extends Component {
@@ -15,64 +15,111 @@ export default class NewsDetail extends Component {
     getTages() {
         return (
             this.props.newDetail['tages'].map(({name, link}) => {
-                    return <li style={{'display': 'inline'}}><a href={link}>{name}&emsp;</a></li>
+                    return <a style={{backgroundColor:'#c8c8c8', margin:'auto 0.2em', textAlign:'center', padding:'0.1em', color:'red'}} href={link}>{name}</a>
                 }
             )
         );
     }
 
-    getComments() {
+    getComment(){
         return (
-            this.props.newDetail['comments'].map(({name, comment}) => {
-                return <Segment><div>{name}&emsp;{comment}</div></Segment>
+            this.props.newDetail['comments'].map(({name, comment, date}) => {
+                    return(
+                        <Comment>
+                            <Comment.Content>
+                                <Comment.Author>{name}</Comment.Author>
+                                <Comment.Metadata>
+                                    <div>{date}</div>
+                                </Comment.Metadata>
+                                <Comment.Text>
+                                    <p>
+                                        {comment}
+                                    </p>
+                                </Comment.Text>
+                                <Comment.Actions>
+                                    <Comment.Action>Reply</Comment.Action>
+                                </Comment.Actions>
+                            </Comment.Content>
+                        </Comment>
+                    )
+                }
+            )
+        );
+
+
+    }
+    getMoreImages(){
+        return (
+            this.props.newDetail['moreImagesUrl'].map(({url}) => {
+                    return(
+                        <div>
+                        <Image src={require("../../" + url)} style={{"width": "30vw", "height": "30vh", margin:'auto'}}/>
+                            <Divider />
+                        </div>
+                    )
                 }
             )
         );
     }
-
     render() {
-        console.log("hello");
         const image_url = this.props.newDetail['image_url'];
         const image_title = this.props.newDetail['title'];
         const image_dateTime = this.props.newDetail['dateTime'];
         const image_body = this.props.newDetail['body'];
-        const news_image = <img src={require("../../" + image_url)}
-                                style={{"width": "12vw", "height": "12vh", "float": "right"}}/>;
+        const moreImagesUrl = this.props.newDetail['moreImagesUrl'];
+        const news_image =
+            <img src={require("../../" + image_url)} style={{"width": "10vw", "height": "9vh", "float": "right", margin:'0.4em'}}/>;
+
         const news = <Segment style={{"overflow": "auto"}}>
             <div>{news_image}</div>
-            <div>date : {image_dateTime}</div>
-            <header style={{"text-decoration": "underline"}}><h2>{image_title}</h2></header>
-            <body>{image_body}</body>
-            <ul>Sources : {this.getSources()}</ul>
-            <ul>tags&emsp;&ensp; : {this.getTages()}</ul>
-        </Segment>;
-        const comments = <Segment>
-            {this.getComments()}
-        </Segment>;
-        const new_comment = <Segment>
-            <div class="ui form">
-                <div class="field">
-                    <label>Name</label>
-                    <input type="text" name="first-name" placeholder="First Name"/>
-                </div>
-                <div class="field">
-                    <label>Text</label>
-                    <textarea></textarea>
-                </div>
-                <button class="ui button" type="submit">Submit</button>
+            <div><header style={{"text-decoration": "underline", display:'inline-block'}}><h2>{image_title}</h2></header>
+                <div style={{float:'right', fontSize:'0.6em'}}>date : {image_dateTime}</div>
             </div>
-        </Segment>
-        return (<div>
-                <div>
-                    {news}
-                </div>
-                <div>
-                    {comments}
-                </div>
-                <div>
-                    {new_comment}
-                </div>
-            </div>
+            <div>{image_body}</div>
+            {/*{this.getMoreImages()}*/}
+            <div style={{clear:'both'}}><strong>source</strong></div>
+            <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both'}}><strong>tags</strong>&ensp; :&ensp;  {this.getTages()}</div>
+        </Segment>;
+        const comments =
+            <Segment>
+                <Comment.Group style={{width:'100%'}} >
+                    {this.getComment()}
+                    <Form reply>
+                        <Form.TextArea />
+                        <Button content='Add Comment' labelPosition='left' icon='edit' primary />
+                    </Form>
+                </Comment.Group>
+            </Segment>;
+        const new_comment = <Segment >
+            <Form >
+                <Form.Group widths='equal' >
+                    <Form.Field
+                        id='form-input-control-first-name'
+                        control={Input}
+                        label='First name'
+                        placeholder='First name'
+                    />
+
+                </Form.Group>
+                <Form.Field
+                    id='form-textarea-control-opinion'
+                    control={TextArea}
+                    label='Opinion'
+                    placeholder='Opinion'
+                />
+                <Form.Field
+                    id='form-button-control-public'
+                    control={Button}
+                    content='Confirm'
+                    label='Label with htmlFor'
+                />
+            </Form>
+        </Segment>;
+        return (<Segment>
+                {news}
+                {comments}
+
+            </Segment>
         );
     }
 }

@@ -151,7 +151,6 @@ export default class Template extends Component {
             border:0,
         };
         const firststyle = {
-            backgroundColor:'#cde8e5',
             margin:0,
             padding:0,
             border:0,
