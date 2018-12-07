@@ -2,9 +2,16 @@ import React, {Component} from 'react'
 import {Segment, Form, Input, TextArea, Button, Comment, Image, Divider} from "semantic-ui-react";
 
 export default class NewsDetail extends Component {
+    constructor(props) {
+        super(props);
+        this.handleCommentSubmit = this.handleCommentSubmit.bind(this)
+    }
+    state={
+        newDetail: this.props.newDetail
+    }
     getSources() {
         return (
-            this.props.newDetail['sources'].map(({name, link}) => {
+            this.state.newDetail['sources'].map(({name, link}) => {
                     return <li style={{'display': 'inline'}}><a href={link}>{name}&emsp;</a></li>
                 }
             )
@@ -13,7 +20,7 @@ export default class NewsDetail extends Component {
 
     getTages() {
         return (
-            this.props.newDetail['tages'].map(({name, link}) => {
+            this.state.newDetail['tages'].map(({name, link}) => {
                     return <a style={{backgroundColor:'#c8c8c8', margin:'auto 0.2em', textAlign:'center', padding:'0.1em', color:'red'}} href={link}>{name}</a>
                 }
             )
@@ -22,7 +29,7 @@ export default class NewsDetail extends Component {
 
     getComment(){
         return (
-            this.props.newDetail['comments'].map(({name, comment, date}) => {
+            this.state.newDetail['comments'].map(({name, comment, date}) => {
                     return(
                         <Comment>
                             <Comment.Content>
@@ -49,7 +56,7 @@ export default class NewsDetail extends Component {
     }
     getMoreImages(){
         return (
-            this.props.newDetail['moreImagesUrl'].map((url) => {
+            this.state.newDetail['moreImagesUrl'].map((url) => {
                 console.log(url) ;
                 return(
 
@@ -60,16 +67,22 @@ export default class NewsDetail extends Component {
             )
         );
     }
+    handleCommentSubmit(e){
+        let aux = this.state.newDetail;
+        aux['comments'].push({name:e.target.name.value, comment:e.target.comment.value});
+        this.setState({newData:aux})
+        e.target.reset()
+    }
     render() {
-        const image_url = this.props.newDetail['image_url'];
-        const image_title = this.props.newDetail['title'];
-        const image_dateTime = this.props.newDetail['dateTime'];
-        const image_body = this.props.newDetail['body'];
-        const moreImagesUrl = this.props.newDetail['moreImagesUrl'];
+        const image_url = this.state.newDetail['image_url'];
+        const image_title = this.state.newDetail['title'];
+        const image_dateTime = this.state.newDetail['dateTime'];
+        const image_body = this.state.newDetail['body'];
+        const moreImagesUrl = this.state.newDetail['moreImagesUrl'];
         const news_image =
             <img src={require("../../" + image_url)} style={{"width": "10vw", "height": "9vh", "float": "left", margin:'0.4em'}}/>;
 
-        const news = <Segment style={{"overflow": "auto"}}>
+        const news = <Segment style={{"overflow": "auto", direction:'rtl'}}>
             <div>{news_image}</div>
             <div><header style={{"text-decoration": "underline", display:'inline-block'}}><h2>{image_title}</h2></header>
                 <div style={{float:'left', fontSize:'0.6em'}}>date : {image_dateTime}</div>
@@ -80,11 +93,12 @@ export default class NewsDetail extends Component {
             <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both'}}><strong>تگ ها</strong>&ensp; :&ensp;  {this.getTages()}</div>
         </Segment>;
         const comments =
-            <Segment>
-                <Comment.Group style={{width:'100%'}} >
+            <Segment style={{textAlign:'right'}}>
+                <Comment.Group style={{margin:'auto'}} >
                     {this.getComment()}
-                    <Form reply>
-                        <Form.TextArea />
+                    <Form reply onSubmit={this.handleCommentSubmit} style={{direction: 'rtl'}}>
+                        <Form.Input name='name'  label='نام'/>
+                        <Form.TextArea name='comment' label='نظر'/>
                         <Button content='افزودن نظر' labelPosition='left' icon='edit' primary />
                     </Form>
                 </Comment.Group>

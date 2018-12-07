@@ -83,7 +83,7 @@ export default class TeamMembers extends Component{
         return (
             <div>
                 <Segment>
-                    <Grid>
+                    <Grid style={{direction:'rtl'}}>
                         <Grid.Row columns={2}>
                             <Grid.Column>
                                 <Checkbox slider label='فعال کردن فیلتر' checked={this.state.filterEnable} onClick={this.handleCheckBox}/>

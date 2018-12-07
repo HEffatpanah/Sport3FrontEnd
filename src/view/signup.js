@@ -48,14 +48,14 @@ class SignupForm extends Component{
             <Segment >
                 <Form onSubmit={this.handleSubmit}>
 
-                    <Form.Input name="fname" fluid label='First name' placeholder='First name' required/>
-                    <Form.Input name="lname" fluid label='Last name' placeholder='Last name' required/>
-                    <Form.Input name="uname" fluid label='User name' placeholder='User name' required/>
-                    <Form.Input name="pass" fluid label='Password' placeholder='Password' required onChange={this.passSave} type="password"/>
-                    <Form.Input name="Cpass" fluid label='Confirm Password' placeholder='Confirm Password' required onChange={this.passConfirmCheck} error={!this.state.equal} type="password"/>
-                    <Form.Input name="email" fluid label='Email' placeholder='Email@example.com' type="email" required/>
-                    <Form.Checkbox  label='I agree to the Terms and Conditions' required/>
-                    <Button color='teal' fluid type='submit'>Submit</Button>
+                    <Form.Input name="fname" fluid label='نام' placeholder='نام' required/>
+                    <Form.Input name="lname" fluid label='نام خانوادگی' placeholder='نام خانوادگی' required/>
+                    <Form.Input name="uname" fluid label='نام کاربری' placeholder='نام کاربری' required/>
+                    <Form.Input name="pass" fluid label='رمز عبور' placeholder='رمز عبور' required onChange={this.passSave} type="password"/>
+                    <Form.Input name="Cpass" fluid label='تایید رمز عبور' placeholder='تایید رمز عبور' required onChange={this.passConfirmCheck} error={!this.state.equal} type="password"/>
+                    <Form.Input name="email" fluid label='ایمیل' placeholder='Email@example.com' type="email" required/>
+                    <Form.Checkbox  label='قوانین و شرایط را قبول دارم' required/>
+                    <Button color='teal' fluid type='submit'>تایید</Button>
                 </Form>
             </Segment>
         )

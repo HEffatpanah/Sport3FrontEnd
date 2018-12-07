@@ -71,7 +71,7 @@ class App extends Component {
         //     </Segment>;
 
         const Selectbar =
-            <Select placeholder='انتخاب ورزش'  search selection options={options} onChange={this.handleSelectorChange} style={{textAlign:'right'}}/>;
+            <Select placeholder='انتخاب ورزش'  search selection options={options} onChange={this.handleSelectorChange}/>;
         let body =
             <Grid style={{width:'100%'}}>
                 <Grid.Row columns={1} style={{justifyContent:'end'}}>

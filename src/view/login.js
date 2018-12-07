@@ -39,29 +39,29 @@ class LoginForm extends Component {
     render() {
         const loginForm =
             <Grid textAlign='center' style={{width:'100%', height: '100%'}} verticalAlign='middle'>
-                <Grid.Column style={{maxWidth: 450}}>
+                <Grid.Column style={{maxWidth: 450, direction:'rtl'}}>
                     <Message hidden={this.state.hiddenLoginError} error={true} >
-                        User or Pass wrong!
+                        نام کاربری یا رمز اشتباه میباشد!
                     </Message>
                     <Form size='large' onSubmit={this.handleSubmit}>
-                        <Segment stacked>
-                            <Form.Input name='user' fluid icon='user' iconPosition='left' placeholder='Username'
+                        <Segment stacked >
+                            <Form.Input name='user' fluid icon='user' iconPosition='right' placeholder='نام کاربری '
                                         required/>
                             <Form.Input name='pass' required
                                         fluid
                                         icon='lock'
-                                        iconPosition='left'
-                                        placeholder='Password'
+                                        iconPosition='right'
+                                        placeholder='رمز عبور'
                                         type='password'
                             />
 
                             <Button type='submit' color='teal' fluid size='large'>
-                                Login
+                                ورود
                             </Button>
                         </Segment>
                     </Form>
-                    <Message>
-                        New to us? <a href='../signup'>Sign Up</a>
+                    <Message   style={{textAlign:'center'}}>
+                        ثبت نام نکرده اید؟<a href='../signup'>ثبت نام</a>
                     </Message>
                 </Grid.Column>
             </Grid>

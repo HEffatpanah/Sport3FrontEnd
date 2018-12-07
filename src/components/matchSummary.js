@@ -65,7 +65,7 @@ export default class MatchesSummaryTable extends Component{
                 <Tab panes={pansMap[this.props.sport]} />
             </Segment>;
         return (
-            <Table>
+            <Table style={{direction:'rtl'}}>
                     {MatchesTable}
             </Table>
         );

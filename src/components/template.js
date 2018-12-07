@@ -70,8 +70,8 @@ class Navbar extends Component {
                 {Login_Logout()}
                 <Dropdown text='ورزش ها' simple item>
                     <Dropdown.Menu>
-                        <Dropdown.Item onClick={this.handleDropdownitemClick}  value='football'>فوتبال</Dropdown.Item>
-                        <Dropdown.Item onClick={this.handleDropdownitemClick}  value='Basketball'>بسکتبال</Dropdown.Item>
+                        <Dropdown.Item onClick={this.handleDropdownitemClick} style={{ textAlign:'center'}} value='football'>فوتبال</Dropdown.Item>
+                        <Dropdown.Item onClick={this.handleDropdownitemClick} style={{ textAlign:'center'}}  value='Basketball'>بسکتبال</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 <Menu.Item
