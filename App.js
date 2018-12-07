@@ -133,7 +133,7 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ 'direction': 'rtl', 'padding':'10px' }}>
+      <div style={{'padding':'10px' }}>
         {/* <MyTabular/> */}
         <Template />
         {/* <MyLoader/>

@@ -15,10 +15,12 @@ export default class PlayerInfoTable extends Component{
                     console.log(featureValue);
                     if (featureName === 'image') {
                         return (
+                            <Table.Header>
                             <Table.Row>
-                                <Table.Cell><img style={image_style} src={require('../../' + featureValue)}/></Table.Cell>
-                                <Table.Cell style={{textAlign: 'center'}}>{this.props.playerInfo['tableName']}</Table.Cell>
+                                <Table.HeaderCell colSpan='2'><img style={image_style} src={require('../../' + featureValue)}/></Table.HeaderCell>
+                                {/*<Table.Cell style={{textAlign: 'center'}}>{this.props.playerInfo['tableName']}</Table.Cell>*/}
                             </Table.Row>
+                            </Table.Header>
                         )
                     }
                     return (
@@ -36,9 +38,7 @@ export default class PlayerInfoTable extends Component{
     render() {
         return (
             <Table>
-                <Table.Body>
                     {this.getTableData()}
-                </Table.Body>
             </Table>
         );
     }

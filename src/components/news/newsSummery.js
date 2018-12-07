@@ -14,7 +14,7 @@ export default class Newssummery extends Component{
     }
     render() {
         return (
-            <List style={{ maxHeight: '50vh', overflow: 'auto', wordWrap:'break-word', direction:'rtl'}}>
+            <List style={{ maxHeight: '50vh', overflow: 'auto', wordWrap:'break-word'}}>
                 {/*<List.Item>yt</List.Item>*/}
                 {this.newsBody()}
             </List>

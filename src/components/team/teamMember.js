@@ -60,7 +60,7 @@ export default class TeamMembers extends Component{
             if(this.state.filterEnable){
                 if(position===this.state.filterItem)
                     return (
-                        <Table.Row style={{direction:'rtl'}}>
+                        <Table.Row>
                             <Table.Cell>{TeamMembers.getMemberName(name, isPlayer)}</Table.Cell>
                             <Table.Cell>{age}</Table.Cell>
                             <Table.Cell>{position}</Table.Cell>
@@ -82,8 +82,8 @@ export default class TeamMembers extends Component{
 
         return (
             <div>
-                <Segment style={{direction:'rtl'}}>
-                    <Grid style={{backgroundColor:'#f8ffc8'}}>
+                <Segment>
+                    <Grid>
                         <Grid.Row columns={2}>
                             <Grid.Column>
                                 <Checkbox slider label='فعال کردن فیلتر' checked={this.state.filterEnable} onClick={this.handleCheckBox}/>
@@ -101,7 +101,7 @@ export default class TeamMembers extends Component{
                         </Grid.Row>
                         <Grid.Row columns={1}>
                             <Grid.Column>
-                                <Table sortable celled fixed style={{backgroundColor:'#008b3f'}}>
+                                <Table sortable celled fixed>
                                     <Table.Header >
                                         <Table.Row>
                                             <Table.HeaderCell

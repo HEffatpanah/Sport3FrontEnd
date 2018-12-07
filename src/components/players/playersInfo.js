@@ -44,7 +44,7 @@ export default class PlayersInfoTable extends Component{
     };
     render() {
         return (
-            <Table celled fixed style={{backgroundColor:'#00718b'}}>
+            <Table celled fixed>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>

@@ -59,7 +59,7 @@ export default class MatchesTable extends Component{
     render() {
         const {matchesData, column, direction} = this.state;
         return (
-            <Table sortable celled fixed style={{backgroundColor:'#008b3f'}}>
+            <Table sortable celled fixed    >
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell

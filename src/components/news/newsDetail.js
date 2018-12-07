@@ -114,7 +114,7 @@ export default class NewsDetail extends Component {
                 />
             </Form>
         </Segment>;
-        return (<Segment style={{direction:'rtl'}}>
+        return (<Segment>
                 {news}
                 {comments}
 

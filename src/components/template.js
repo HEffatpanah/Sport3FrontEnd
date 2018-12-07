@@ -124,7 +124,7 @@ class Footer extends Component{
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column style={{textAlign: 'center'}}>
-                            <div>
+                            <div style={{textAlign: 'center'}}>
                                 ProducedBy : HosseinEffatPanah & AliAsgharKhani
                                 <br/>
                                 <a href={'https://sharif.ir'}>SUT</a>
@@ -147,13 +147,11 @@ export default class Template extends Component {
         const zerostyle = {
             color:'#bec8dc',
             'text-align': 'center',
-            backgroundColor: '#ffffff',
             margin:0,
             padding:0,
             border:0,
         };
         const firststyle = {
-            backgroundColor:'#ffffff',
             margin:0,
             padding:0,
             border:0,
@@ -172,7 +170,7 @@ export default class Template extends Component {
             <div style={{'height': '100vh' }}>
                 <Grid  style={{ 'height': '100%'}}>
                     <Grid.Row style={zerostyle}>
-                        <Grid.Column >
+                        <Grid.Column style={{textAlign: 'center'}}>
                             <img style={{float:'right'}} src={require("../images/2.png")}/>
                             <img style={{float:'center',marginTop:'5vh'}} src={require("../images/6.png")}/>
                             <img style={{float:'left',marginTop:'2vh'}} src={require("../images/7.jpg")}/>
