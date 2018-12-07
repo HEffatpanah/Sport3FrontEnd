@@ -2,25 +2,10 @@ import React, { Component } from 'react'
 import {Table} from 'semantic-ui-react'
 
 
-export default class PlayerInfoTable extends Component{
+export default class PlayerRecordTable extends Component{
     getTableData () {
-
-        const image_style = {
-            height: '16vh',
-            width: '10vw',
-        };
         return (
             this.props.playerInfo['tableData'].map(({featureName, featureValue}) => {
-                    console.log(featureName);
-                    console.log(featureValue);
-                    if (featureName === 'image') {
-                        return (
-                            <Table.Row>
-                                <Table.Cell><img style={image_style} src={require('../../' + featureValue)}/></Table.Cell>
-                                <Table.Cell style={{textAlign: 'center'}}>{this.props.playerInfo['tableName']}</Table.Cell>
-                            </Table.Row>
-                        )
-                    }
                     return (
                         <Table.Row columns={2}>
                             <Table.Cell>{featureValue}</Table.Cell>
@@ -36,6 +21,11 @@ export default class PlayerInfoTable extends Component{
     render() {
         return (
             <Table>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell colSpan='2'>{this.props.playerInfo['tableName']}</Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
                 <Table.Body>
                     {this.getTableData()}
                 </Table.Body>
