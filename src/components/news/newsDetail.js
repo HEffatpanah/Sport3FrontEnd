@@ -82,15 +82,15 @@ export default class NewsDetail extends Component {
         const news_image =
             <img src={require("../../" + image_url)} style={{"width": "10vw", "height": "9vh", "float": "left", margin:'0.4em'}}/>;
 
-        const news = <Segment style={{"overflow": "auto", direction:'rtl'}}>
+        const news = <Segment style={{"overflow": "auto", direction:'rtl', fontSize:'1.3em', lineHeight:'1.4em'}}>
             <div>{news_image}</div>
-            <div><header style={{"text-decoration": "underline", display:'inline-block'}}><h2>{image_title}</h2></header>
-                <div style={{float:'left', fontSize:'0.6em'}}>date : {image_dateTime}</div>
+            <div><header style={{display:'inline-block',fontSize:'1.5em'}}><strong>{image_title}</strong></header>
+                <div style={{float:'left', fontSize:'0.6em'}}>تاریخ : {image_dateTime}</div>
             </div>
             <div>{image_body}</div>
             <div>{this.getMoreImages()}</div>
-            <div style={{clear:'both'}}><strong>منابع</strong></div>
-            <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both'}}><strong>تگ ها</strong>&ensp; :&ensp;  {this.getTages()}</div>
+            <div style={{clear:'both', fontSize:'0.8em'}}><strong>منابع</strong></div>
+            <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both', fontSize:'0.8em'}}><strong>تگ ها</strong>&ensp; :&ensp;  {this.getTages()}</div>
         </Segment>;
         const comments =
             <Segment style={{textAlign:'right'}}>

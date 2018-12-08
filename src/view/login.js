@@ -45,18 +45,16 @@ class LoginForm extends Component {
                     </Message>
                     <Form size='large' onSubmit={this.handleSubmit}>
                         <Segment stacked >
-                            <Form.Input name='user' fluid icon='user' iconPosition='right' placeholder='نام کاربری '
-                                        required/>
+                            <Form.Input name='user' fluid icon='user' iconPosition='right' label='نام کاربری 'required/>
                             <Form.Input name='pass' required
                                         fluid
                                         icon='lock'
                                         iconPosition='right'
-                                        placeholder='رمز عبور'
+                                        label='رمز عبور'
                                         type='password'
                             />
 
-                            <Button type='submit' color='teal' fluid size='large'>
-                                ورود
+                            <Button type='submit' content='ورود' color='teal' fluid size='large'>
                             </Button>
                         </Segment>
                     </Form>

@@ -81,11 +81,11 @@ class Navbar extends Component {
                     onClick={this.handleItemClick}
                 >اخبار</Menu.Item>
                 <Menu.Item
-                    name='players'
-                    path = '/players'
-                    active={this.props.location.pathname === '/players'}
+                    name='player'
+                    path = '/player'
+                    active={this.props.location.pathname === '/player'}
                     onClick={this.handleItemClick}
-                >بازیکنان</Menu.Item>
+                >بازیکن</Menu.Item>
                 <Menu.Item
                     name='teams'
                     path = '/teams'

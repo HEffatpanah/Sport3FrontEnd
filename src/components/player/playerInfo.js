@@ -11,12 +11,11 @@ export default class PlayerInfoTable extends Component{
         };
         return (
             this.props.playerInfo['tableData'].map(({featureName, featureValue}) => {
-                    console.log(featureName);
-                    console.log(featureValue);
+
                     if (featureName === 'image') {
                         return (
                             <Table.Header>
-                            <Table.Row>
+                            <Table.Row style={{textAlign: 'center'}}>
                                 <Table.HeaderCell colSpan='2'><img style={image_style} src={require('../../' + featureValue)}/></Table.HeaderCell>
                                 {/*<Table.Cell style={{textAlign: 'center'}}>{this.props.playerInfo['tableName']}</Table.Cell>*/}
                             </Table.Row>
