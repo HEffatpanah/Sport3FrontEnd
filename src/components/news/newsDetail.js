@@ -12,7 +12,7 @@ export default class NewsDetail extends Component {
     getSources() {
         return (
             this.state.newDetail['sources'].map(({name, link}) => {
-                    return <li style={{'display': 'inline'}}><a href={link}>{name}&emsp;</a></li>
+                    return <a style={{color:'#2905ff'}} href={link}>{name}&emsp;</a>
                 }
             )
         );
@@ -21,7 +21,7 @@ export default class NewsDetail extends Component {
     getTages() {
         return (
             this.state.newDetail['tages'].map(({name, link}) => {
-                    return <a style={{backgroundColor:'#c8c8c8', margin:'auto 0.2em', textAlign:'center', padding:'0.1em', color:'red'}} href={link}>{name}</a>
+                    return <a style={{backgroundColor:'#c8c8c8', margin:'auto 0.2em', textAlign:'center', padding:'0.2em ', color:'red'}} href={link}>{name}</a>
                 }
             )
         );
@@ -75,7 +75,7 @@ export default class NewsDetail extends Component {
     }
     render() {
         const image_url = this.state.newDetail['image_url'];
-        const image_title = this.state.newDetail['title'];
+        const news_title = this.state.newDetail['title'];
         const image_dateTime = this.state.newDetail['dateTime'];
         const image_body = this.state.newDetail['body'];
         const moreImagesUrl = this.state.newDetail['moreImagesUrl'];
@@ -84,12 +84,12 @@ export default class NewsDetail extends Component {
 
         const news = <Segment style={{"overflow": "auto", direction:'rtl', fontSize:'1.3em', lineHeight:'1.4em'}}>
             <div>{news_image}</div>
-            <div><header style={{display:'inline-block',fontSize:'1.5em'}}><strong>{image_title}</strong></header>
+            <div><header style={{display:'inline-block'}}><h2>{news_title}</h2></header>
                 <div style={{float:'left', fontSize:'0.6em'}}>تاریخ : {image_dateTime}</div>
             </div>
             <div>{image_body}</div>
             <div>{this.getMoreImages()}</div>
-            <div style={{clear:'both', fontSize:'0.8em'}}><strong>منابع</strong></div>
+            <div style={{clear:'both', fontSize:'0.8em'}}><strong>منابع:</strong>&ensp; :&ensp;  {this.getSources()}</div>
             <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both', fontSize:'0.8em'}}><strong>تگ ها</strong>&ensp; :&ensp;  {this.getTages()}</div>
         </Segment>;
         const comments =

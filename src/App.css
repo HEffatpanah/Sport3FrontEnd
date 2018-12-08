@@ -37,8 +37,8 @@
   background-size: 50px 50px;
 }
 
-*{
-    font-family: "B Nazanin";
+*,div,body,header,h2, h4,div h2{
+  font-family: "B Nazanin", serif;
   /*font-family: "Lato Black", serif;*/
 }
 body{
