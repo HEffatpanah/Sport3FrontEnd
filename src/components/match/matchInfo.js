@@ -6,11 +6,12 @@ export default class MatchInfo extends Component{
     constructor(props) {
         super(props);
     }
+
     getTableData () {
         return (
-            this.props.matchRecord['tableData'].map(({featureName, featureValue}) => {
+            this.props.matchRecord['generalRecords'].map(({featureName, featureValue}) => {
                     return (
-                        <Table.Row columns={2}>
+                        <Table.Row style={{textAlign:this.props.direction}} columns={2}>
                             <Table.Cell>{featureValue}</Table.Cell>
                             <Table.Cell>{featureName}</Table.Cell>
                         </Table.Row>
@@ -22,8 +23,8 @@ export default class MatchInfo extends Component{
     };
     render() {
         return (
-            <Table>
-                <Table.Body>
+            <Table >
+                <Table.Body >
                     {this.getTableData()}
                 </Table.Body>
             </Table>

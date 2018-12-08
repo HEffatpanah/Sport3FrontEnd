@@ -27,73 +27,73 @@ const matchInfo =
                             [
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: 80, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: 70, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: 47
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                },
+                                {
+                                    playerName: 'حسین عفت پناه', playerGoals: 0,
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: 10, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerName: 'حسین عفت پناه', playerGoals: 0,
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
-                                },
-                                {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerName: 'حسین عفت پناه', playerGoals: 1,
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                             ],
                         substitutesPlayers: [
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                         ]
                     }
@@ -112,73 +112,73 @@ const matchInfo =
                             [
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                                 {
                                     playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                                 },
                             ],
                         substitutesPlayers: [
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                             {
                                 playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: 0, playerRedCards: 0, playerReplaceTime: null
+                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
                             },
                         ]
                     }
@@ -188,16 +188,12 @@ const matchInfo =
     };
 
 
-const matchRecord = {
-    tableData: [
-        {featureName: 'کرنرها', featureValue: 5},
-        {featureName: 'تعداد خطاها', featureValue: 7},
-        {featureName: 'موقعیت گل ها', featureValue: 2},
-        {featureName: 'تعداد گل ها', featureValue: 1},
-        {featureName: 'درصد مالکیت توپ', featureValue: '20%'},
-    ],
-};
-
+const medias =[
+    {url:'images/horse.jpg'},
+    {url:'images/horse.jpg'},
+    {url:'images/horse.jpg'},
+    {url:'images/horse.jpg'},
+];
 
 
 
@@ -208,23 +204,27 @@ export default class Match extends Component {
 
     render() {
         const body =
-            <Grid>
-                <Grid.Row style={{width:'100%'}} columns={2}>
+            <Grid style={{width:'100%'}}>
+                <Grid.Row  columns={2}>
                     <Grid.Column>
                         {/*<TimeLine/>*/}
                     </Grid.Column>
                     <Grid.Column width={14}>
-                        <Grid.Row columns={1}>
-                            <Grid.Column width={16}><MatchInfo matchRecord={matchRecord}/></Grid.Column>
-                            {/*<Grid.Column><PlayersInfo/></Grid.Column>*/}
-                        </Grid.Row>
-                        <Grid.Row columns={2}>
-                            {/*<Grid.Column><OnlineReport/></Grid.Column>*/}
-                            {/*<Grid.Column><FringeNews/></Grid.Column>*/}
-                        </Grid.Row>
-                        <Grid.Row columns={1}>
-                            {/*<Grid.Column><MultiMedia/></Grid.Column>*/}
-                        </Grid.Row>
+                        <Grid>
+                            <Grid.Row columns={4}>
+                                <Grid.Column style={{direction:'rtl'}} width={4}><PlayersInfo direction={'right'} playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
+                                <Grid.Column style={{direction:'rtl'}} width={4}><MatchInfo direction={'left'} matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
+                                <Grid.Column style={{direction:'ltr'}} width={4}><MatchInfo direction={'right'} matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
+                                <Grid.Column style={{direction:'ltr'}} width={4}><PlayersInfo direction={'left'} playerInfo={matchInfo['tableData']['team2']['players']}/></Grid.Column>
+                            </Grid.Row>
+                            <Grid.Row columns={2}>
+                                {/*<Grid.Column><OnlineReport/></Grid.Column>*/}
+                                {/*<Grid.Column><FringeNews/></Grid.Column>*/}
+                            </Grid.Row>
+                            <Grid.Row columns={1}>
+                                <Grid.Column><MultiMedia media={medias}/></Grid.Column>
+                            </Grid.Row>
+                        </Grid>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
