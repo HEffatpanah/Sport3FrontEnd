@@ -74,24 +74,30 @@ class App extends Component {
             <Select placeholder='انتخاب ورزش'  search selection options={options} onChange={this.handleSelectorChange}/>;
         let body =
             <Grid style={{width:'100%'}}>
-                <Grid.Row columns={1} style={{justifyContent:'end'}}>
-                    <Grid.Column width={4}>
-                        <Segment>
-                            {Selectbar}
-                        </Segment>
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row columns={3} style={{height:'87%'}}>
-                    <Grid.Column width={2}>
+
+                <Grid.Row columns={4} style={{height:'87%'}}>
+                    <Grid.Column width={3}>
                         <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
                     </Grid.Column>
-                    <Grid.Column width={10}>
+                    <Grid.Column width={9}>
                         <MatchesSummaryTable matchesData={matchData} sport={this.state.selectedSport}/>
                     </Grid.Column>
                     <Grid.Column width={4}>
-                        <Segment>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Segment>
+                            {Selectbar}
+                        </Segment>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Segment>
                             <Newssummery newsData={newsData}/>
                         </Segment>
+                            </Grid.Column>
+                        </Grid.Row>
+
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;
