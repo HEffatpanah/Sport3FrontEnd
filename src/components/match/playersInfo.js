@@ -1,26 +1,60 @@
 import React, {Component} from 'react'
-import {Table} from 'semantic-ui-react'
+import {Segment, Table} from 'semantic-ui-react'
 
-export default class PlayersInfo extends Component {
-    getTableData() {
+export default class sInfo extends Component {
+    getOriginalPlayers() {
         return (
-            this.props.playerInfo['originalPlayers'].map(({playerName,playerGoals,playerYellowCards,
-                                                              playerRedCards,playerReplaceTime}) => {
-                var i;
-                var goals = [];
-                var yellow=null;
-                var replace=null;
-                for (i=0;i<playerGoals;i++) {
-                    goals.push(<img src={require("../../images/goal.png")}/>);
-                }
-                if(playerYellowCards!==null)
-                    yellow=(<div style={{display:'inline-block'}}><img src={require("../../images/yc.png")}/>{playerYellowCards}</div>);
-                if(playerReplaceTime!==null)
-                    replace=(<div style={{display:'inline-block'}}><img src={require("../../images/subout.png")}/>{playerReplaceTime}</div>);
+            this.props.playerInfo['originalPlayers'].map(({Name,Goals,Post,YellowCards,
+                                                              RedCards,ReplaceTime}) => {
+                let i;
+                let goals = [];
+                let yellow = null;
+                let replace = null;
+                let shirt = null;
+                if(Post==='goalkeeper')
+                    shirt=<img src={require("../../images/shirt-icon_b.png")}/>
+                else shirt=<img src={require("../../images/shirt-icon_w.png")}/>
+                for (i=0;i<Goals;i++) {
+                        goals.push(<img src={require("../../images/goal.png")}/>);
+                    }
+                    if(YellowCards!==0)
+                        yellow=(<div style={{display:'inline-block'}}><img src={require("../../images/yc.png")}/>{YellowCards}</div>);
+                    if(ReplaceTime!==null)
+                        replace=(<div style={{display:'inline-block'}}><img src={require("../../images/subout.png")}/>{ReplaceTime}</div>);
                     return (
                         <Table.Row style={{textAlign:this.props.direction}} columns={4}>
                             <Table.Cell>{yellow} {replace} {goals}</Table.Cell>
-                            <Table.Cell collapsing>{playerName}</Table.Cell>
+                            <Table.Cell collapsing style={{color:'green'}}>{Name} {shirt}</Table.Cell>
+                        </Table.Row>
+                    );
+                }
+            )
+
+        )
+    };
+    getSubstitutesPlayers() {
+        return (
+            this.props.playerInfo['substitutesPlayers'].map(({Name,Goals,Post,YellowCards,
+                                                                 RedCards,ReplaceTime}) => {
+                    let i;
+                let goals = [];
+                let yellow = null;
+                let replace = null;
+                let shirt = null;
+                if(Post==='goalkeeper')
+                    shirt=<img src={require("../../images/shirt-icon_b.png")}/>
+                else shirt=<img src={require("../../images/shirt-icon_w.png")}/>
+                    for (i=0;i<Goals;i++) {
+                        goals.push(<img src={require("../../images/goal.png")}/>);
+                    }
+                    if(YellowCards!==0)
+                        yellow=(<div style={{display:'inline-block'}}><img src={require("../../images/yc.png")}/>{YellowCards}</div>);
+                    if(ReplaceTime!==null)
+                        replace=(<div style={{display:'inline-block'}}><img src={require("../../images/subin.png")}/>{ReplaceTime}</div>);
+                    return (
+                        <Table.Row style={{textAlign:this.props.direction}} columns={4}>
+                            <Table.Cell>{yellow} {replace} {goals}</Table.Cell>
+                            <Table.Cell collapsing style={{color:'red'}}>{Name} {shirt}</Table.Cell>
                         </Table.Row>
                     );
                 }
@@ -32,7 +66,8 @@ export default class PlayersInfo extends Component {
     render() {
         return (
             <Table>
-                {this.getTableData()}
+                {this.getOriginalPlayers()}
+                {this.getSubstitutesPlayers()}
             </Table>
         );
     }

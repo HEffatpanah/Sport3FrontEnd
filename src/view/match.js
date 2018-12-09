@@ -26,74 +26,74 @@ const matchInfo =
                         originalPlayers:
                             [
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'goalkeeper',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 80, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 80, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 70, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 70, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: 47
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: 47
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 0,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: 10, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 10, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 0,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 1,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 1,
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                             ],
                         substitutesPlayers: [
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'goalkeeper',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: 47
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                         ]
                     }
@@ -111,74 +111,74 @@ const matchInfo =
                         originalPlayers:
                             [
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'goalkeeper',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 2,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: 56
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 1,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: 75
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                                 {
-                                    playerName: 'حسین عفت پناه', playerGoals: 2,
-                                    playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                    Name: 'حسین عفت پناه', Goals: 0,Post:'forward',
+                                    YellowCards: 0, RedCards: 0, ReplaceTime: null
                                 },
                             ],
                         substitutesPlayers: [
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'goalkeeper',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 1,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: 56
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 0,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: null
                             },
                             {
-                                playerName: 'علی اصغرخانی', playerGoals: 2,
-                                playerYellowCards: null, playerRedCards: 0, playerReplaceTime: null
+                                Name: 'علی اصغرخانی', Goals: 1,Post:'forward',
+                                YellowCards: 0, RedCards: 0, ReplaceTime: 75
                             },
                         ]
                     }
