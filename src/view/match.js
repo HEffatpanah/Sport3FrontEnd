@@ -222,7 +222,7 @@ export default class Match extends Component {
         const body =
             <Grid style={{width:'100%'}}>
                 <Grid.Row>
-                    <TimeLine minutes={matchInfo['tableData']['matchMinutes']} matchDate={matchInfo['tableData']}/>
+                    <TimeLine minutes={matchInfo['tableData']['matchMinutes']} matchData={matchInfo['tableData']}/>
                 </Grid.Row>
                 <Grid.Row columns={4}>
                     <Grid.Column style={{direction:'rtl'}} width={4}><PlayersInfo direction={'right'} playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
