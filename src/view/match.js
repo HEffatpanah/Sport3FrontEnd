@@ -12,8 +12,10 @@ import Template from '../components/template'
 const matchInfo =
     {
         tableName: 'اطلاعات بازی',
+        tableType: 'فوتبال',
         tableData:
             {
+                matchMinutes:93,
                 team1: {
                     generalRecords: [
                         {featureName: 'خطاها', featureValue: 10},
@@ -21,6 +23,13 @@ const matchInfo =
                         {featureName: 'موقعیت گل', featureValue: 15},
                         {featureName: 'تعداد گل', featureValue: 2},
                         {featureName: 'درصد مالکیت توپ', featureValue: "52.8%"},
+                    ],
+                    events:[
+                        {featureName:'yc',featureValue:[10,70,80]},
+                        {featureName:'drc',featureValue:[85]},
+                        {featureName:'syc',featureValue:[90]},
+                        {featureName:'g',featureValue:[35,47,50,76,92]},
+                        {featureName:'s',featureValue:[57,75]},
                     ],
                     players: {
                         originalPlayers:
@@ -106,6 +115,13 @@ const matchInfo =
                         {featureName: 'موقعیت گل', featureValue: 6},
                         {featureName: 'تعداد گل', featureValue: 3},
                         {featureName: 'درصد مالکیت توپ', featureValue: "47.2%"},
+                    ],
+                    events:[
+                        {featureName:'yc',featureValue:[15,75,60]},
+                        {featureName:'drc',featureValue:[82]},
+                        {featureName:'syc',featureValue:[]},
+                        {featureName:'g',featureValue:[35,51,60]},
+                        {featureName:'s',featureValue:[40,88]},
                     ],
                     players: {
                         originalPlayers:
@@ -206,7 +222,7 @@ export default class Match extends Component {
         const body =
             <Grid style={{width:'100%'}}>
                 <Grid.Row>
-
+                    <TimeLine minutes={matchInfo['tableData']['matchMinutes']} matchDate={matchInfo['tableData']}/>
                 </Grid.Row>
                 <Grid.Row columns={4}>
                     <Grid.Column style={{direction:'rtl'}} width={4}><PlayersInfo direction={'right'} playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
