@@ -205,29 +205,23 @@ export default class Match extends Component {
     render() {
         const body =
             <Grid style={{width:'100%'}}>
-                <Grid.Row  columns={2}>
-                    <Grid.Column>
-                        {/*<TimeLine/>*/}
-                    </Grid.Column>
-                    <Grid.Column width={14}>
-                        <Grid>
-                            <Grid.Row columns={4}>
-                                <Grid.Column style={{direction:'rtl'}} width={4}><PlayersInfo direction={'right'} playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
-                                <Grid.Column style={{direction:'rtl'}} width={4}><MatchInfo direction={'left'} matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
-                                <Grid.Column style={{direction:'ltr'}} width={4}><MatchInfo direction={'right'} matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
-                                <Grid.Column style={{direction:'ltr'}} width={4}><PlayersInfo direction={'left'} playerInfo={matchInfo['tableData']['team2']['players']}/></Grid.Column>
-                            </Grid.Row>
-                            <Grid.Row columns={2}>
-                                {/*<Grid.Column><OnlineReport/></Grid.Column>*/}
-                                {/*<Grid.Column><FringeNews/></Grid.Column>*/}
-                            </Grid.Row>
-                            <Grid.Row columns={1}>
-                                <Grid.Column><MultiMedia media={medias}/></Grid.Column>
-                            </Grid.Row>
-                        </Grid>
-                    </Grid.Column>
+                <Grid.Row>
+
                 </Grid.Row>
-            </Grid>
+                <Grid.Row columns={4}>
+                    <Grid.Column style={{direction:'rtl'}} width={4}><PlayersInfo direction={'right'} playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
+                    <Grid.Column style={{direction:'rtl'}} width={4}><MatchInfo direction={'left'} matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
+                    <Grid.Column style={{direction:'ltr'}} width={4}><MatchInfo direction={'right'} matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
+                    <Grid.Column style={{direction:'ltr'}} width={4}><PlayersInfo direction={'left'} playerInfo={matchInfo['tableData']['team2']['players']}/></Grid.Column>
+                </Grid.Row>
+                <Grid.Row columns={2}>
+                    {/*<Grid.Column><OnlineReport/></Grid.Column>*/}
+                    {/*<Grid.Column><FringeNews/></Grid.Column>*/}
+                </Grid.Row>
+                <Grid.Row columns={1} style={{textAlign:'center', justifyContent: 'space-evenly'}}>
+                    <Grid.Column width={6}><MultiMedia media={medias}/></Grid.Column>
+                </Grid.Row>
+            </Grid>;
         return(
             <Template {...this.props} body={body}/>
         );
