@@ -1,0 +1,110 @@
+{
+    "language": [
+      "Language",
+      "زبان"
+    ],
+  "news": [
+      "News",
+      "اخبار"
+    ],
+  "player": [
+      "Player",
+      "بازیکن"
+    ],
+  "team": [
+      "Team",
+      "تیم"
+    ],
+  "home": [
+      "Home",
+      "خانه"
+    ],
+  "dont register?": [
+      "Dont register?",
+      "ثبت نام نکرده اید؟"
+    ],
+  "register": [
+      "Register",
+      "ثبت نام"
+    ],
+  "sign in": [
+      "Sign in",
+      "ورود"
+    ],
+  "password": [
+      "Password",
+      "رمز عبور"
+    ],
+  "username": [
+      "Username",
+      "نام کاربری"
+    ],
+  "wrong user": [
+      "Username or Password is wrong",
+      "نام کاربری یا رمز اشتباه میباشد!"
+    ],
+  "enable filter": [
+      "Enable filter",
+      "فعال کردن فیلتر"
+    ],
+  "posts filter": [
+      "Post filter",
+      "فیلتر پست ها"
+    ],
+  "choose match": [
+      "Choose match",
+      "انتخاب ورزش"
+    ],
+  "basketball": [
+      "Basketball",
+      "بسکتبال"
+    ],
+  "football": [
+      "Football",
+      "فوتبال"
+    ],
+  "team name": [
+      "Team name",
+      "نام تیم"
+    ],
+  "result": [
+      "Result",
+      "نتیجه"
+    ],
+  "date": [
+      "Date",
+      "تاریخ"
+    ],
+  "all": [
+      "All",
+      "همه"
+    ],
+  "favorite": [
+      "Favorite",
+      "مورد علاقه"
+    ],
+  "name": [
+      "Name",
+      "نام"
+    ],
+  "age": [
+      "Age",
+      "سن"
+    ],
+  "post": [
+      "Post",
+      "پست"
+    ],
+  "picture": [
+      "Picture",
+      "عکس"
+    ],
+  "point": [
+      "Point",
+      "امتیاز"
+    ],
+  "status": [
+      "Status",
+      "وضعیت"
+    ]
+}
