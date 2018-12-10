@@ -8,10 +8,16 @@ import Newssummery from '../components/news/newsSummery'
 
 
 const matchData = [
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'1998-09-12'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
 ];
 
 
@@ -75,29 +81,25 @@ class App extends Component {
         let body =
             <Grid style={{width:'100%'}}>
 
-                <Grid.Row columns={4} style={{height:'87%'}}>
-                    <Grid.Column width={3}>
-                        <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
+                <Grid.Row columns={5} style={{height:'87%'}}>
+                    <Grid.Column  style={{padding:0}} width={4}>
+                        <MatchesSummaryTable matchesData={matchData} sport='football'/>
                     </Grid.Column>
-                    <Grid.Column width={9}>
-                        <MatchesSummaryTable matchesData={matchData} sport={this.state.selectedSport}/>
-                    </Grid.Column>
-                    <Grid.Column width={4}>
-                        <Grid.Row>
-                            <Grid.Column>
-                                <Segment>
-                            {Selectbar}
-                        </Segment>
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <Grid.Column>
-                                <Segment>
+                    <Grid.Column  style={{padding:0}} width={3}>
+                        <Segment>
                             <Newssummery newsData={newsData}/>
                         </Segment>
-                            </Grid.Column>
-                        </Grid.Row>
-
+                    </Grid.Column>
+                    <Grid.Column  style={{padding:0}} width={2}>
+                        <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
+                    </Grid.Column>
+                    <Grid.Column  style={{padding:0}} width={4}>
+                        <MatchesSummaryTable matchesData={matchData} sport='basketball'/>
+                    </Grid.Column>
+                    <Grid.Column  style={{padding:0}} width={3}>
+                        <Segment>
+                            <Newssummery newsData={newsData}/>
+                        </Segment>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;
