@@ -7,6 +7,7 @@ import {
     Container,
     Segment,
 } from 'semantic-ui-react'
+import {Translate, withLocalize} from "react-localize-redux";
 
 
 class Navbar extends Component {
@@ -72,29 +73,29 @@ class Navbar extends Component {
                     path = '/'
                     active={this.props.location.pathname === '/'}
                     onClick={this.handleItemClick}
-                >خانه</Menu.Item>
+                >{<Translate id="home" />}</Menu.Item>
                 <Menu.Item
                     name='teams'
                     path = '/teams'
                     active={this.props.location.pathname === '/teams'}
                     onClick={this.handleItemClick}
-                    >تیم ها</Menu.Item>
+                    >{<Translate id="team" />}</Menu.Item>
                 <Menu.Item
                     name='player'
                     path = '/player'
                     active={this.props.location.pathname === '/player'}
                     onClick={this.handleItemClick}
-                >بازیکن</Menu.Item>
+                >{<Translate id="player" />}</Menu.Item>
                 <Menu.Item
                     name='news'
                     path = '/news'
                     active={this.props.location.pathname === '/news'}
                     onClick={this.handleItemClick}
-                >اخبار</Menu.Item>
-                <Dropdown text='زبان' simple item>
+                >{<Translate id="news" />}</Menu.Item>
+                <Dropdown text={<Translate id="language" />} simple item>
                     <Dropdown.Menu>
-                        <Dropdown.Item onClick={this.handleDropdownitemClick} style={{ textAlign:'center'}} value='football'>فارسی</Dropdown.Item>
-                        <Dropdown.Item onClick={this.handleDropdownitemClick} style={{ textAlign:'center'}}  value='Basketball'>انگلیسی</Dropdown.Item>
+                        <Dropdown.Item onClick={this.props.setActiveLanguage.bind(this,'fa')} style={{ textAlign:'center'}} value='football'>فارسی</Dropdown.Item>
+                        <Dropdown.Item onClick={this.props.setActiveLanguage.bind(this,'en')} style={{ textAlign:'center'}}  value='Basketball'>English</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 {Login_Logout()}
@@ -141,7 +142,7 @@ class Footer extends Component{
 
 
 
-export default class Template extends Component {
+class Template extends Component {
 
     render() {
         const zerostyle = {
@@ -194,3 +195,4 @@ export default class Template extends Component {
         )
     }
 }
+export default withLocalize(Template);

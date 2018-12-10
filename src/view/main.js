@@ -5,6 +5,8 @@ import Select from 'react-select';
 import MatchesSummaryTable from "../components/matchSummary";
 import Adv from "../components/advertisement";
 import Newssummery from '../components/news/newsSummery'
+import globalTranslations from "../translations/global";
+import {Translate, withLocalize} from "react-localize-redux";
 
 
 const matchData = [
@@ -53,6 +55,8 @@ class App extends Component {
         this.state = {
             selectedSport : "football"
         };
+        console.log(this.props);
+        this.props.addTranslation(globalTranslations);
     }
     handleSelectorChange = (selectedOption) => {
         this.setState({selectedSport:selectedOption.value});
@@ -77,7 +81,7 @@ class App extends Component {
         //     </Segment>;
 
         const Selectbar =
-            <Select placeholder='انتخاب ورزش'  search selection options={options} onChange={this.handleSelectorChange}/>;
+            <Select placeholder={<Translate id="choose match" />}  search selection options={options} onChange={this.handleSelectorChange}/>;
         let body =
             <Grid style={{width:'100%'}}>
 
@@ -87,7 +91,7 @@ class App extends Component {
                             <Grid.Row >
                                 <Grid.Column>
                                     <Segment style={{textAlign:'center'}}>
-                                        فوتبال
+                                        {<Translate id="football" />}
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
@@ -111,7 +115,7 @@ class App extends Component {
                             <Grid.Row >
                                 <Grid.Column>
                                     <Segment style={{textAlign:'center'}}>
-                                        بسکتبال
+                                        {<Translate id="basketball" />}
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
@@ -137,4 +141,4 @@ class App extends Component {
         );
     }
 }
-export default App;
+export default withLocalize(App);

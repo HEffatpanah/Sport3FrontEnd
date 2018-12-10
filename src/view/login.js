@@ -2,6 +2,7 @@ import React ,{Component} from 'react';
 import {Button, Form, Grid, Header, Icon, Message, Segment} from 'semantic-ui-react';
 import Template from "../components/template";
 import _ from 'lodash'
+import {Translate} from "react-localize-redux";
 
 const members=[
     {user:'ali', pass:'123'},
@@ -41,25 +42,25 @@ class LoginForm extends Component {
             <Grid textAlign='center' style={{width:'100%', height: '100%'}} verticalAlign='middle'>
                 <Grid.Column style={{maxWidth: 450, direction:'rtl'}}>
                     <Message hidden={this.state.hiddenLoginError} error={true} >
-                        نام کاربری یا رمز اشتباه میباشد!
+                        {<Translate id="wrong user" />}
                     </Message>
                     <Form size='large' onSubmit={this.handleSubmit}>
                         <Segment stacked >
-                            <Form.Input name='user' fluid icon='user' iconPosition='right' label='نام کاربری 'required/>
+                            <Form.Input name='user' fluid icon='user' iconPosition='right' label={<Translate id="username" />} required/>
                             <Form.Input name='pass' required
                                         fluid
                                         icon='lock'
                                         iconPosition='right'
-                                        label='رمز عبور'
+                                        label={<Translate id="password" />}
                                         type='password'
                             />
 
-                            <Button type='submit' content='ورود' color='teal' fluid size='large'>
+                            <Button type='submit' content={<Translate id="sign in" />} color='teal' fluid size='large'>
                             </Button>
                         </Segment>
                     </Form>
                     <Message   style={{textAlign:'center'}}>
-                        ثبت نام نکرده اید؟<a href='../signup'>ثبت نام</a>
+                        {<Translate id="dont register?" />}<a href='../signup'>{<Translate id="register" />}</a>
                     </Message>
                 </Grid.Column>
             </Grid>

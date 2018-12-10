@@ -5,6 +5,7 @@ import {Segment} from "semantic-ui-react";
 import {Grid} from "semantic-ui-react";
 import {Dropdown} from "semantic-ui-react";
 import React from "react";
+import {Translate} from "react-localize-redux";
 
 export default class TeamMembers extends Component{
     state = {
@@ -86,10 +87,10 @@ export default class TeamMembers extends Component{
                     <Grid >
                         <Grid.Row columns={2}>
                             <Grid.Column>
-                                <Checkbox slider label='فعال کردن فیلتر' checked={this.state.filterEnable} onClick={this.handleCheckBox}/>
+                                <Checkbox slider label={<Translate id="enable filter" />} checked={this.state.filterEnable} onClick={this.handleCheckBox}/>
                             </Grid.Column>
                             <Grid.Column style={{textAlign:'left'}}>
-                                <Dropdown  text='فیلتر پست ها' icon='filter'>
+                                <Dropdown  text={<Translate id="posts filter" />} icon='filter'>
                                     <Dropdown.Menu >
                                         {/*<Dropdown placeholder='Select Sport' search selection options={options} onChange={(e,{value}) => {console.log(value)}}/>*/}
                                         <Dropdown.Menu scrolling >
@@ -108,22 +109,22 @@ export default class TeamMembers extends Component{
                                                 sorted={column === 'name' ? direction : null}
                                                 onClick={this.handleSort('name')}
                                             >
-                                                نام
+                                                {<Translate id="name" />}
                                             </Table.HeaderCell>
                                             <Table.HeaderCell
                                                 sorted={column === 'age' ? direction : null}
                                                 onClick={this.handleSort('age')}
                                             >
-                                                سن
+                                                {<Translate id="age" />}
                                             </Table.HeaderCell>
                                             <Table.HeaderCell
                                                 sorted={column === 'position' ? direction : null}
                                                 onClick={this.handleSort('position')}
                                             >
-                                                پست
+                                                {<Translate id="post" />}
                                             </Table.HeaderCell>
                                             <Table.HeaderCell>
-                                                عکس</Table.HeaderCell>
+                                                {<Translate id="picture" />}</Table.HeaderCell>
                                         </Table.Row>
                                     </Table.Header>
                                     <Table.Body>{body}

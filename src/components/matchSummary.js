@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Table} from 'semantic-ui-react'
 import { Tab, Segment} from 'semantic-ui-react'
+import {Translate} from "react-localize-redux";
 
 
 
@@ -37,10 +38,10 @@ export default class MatchesSummaryTable extends Component{
             <Table>
              <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>نام تیم</Table.HeaderCell>
-                        <Table.HeaderCell>نتیجه</Table.HeaderCell>
-                        <Table.HeaderCell>نام تیم</Table.HeaderCell>
-                        <Table.HeaderCell>تاریخ</Table.HeaderCell>
+                        <Table.HeaderCell> {<Translate id="team name" />}</Table.HeaderCell>
+                        <Table.HeaderCell> {<Translate id="result" />}</Table.HeaderCell>
+                        <Table.HeaderCell> {<Translate id="team name" />}</Table.HeaderCell>
+                        <Table.HeaderCell> {<Translate id="date" />}</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>{v}</Table.Body>
@@ -48,6 +49,8 @@ export default class MatchesSummaryTable extends Component{
         )
     };
     render() {
+           // const all=<Translate id="all" />;
+        // const fav=<Translate id="favorite" />;
         const panes = [
             { menuItem: 'همه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
             { menuItem: 'مورد علاقه', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },

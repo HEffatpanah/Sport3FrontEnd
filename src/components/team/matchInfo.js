@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Table} from 'semantic-ui-react'
 import _ from "lodash";
+import {Translate} from "react-localize-redux";
 
 
 
@@ -65,25 +66,25 @@ export default class MatchesTable extends Component{
                         <Table.HeaderCell
 
                         >
-                            نتیجه
+                            {<Translate id="result" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
                             sorted={column === 'date' ? direction : null}
                             onClick={this.handleSort('date')}
                         >
-                            تاریخ
+                           {<Translate id="date" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
                             sorted={column === 'score' ? direction : null}
                             onClick={this.handleSort('score')}
                         >
-                            امتیاز
+                           {<Translate id="point" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
                             sorted={column === 'win/lose/draw' ? direction : null}
                             onClick={this.handleSort('win/lose/draw')}
                         >
-                            وضعیت</Table.HeaderCell>
+                            {<Translate id="status" />}</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
