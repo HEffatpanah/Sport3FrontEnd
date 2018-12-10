@@ -67,25 +67,12 @@ class Navbar extends Component {
         return (
 
             <Menu inverted style={{height:'100%', maxHeight: '2em'}}>
-                {Login_Logout()}
-                <Dropdown text='ورزش ها' simple item>
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={this.handleDropdownitemClick} style={{ textAlign:'center'}} value='football'>فوتبال</Dropdown.Item>
-                        <Dropdown.Item onClick={this.handleDropdownitemClick} style={{ textAlign:'center'}}  value='Basketball'>بسکتبال</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
                 <Menu.Item
-                    name='news'
-                    path = '/news'
-                    active={this.props.location.pathname === '/news'}
+                    name='home'
+                    path = '/'
+                    active={this.props.location.pathname === '/'}
                     onClick={this.handleItemClick}
-                >اخبار</Menu.Item>
-                <Menu.Item
-                    name='player'
-                    path = '/player'
-                    active={this.props.location.pathname === '/player'}
-                    onClick={this.handleItemClick}
-                >بازیکن</Menu.Item>
+                >خانه</Menu.Item>
                 <Menu.Item
                     name='teams'
                     path = '/teams'
@@ -93,11 +80,24 @@ class Navbar extends Component {
                     onClick={this.handleItemClick}
                     >تیم ها</Menu.Item>
                 <Menu.Item
-                    name='home'
-                    path = '/'
-                    active={this.props.location.pathname === '/'}
+                    name='player'
+                    path = '/player'
+                    active={this.props.location.pathname === '/player'}
                     onClick={this.handleItemClick}
-                >خانه</Menu.Item>
+                >بازیکن</Menu.Item>
+                <Menu.Item
+                    name='news'
+                    path = '/news'
+                    active={this.props.location.pathname === '/news'}
+                    onClick={this.handleItemClick}
+                >اخبار</Menu.Item>
+                <Dropdown text='زبان' simple item>
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={this.handleDropdownitemClick} style={{ textAlign:'center'}} value='football'>فارسی</Dropdown.Item>
+                        <Dropdown.Item onClick={this.handleDropdownitemClick} style={{ textAlign:'center'}}  value='Basketball'>انگلیسی</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                {Login_Logout()}
             </Menu>
 
 

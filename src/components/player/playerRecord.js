@@ -20,8 +20,8 @@ export default class PlayerRecordTable extends Component{
             this.props.playerRecords['tableData' + this.state.session].map(({featureName, featureValue}) => {
                     return (
                         <Table.Row columns={2}>
-                            <Table.Cell>{featureValue}</Table.Cell>
                             <Table.Cell>{featureName}</Table.Cell>
+                            <Table.Cell>{featureValue}</Table.Cell>
 
                         </Table.Row>
                     );

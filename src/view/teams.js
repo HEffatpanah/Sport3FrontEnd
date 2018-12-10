@@ -88,13 +88,13 @@ class App extends Component {
             <Grid style={{width:'100%'}}>
                 <Grid.Row columns={3}>
                     <Grid.Column width={4}>
-                        <MatchesTable matchesData={matchData}/>
+                        <Segment><Newssummery newsData={newsData}/></Segment>
                     </Grid.Column>
                     <Grid.Column width={8}>
                         <TeamMembers teamMembersData={membersData}/>
                     </Grid.Column>
                     <Grid.Column width={4}>
-                        <Segment><Newssummery newsData={newsData}/></Segment>
+                        <MatchesTable matchesData={matchData}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;

@@ -24,8 +24,8 @@ export default class PlayerInfoTable extends Component{
                     }
                     return (
                         <Table.Row columns={2}>
-                            <Table.Cell>{featureValue}</Table.Cell>
                             <Table.Cell>{featureName}</Table.Cell>
+                            <Table.Cell>{featureValue}</Table.Cell>
 
                         </Table.Row>
                     );

@@ -49,12 +49,12 @@ export default class MatchesSummaryTable extends Component{
     };
     render() {
         const footballMatches = [
-            { menuItem: 'مورد علاقه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
-            { menuItem: 'همه', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
+            { menuItem: 'همه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
+            { menuItem: 'مورد علاقه', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
         ];
         const basketballMatches = [
-            { menuItem: 'مورد علاقه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
-            { menuItem: 'همه', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
+            { menuItem: 'همه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
+            { menuItem: 'مورد علاقه', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
         ];
         const pansMap = {
             "football":footballMatches,
@@ -63,9 +63,7 @@ export default class MatchesSummaryTable extends Component{
         const MatchesTable =
                 <Tab panes={pansMap[this.props.sport]} />
         return (
-            <Table style={{direction:'rtl'}}>
-                    {MatchesTable}
-            </Table>
+                    MatchesTable
         );
     }
 }

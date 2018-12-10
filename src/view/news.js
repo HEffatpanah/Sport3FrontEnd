@@ -88,17 +88,17 @@ class App extends Component {
         const body =
             <Grid style={{width: '100%'}}>
                 <Grid.Row columns={3}>
-                    <Grid.Column width={3}>
-                        <Adv link={'http://www.yjc.ir/fa/ads/redirect/a/929'}
-                             advertisement={'https://cdn.yjc.ir/files/adv/3955_459.gif'}/>
-                    </Grid.Column>
-                    <Grid.Column width={9}>
-                        <NewsDetail newDetail={this.state.newDetail}/>
-                    </Grid.Column>
                     <Grid.Column width={4}>
                         <Segment>
                             <Newssummery newsData={this.state.newsData}/>
                         </Segment>
+                    </Grid.Column>
+                    <Grid.Column width={9}>
+                        <NewsDetail newDetail={this.state.newDetail}/>
+                    </Grid.Column>
+                    <Grid.Column width={3}>
+                        <Adv link={'http://www.yjc.ir/fa/ads/redirect/a/929'}
+                             advertisement={'https://cdn.yjc.ir/files/adv/3955_459.gif'}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;
