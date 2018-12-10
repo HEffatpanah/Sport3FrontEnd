@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {List} from "semantic-ui-react";
+import {Icon, List} from "semantic-ui-react";
 
 
 export default class Newssummery extends Component{
@@ -8,7 +8,12 @@ export default class Newssummery extends Component{
     }
     newsBody() {
         return (this.state.newsData.map(({title, link}) => {
-                return (<List.Item href={link} target={'_blank'} >{title}</List.Item>)
+                return (
+                    <div>
+                        <Icon name='angle double left' />
+                    <List.Item href={link} target={'_blank'} style={{color:'black'}}>{title}</List.Item>
+                    </div>
+                )
             })
         )
     }

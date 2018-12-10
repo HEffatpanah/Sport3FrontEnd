@@ -27,7 +27,7 @@ export default class MatchesSummaryTable extends Component{
         matchesData:this.props.matchesData,
     };
     getTableData (){
-        const v=this.state.matchesData.map((data) => {
+        const v = this.state.matchesData.map((data) => {
                     return(
                         <MatchSummary matchData={data}/>
                     )
@@ -48,20 +48,13 @@ export default class MatchesSummaryTable extends Component{
         )
     };
     render() {
-        const footballMatches = [
+        const panes = [
             { menuItem: 'همه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
             { menuItem: 'مورد علاقه', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
         ];
-        const basketballMatches = [
-            { menuItem: 'همه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
-            { menuItem: 'مورد علاقه', render: () => <Tab.Pane><div>Taha</div></Tab.Pane> },
-        ];
-        const pansMap = {
-            "football":footballMatches,
-            "basketball":basketballMatches,
-        };
+
         const MatchesTable =
-                <Tab panes={pansMap[this.props.sport]} />
+                <Tab panes={panes} />
         return (
                     MatchesTable
         );

@@ -51,17 +51,19 @@ class App extends Component {
         const body =
             <Grid style={{width: '100%'}}>
                 <Grid.Row columns={4}>
-                    <Grid.Column width={2}>
-                        <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
-                    </Grid.Column>
-                    <Grid.Column width={6}>
-                        <Segment><PlayerNews newsData={newsData}/></Segment>
+
+                    <Grid.Column width={4}>
+                        <PlayerInfoTable playerInfo={playerInfo}/>
                     </Grid.Column>
                     <Grid.Column width={4}>
                         <PlayerRecordTable playerRecords={playerRecords}/>
                     </Grid.Column>
-                    <Grid.Column width={4}>
-                        <PlayerInfoTable playerInfo={playerInfo}/>
+
+                    <Grid.Column width={6}>
+                        <Segment><PlayerNews newsData={newsData}/></Segment>
+                    </Grid.Column>
+                    <Grid.Column width={2}>
+                        <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;

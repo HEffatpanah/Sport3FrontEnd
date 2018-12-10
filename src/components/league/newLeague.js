@@ -2,10 +2,12 @@ import React, {Component} from 'react'
 import {Grid, Menu, Segment, Tab} from 'semantic-ui-react'
 
 
-export default class OldLeague extends Component {
+export default class NewLeague extends Component {
     state = {activeItem: 'فوتبال'}
     handleItemClick = (e, {name}) => this.setState({activeItem: name})
-
+    handleLink(){
+        console.log('ali')
+    }
     getTableContent() {
         return (
             this.props.leaguesData.map((leagueData) => {
@@ -17,7 +19,7 @@ export default class OldLeague extends Component {
                         <div>
                             {leagueData['sessions'].map((session) => {
                                 return(
-                                    <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}}>{session}</a>
+                                    <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}} onClick={this.handleLink}>{session}</a>
                                 )
                             })}
                         </div>
@@ -32,9 +34,9 @@ export default class OldLeague extends Component {
         return (
             <Segment >
                 <div style={{textAlign:'center', fontSize:'1.5em'}}>
-                    لیگ های قدیمی
+                    لیگ های جدید
                 </div>
-                <Menu pointing secondary >
+                <Menu pointing secondary>
                     <Menu.Item
                         name='فوتبال'
                         style={{width: '50%', textAlign:'right'}}

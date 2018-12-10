@@ -59,10 +59,11 @@ export default class MatchesTable extends Component{
     render() {
         const {matchesData, column, direction} = this.state;
         return (
-            <Table sortable celled fixed    >
+            <Table sortable celled fixed>
                 <Table.Header>
-                    <Table.Row>
+                    <Table.Row >
                         <Table.HeaderCell
+
                         >
                             نتیجه
                         </Table.HeaderCell>

@@ -17,7 +17,7 @@ export default class LeagueTable extends Component {
             active = !active;
             counter += 1;
             return (<Table.Row active={active}>
-                {row} <Table.Cell>{counter}</Table.Cell>
+                <Table.Cell>{counter}</Table.Cell>{row}
             </Table.Row>)
         })
     }
@@ -31,14 +31,14 @@ export default class LeagueTable extends Component {
                     </Table.Cell>
                 </Table.Row>
                 <Table.Row style={{backgroundColor: '#656565', color: 'white'}}>
-
+                    <Table.Cell>
+                    </Table.Cell>
                     {this.props.leagueData['header'].map((value) => {
                         return (
                             <Table.Cell>{value}</Table.Cell>
                         )
                     })}
-                    <Table.Cell>
-                    </Table.Cell>
+
                 </Table.Row>
             </Table.Header>
 
@@ -49,12 +49,12 @@ export default class LeagueTable extends Component {
         return (
             <div>
                 <div style={{textAlign:'center', fontSize:'1.5em'}}>{this.props.leagueData['leagueName']}</div>
-            <Table structured>
-                {this.getHeader()}
-                <Table.Body>
-                    {this.getTableRows()}
-                </Table.Body>
-            </Table>
+                <Table structured>
+                    {this.getHeader()}
+                    <Table.Body>
+                        {this.getTableRows()}
+                    </Table.Body>
+                </Table>
             </div>
         );
     }

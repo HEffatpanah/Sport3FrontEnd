@@ -39,14 +39,23 @@
 
 *,div,body,header,h2, h4,div h2{
   font-family: "B Yekan", serif;
-  /*font-family: "Lato Black", serif;*/
 }
-body{
-  background-color:#ffffff;
-}
+
 *{
   text-align: right;
 }
 *{
   direction:rtl;
+}
+a:hover {
+ cursor:pointer;
+}
+.react-slideshow-wrapper, .slide, .indicators{
+    direction: ltr;
+}
+.celled td:first-child{
+    border-left: 1px solid rgba(34,36,38,.1) !important;
+}
+.celled th:first-child{
+    border-left: 1px solid rgba(34,36,38,.1) !important;
 }
