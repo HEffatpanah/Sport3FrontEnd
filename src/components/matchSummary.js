@@ -49,11 +49,11 @@ export default class MatchesSummaryTable extends Component{
         )
     };
     render() {
-           // const all=<Translate id="all" />;
-        // const fav=<Translate id="favorite" />;
+           const all=<Translate id="all" />;
+        const fav=<Translate id="favorite" />;
         const panes = [
-            { menuItem: 'همه', render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
-            { menuItem: 'مورد علاقه', render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
+            { menuItem:  { key: 'all', content:all} , render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
+            { menuItem: { key: 'favorite', content:fav}, render: () => <Tab.Pane><div>Mahdi</div></Tab.Pane> },
         ];
 
         const MatchesTable =
