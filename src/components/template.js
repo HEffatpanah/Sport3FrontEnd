@@ -72,7 +72,7 @@ class Navbar extends Component {
                         active={this.props.location.pathname === '/login'}
                         onClick={this.handleItemClick}
                         path = '/login'
-                        position={'left'}
+                        position={direction==='rtl'?'left':'right'}
                     ><Icon name='user'/></Menu.Item>
 
                 )
@@ -183,7 +183,7 @@ class Template extends Component {
             height:'15vh',
         };
         return (
-            <div style={{direction:direction}}>
+            <div style={{direction:direction,textAlign:direction==='rtl'?'right':'left'}}>
                 <div style={{'height': '100vh' }}>
                     <Grid  style={{ 'height': '100%'}}>
                         <Grid.Row style={zerostyle}>

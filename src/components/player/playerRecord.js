@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Dropdown, Icon, Table} from 'semantic-ui-react'
+import {Translate} from "react-localize-redux";
 
 
 export default class PlayerRecordTable extends Component{
@@ -39,10 +40,10 @@ export default class PlayerRecordTable extends Component{
             <Table>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell colSpan='2' style={{direction:'rtl'}}>
+                        <Table.HeaderCell colSpan='2'>
                             <div style={{display:'flex', justifyContent:'space-between'}}>
                                 {this.props.playerRecords['tableName']}
-                                <Dropdown text='انتخاب فصل' options={options} onChange={this.handleSelect}/>
+                                <Dropdown text={<Translate id='player record'/>} options={options} onChange={this.handleSelect}/>
                             </div>
                         </Table.HeaderCell>
                     </Table.Row>

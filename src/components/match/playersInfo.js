@@ -22,9 +22,9 @@ export default class sInfo extends Component {
                     if(ReplaceTime!==null)
                         replace=(<div style={{display:'inline-block'}}><img src={require("../../images/subout.png")}/>{ReplaceTime}</div>);
                     return (
-                        <Table.Row style={{textAlign:this.props.direction}} columns={4}>
-                            <Table.Cell collapsing style={{color:'green'}}>{Name} {shirt}</Table.Cell>
-                            <Table.Cell style={{textAlign:'left'}}>{yellow} {replace} {goals}</Table.Cell>
+                        <Table.Row columns={4}>
+                            <Table.Cell id='first' collapsing style={{color:'green'}}>{shirt} {Name}</Table.Cell>
+                            <Table.Cell style={{textAlign:'center'}}>{yellow} {replace} {goals}</Table.Cell>
                         </Table.Row>
                     );
                 }
@@ -53,8 +53,8 @@ export default class sInfo extends Component {
                         replace=(<div style={{display:'inline-block'}}><img src={require("../../images/subin.png")}/>{ReplaceTime}</div>);
                     return (
                         <Table.Row>
-                            <Table.Cell collapsing style={{color:'red'}}>{Name} {shirt}</Table.Cell>
-                            <Table.Cell style={{textAlign:'left'}}>{yellow} {replace} {goals}</Table.Cell>
+                            <Table.Cell collapsing style={{color:'red'}}>{shirt} {Name}</Table.Cell>
+                            <Table.Cell style={{textAlign:'center'}}>{yellow} {replace} {goals}</Table.Cell>
                         </Table.Row>
                     );
                 }

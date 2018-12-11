@@ -42,7 +42,7 @@
 }
 
 *{
-  text-align: right;
+  /*text-align: right;*/
 }
 *{
   /*direction:rtl;*/
@@ -61,4 +61,7 @@ a:hover {
 }
 a{
   color:black;
+}
+.ui.table{
+  text-align: inherit;
 }

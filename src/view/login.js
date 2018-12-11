@@ -40,17 +40,16 @@ class LoginForm extends Component {
     render() {
         const loginForm =
             <Grid textAlign='center' style={{width:'100%', height: '100%'}} verticalAlign='middle'>
-                <Grid.Column style={{maxWidth: 450, direction:'rtl'}}>
+                <Grid.Column style={{maxWidth: 450}}>
                     <Message hidden={this.state.hiddenLoginError} error={true} >
                         {<Translate id="wrong user" />}
                     </Message>
                     <Form size='large' onSubmit={this.handleSubmit}>
-                        <Segment stacked >
-                            <Form.Input name='user' fluid icon='user' iconPosition='right' label={<Translate id="username" />} required/>
+                        <Segment >
+                            <Form.Input name='user' fluid icon='user' label={<Translate id="username" />}  required/>
                             <Form.Input name='pass' required
                                         fluid
                                         icon='lock'
-                                        iconPosition='right'
                                         label={<Translate id="password" />}
                                         type='password'
                             />

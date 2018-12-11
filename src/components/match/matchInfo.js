@@ -11,9 +11,9 @@ export default class MatchInfo extends Component{
         return (
             this.props.matchRecord['generalRecords'].map(({featureName, featureValue}) => {
                     return (
-                        <Table.Row style={{textAlign:this.props.direction}} columns={2}>
+                        <Table.Row columns={2}>
                             <Table.Cell>{featureName}</Table.Cell>
-                            <Table.Cell style={{textAlign:'left'}}>{featureValue}</Table.Cell>
+                            <Table.Cell>{featureValue}</Table.Cell>
                         </Table.Row>
                     );
                 }

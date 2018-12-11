@@ -110,5 +110,9 @@
   "opponent": [
       "Opponent",
       "حریف"
+    ],
+  "player record": [
+      "Player record",
+      "انتخاب فصل"
     ]
 }

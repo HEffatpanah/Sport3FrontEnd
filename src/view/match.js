@@ -225,10 +225,10 @@ export default class Match extends Component {
                     <TimeLine minutes={matchInfo['tableData']['matchMinutes']} matchData={matchInfo['tableData']}/>
                 </Grid.Row>
                 <Grid.Row columns={4}>
-                    <Grid.Column width={4}><PlayersInfo direction={'right'} playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
-                    <Grid.Column width={4}><MatchInfo direction={'right'} matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
-                    <Grid.Column width={4}><MatchInfo direction={'right'} matchRecord={matchInfo['tableData']['team2']}/></Grid.Column>
-                    <Grid.Column width={4}><PlayersInfo direction={'right'} playerInfo={matchInfo['tableData']['team2']['players']}/></Grid.Column>
+                    <Grid.Column width={4}><PlayersInfo  playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
+                    <Grid.Column width={4}><MatchInfo matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
+                    <Grid.Column width={4}><MatchInfo matchRecord={matchInfo['tableData']['team2']}/></Grid.Column>
+                    <Grid.Column width={4}><PlayersInfo playerInfo={matchInfo['tableData']['team2']['players']}/></Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={2}>
                     {/*<Grid.Column><OnlineReport/></Grid.Column>*/}

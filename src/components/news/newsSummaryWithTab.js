@@ -28,7 +28,7 @@ export default class NewsSummeryWithTab extends Component{
                 <Menu pointing secondary>
                     <Menu.Item
                         name='آخرین ها'
-                        style={{width: '50%', textAlign: 'right'}}
+                        style={{width: '50%'}}
                         onClick={this.handleItemClick}
                         active={this.state.activeItem === 'آخرین ها'}
                     />
