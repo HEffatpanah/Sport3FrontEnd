@@ -37,16 +37,10 @@
   background-size: 50px 50px;
 }
 
-*,div,body,header,h2, h4,div h2{
-  font-family: "B Yekan", serif;
-}
+/*{*/
+  /*font-family: "B Yekan";*/
+/*}*/
 
-*{
-  /*text-align: right;*/
-}
-*{
-  /*direction:rtl;*/
-}
 a:hover {
  cursor:pointer;
 }

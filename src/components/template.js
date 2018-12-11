@@ -190,7 +190,7 @@ class Template extends Component {
             height:'15vh',
         };
         return (
-            <div style={{direction:localStorage.getItem('dir'),textAlign:localStorage.getItem('align')}}>
+            <div style={{fontFamily:localStorage.getItem('lan')==='en'? "Helvetica":"B Yekan",direction:localStorage.getItem('dir'),textAlign:localStorage.getItem('align')}}>
                 <div style={{'height': '100vh' }}>
                     <Grid  style={{ 'height': '100%'}}>
                         <Grid.Row style={zerostyle}>
