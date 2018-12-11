@@ -114,5 +114,13 @@
   "player record": [
       "Player record",
       "انتخاب فصل"
+    ],
+  "online news": [
+      "online news",
+      "اخبار لحظه ای"
+    ],
+  "fringe news": [
+      "fringe news",
+      "اخبار حاشیه"
     ]
 }

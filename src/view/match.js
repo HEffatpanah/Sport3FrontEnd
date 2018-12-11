@@ -5,9 +5,41 @@ import PlayersInfo from '../components/match/playersInfo'
 import OnlineReport from '../components/match/onlineReport'
 import FringeNews from '../components/match/fringeNews'
 import MultiMedia from '../components/match/multiMedia'
+import NewsSummery from '../components/news/newsSummery'
+import {Translate, withLocalize} from "react-localize-redux";
 
-import { Grid} from 'semantic-ui-react'
+
+import {Grid, Segment} from 'semantic-ui-react'
 import Template from '../components/template'
+
+
+
+const newsData=[
+    {title:'tractorhasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'perspoliasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjjs', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+    {title:'esteglalasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjj', link:'https://www.google.com'},
+];
+
+
 
 const matchInfo =
     {
@@ -222,7 +254,11 @@ export default class Match extends Component {
         const body =
             <Grid style={{width:'100%'}}>
                 <Grid.Row>
+                    <Grid.Column width={16}>
+                    <div style={{maxWidth:'100%', overflow:'auto'}}>
                     <TimeLine minutes={matchInfo['tableData']['matchMinutes']} matchData={matchInfo['tableData']}/>
+                    </div>
+                    </Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={4}>
                     <Grid.Column width={4}><PlayersInfo  playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
@@ -231,8 +267,19 @@ export default class Match extends Component {
                     <Grid.Column width={4}><PlayersInfo playerInfo={matchInfo['tableData']['team2']['players']}/></Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={2}>
-                    {/*<Grid.Column><OnlineReport/></Grid.Column>*/}
-                    {/*<Grid.Column><FringeNews/></Grid.Column>*/}
+                    <Grid.Column>
+                        <div style={{fontSize:'1.5em'}}><Translate id="online news" /></div>
+                        <Segment  style={{maxHeight:'40vh', overflow:'auto'}}>
+                            <NewsSummery newsData={newsData}/>
+                        </Segment>
+                    </Grid.Column>
+                    <Grid.Column>
+                        <div style={{fontSize:'1.5em'}}><Translate id='fringe news'/></div>
+                        <Segment  style={{maxHeight:'40vh', overflow:'auto'}}>
+
+                            <NewsSummery newsData={newsData}/>
+                        </Segment>
+                    </Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={1} style={{textAlign:'center', justifyContent: 'space-evenly'}}>
                     <Grid.Column width={6}><MultiMedia media={medias}/></Grid.Column>

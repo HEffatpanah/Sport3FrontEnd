@@ -57,7 +57,7 @@ export default class TimeLine extends Component{
     }
     render() {
         return (
-            <Table style={{background:'none', tableLayout: 'fixed', border:'none'}}>
+            <Table style={{background:'none',  border:'none'}}>
                 <Table.Row >
                     {this.getEvents(1, 'bottom')}
                 </Table.Row>
