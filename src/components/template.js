@@ -1,4 +1,6 @@
 import React,{Component} from "react";
+import {getActiveLanguage } from 'react-localize-redux';
+
 
 
 import { Menu,Grid, Dropdown, Icon} from 'semantic-ui-react'
@@ -9,7 +11,7 @@ import {
 } from 'semantic-ui-react'
 import {Translate, withLocalize} from "react-localize-redux";
 
-
+let direction='rtl';
 class Navbar extends Component {
     state = {
         activeItem: this.props.location.pathname,
@@ -18,6 +20,17 @@ class Navbar extends Component {
         change:false,
         first: true
     };
+    changeLanguage(code){
+        this.props.setActiveLanguage(code);
+        switch(code){
+            case 'fa':
+                direction='rtl';
+                break;
+            case 'en':
+                direction='ltr';
+                break;
+        }
+    }
     handleItemClick = (e, {name,path}) => {
         this.setState({activeItem: name});
         if(this.props.location.pathname!==path)
@@ -43,11 +56,11 @@ class Navbar extends Component {
             if(localStorage.getItem('username') !== null) {
                 return (
                     <Menu.Item position='left' style={{height:'inherit'}}>
-                    <Dropdown text={this.state.name} item pointing={'right top'}>
-                        <Dropdown.Menu >
-                            <Dropdown.Item onClick={Logout}>خروج<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                        <Dropdown text={this.state.name} item pointing={'right top'}>
+                            <Dropdown.Menu >
+                                <Dropdown.Item onClick={Logout}>خروج<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </Menu.Item>
 
                 )
@@ -79,7 +92,7 @@ class Navbar extends Component {
                     path = '/teams'
                     active={this.props.location.pathname === '/teams'}
                     onClick={this.handleItemClick}
-                    >{<Translate id="team" />}</Menu.Item>
+                >{<Translate id="team" />}</Menu.Item>
                 <Menu.Item
                     name='player'
                     path = '/player'
@@ -94,8 +107,8 @@ class Navbar extends Component {
                 >{<Translate id="news" />}</Menu.Item>
                 <Dropdown text={<Translate id="language" />} simple item>
                     <Dropdown.Menu>
-                        <Dropdown.Item onClick={this.props.setActiveLanguage.bind(this,'fa')} style={{ textAlign:'center'}} value='football'>فارسی</Dropdown.Item>
-                        <Dropdown.Item onClick={this.props.setActiveLanguage.bind(this,'en')} style={{ textAlign:'center'}}  value='Basketball'>English</Dropdown.Item>
+                        <Dropdown.Item onClick={this.changeLanguage.bind(this,'fa')} style={{ textAlign:'center'}} value='football'>فارسی</Dropdown.Item>
+                        <Dropdown.Item onClick={this.changeLanguage.bind(this,'en')} style={{ textAlign:'center'}}  value='Basketball'>English</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 {Login_Logout()}
@@ -143,7 +156,9 @@ class Footer extends Component{
 
 
 class Template extends Component {
-
+    constructor(props){
+        super(props);
+    }
     render() {
         const zerostyle = {
             color:'#bec8dc',
@@ -168,29 +183,31 @@ class Template extends Component {
             height:'15vh',
         };
         return (
-            <div style={{'height': '100vh' }}>
-                <Grid  style={{ 'height': '100%'}}>
-                    <Grid.Row style={zerostyle}>
-                        <Grid.Column style={{textAlign: 'center'}}>
-                            <img style={{float:'right'}} src={require("../images/2.png")}/>
-                            <img style={{float:'center',marginTop:'5vh'}} src={require("../images/6.png")}/>
-                            <img style={{float:'left',marginTop:'2vh'}} src={require("../images/10.png")}/>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row style={firststyle}>
-                        <Grid.Column >
-                            <Navbar {...this.props}/>
-                        </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row style={secondstyle}>
-                        {this.props.body}
-                    </Grid.Row>
-                    <Grid.Row style={thirdstyle}>
-                        <Grid.Column >
-                            <Footer/>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+            <div style={{direction:direction}}>
+                <div style={{'height': '100vh' }}>
+                    <Grid  style={{ 'height': '100%'}}>
+                        <Grid.Row style={zerostyle}>
+                            <Grid.Column style={{textAlign: 'center'}}>
+                                <img style={{float:'right'}} src={require("../images/2.png")}/>
+                                <img style={{float:'center',marginTop:'5vh'}} src={require("../images/6.png")}/>
+                                <img style={{float:'left',marginTop:'2vh'}} src={require("../images/10.png")}/>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row style={firststyle}>
+                            <Grid.Column >
+                                <Navbar {...this.props}/>
+                            </Grid.Column>
+                        </Grid.Row>
+                        <Grid.Row style={secondstyle}>
+                            {this.props.body}
+                        </Grid.Row>
+                        <Grid.Row style={thirdstyle}>
+                            <Grid.Column >
+                                <Footer/>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </div>
             </div>
         )
     }
