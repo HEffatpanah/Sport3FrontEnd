@@ -11,7 +11,6 @@ import {
 } from 'semantic-ui-react'
 import {Translate, withLocalize} from "react-localize-redux";
 
-let direction='rtl';
 class Navbar extends Component {
     state = {
         activeItem: this.props.location.pathname,
@@ -24,10 +23,18 @@ class Navbar extends Component {
         this.props.setActiveLanguage(code);
         switch(code){
             case 'fa':
-                direction='rtl';
+                localStorage.setItem('lan','fa');
+                localStorage.setItem('dir','rtl');
+                localStorage.setItem('align','right');
+                localStorage.setItem('I_align','left');
+                window.location.reload();
                 break;
             case 'en':
-                direction='ltr';
+                localStorage.setItem('lan','en');
+                localStorage.setItem('dir','ltr');
+                localStorage.setItem('align','left');
+                localStorage.setItem('I_align','right');
+                window.location.reload();
                 break;
         }
     }
@@ -55,7 +62,7 @@ class Navbar extends Component {
         const Login_Logout =() => {
             if(localStorage.getItem('username') !== null) {
                 return (
-                    <Menu.Item position='left' style={{height:'inherit'}}>
+                    <Menu.Item position={localStorage.getItem('I_align')} style={{height:'inherit'}}>
                         <Dropdown text={this.state.name} item pointing={'right top'}>
                             <Dropdown.Menu >
                                 <Dropdown.Item onClick={Logout}>خروج<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
@@ -72,7 +79,7 @@ class Navbar extends Component {
                         active={this.props.location.pathname === '/login'}
                         onClick={this.handleItemClick}
                         path = '/login'
-                        position={direction==='rtl'?'left':'right'}
+                        position={localStorage.getItem('I_align')}
                     ><Icon name='user'/></Menu.Item>
 
                 )
@@ -183,7 +190,7 @@ class Template extends Component {
             height:'15vh',
         };
         return (
-            <div style={{direction:direction,textAlign:direction==='rtl'?'right':'left'}}>
+            <div style={{direction:localStorage.getItem('dir'),textAlign:localStorage.getItem('align')}}>
                 <div style={{'height': '100vh' }}>
                     <Grid  style={{ 'height': '100%'}}>
                         <Grid.Row style={zerostyle}>

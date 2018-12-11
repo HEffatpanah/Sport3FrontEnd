@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Segment, Form, Input, TextArea, Button, Comment, Image, Divider} from "semantic-ui-react";
+import {Translate} from "react-localize-redux";
 
 export default class NewsDetail extends Component {
     constructor(props) {
@@ -80,12 +81,12 @@ export default class NewsDetail extends Component {
         const image_body = this.state.newDetail['body'];
         const moreImagesUrl = this.state.newDetail['moreImagesUrl'];
         const news_image =
-            <img src={require("../../" + image_url)} style={{"width": "10vw", "height": "9vh", "float": "left", margin:'0.4em'}}/>;
+            <img src={require("../../" + image_url)} style={{"width": "10vw", "height": "9vh", "float": localStorage.getItem('I_align'), margin:'0.4em'}}/>;
 
-        const news = <Segment style={{"overflow": "auto", direction:'rtl', fontSize:'1.3em', lineHeight:'1.4em'}}>
+        const news = <Segment style={{"overflow": "auto", fontSize:'1.3em', lineHeight:'1.4em'}}>
             <div>{news_image}</div>
             <div><header style={{display:'inline-block'}}><h2>{news_title}</h2></header>
-                <div style={{float:'left', fontSize:'0.6em'}}>تاریخ : {image_dateTime}</div>
+                <div style={{float:localStorage.getItem('I_align'), fontSize:'0.6em'}}>تاریخ : {image_dateTime}</div>
             </div>
             <div>{image_body}</div>
             <div>{this.getMoreImages()}</div>
@@ -93,13 +94,13 @@ export default class NewsDetail extends Component {
             <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both', fontSize:'0.8em'}}><strong>تگ ها</strong>&ensp; :&ensp;  {this.getTages()}</div>
         </Segment>;
         const comments =
-            <Segment style={{textAlign:'right'}}>
+            <Segment style={{textAlign:localStorage.getItem('align')}}>
                 <Comment.Group style={{margin:'auto'}} >
                     {this.getComment()}
-                    <Form reply onSubmit={this.handleCommentSubmit} style={{direction: 'rtl'}}>
+                    <Form reply onSubmit={this.handleCommentSubmit}>
                         <Form.Input name='name'  label='نام'/>
                         <Form.TextArea name='comment' label='نظر'/>
-                        <Button content='افزودن نظر' labelPosition='left' icon='edit' primary />
+                        <Button content={<Translate id='add comment'/>} labelPosition={localStorage.getItem('I_align')} icon='edit' primary />
                     </Form>
                 </Comment.Group>
             </Segment>;

@@ -26,6 +26,7 @@ class App extends Component {
         c:false,
     }
     render() {
+        console.log(localStorage.getItem('lan'))
         return (
             <LocalizeProvider initialize={{
                 languages: [
@@ -34,7 +35,7 @@ class App extends Component {
                 ],
                 translation: globalTranslations,
                 options: {
-                    defaultLanguage: "fa",
+                    defaultLanguage: localStorage.getItem('lan'),
                     renderToStaticMarkup: ReactDOMServer.renderToStaticMarkup
                 }
             }}>
