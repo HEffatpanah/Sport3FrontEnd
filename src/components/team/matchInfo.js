@@ -4,25 +4,6 @@ import _ from "lodash";
 import {Translate} from "react-localize-redux";
 
 
-
-class MatchInfo extends Component {
-
-    render() {
-
-        const info = this.props.matchData;
-
-        return (
-            <Table.Row>
-                <Table.Cell>{info['owerTeamGoal']+'-'+info['opponentTeamGoal']}</Table.Cell>
-                <Table.Cell>{info['date']}</Table.Cell>
-                <Table.Cell>{info['score']}</Table.Cell>
-                <Table.Cell>{info['status']}</Table.Cell>
-            </Table.Row>
-        )
-    }
-}
-
-
 export default class MatchesTable extends Component{
     state ={
         matchesData:this.props.matchesData,
@@ -51,14 +32,22 @@ export default class MatchesTable extends Component{
         return(
             this.state.matchesData.map((data) => {
                     return(
-                        <MatchInfo matchData={data}/>
-                    )
+                        <Table.Row>
+                            <Table.Cell>{data['owerTeamGoal']+'-'+data['opponentTeamGoal']}</Table.Cell>
+                            <Table.Cell>{data['date']}</Table.Cell>
+                            <Table.Cell>{data['score']}</Table.Cell>
+                            <Table.Cell>{data['status']}</Table.Cell>
+                            <Table.Cell><a href={data['opponentLink']} target='_blank'>{data['opponent']}</a></Table.Cell>
+                        </Table.Row>
+
+                        // <MatchInfo matchData={data}/>
+                )
                 }
             )
         )
     };
     render() {
-        const {matchesData, column, direction} = this.state;
+        const {column, direction} = this.state;
         return (
             <Table sortable celled fixed>
                 <Table.Header>
@@ -72,19 +61,22 @@ export default class MatchesTable extends Component{
                             sorted={column === 'date' ? direction : null}
                             onClick={this.handleSort('date')}
                         >
-                           {<Translate id="date" />}
+                            {<Translate id="date" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
                             sorted={column === 'score' ? direction : null}
                             onClick={this.handleSort('score')}
                         >
-                           {<Translate id="point" />}
+                            {<Translate id="point" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
                             sorted={column === 'win/lose/draw' ? direction : null}
                             onClick={this.handleSort('win/lose/draw')}
                         >
                             {<Translate id="status" />}</Table.HeaderCell>
+                        <Table.HeaderCell
+                        >
+                            {<Translate id="opponent" />}</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>

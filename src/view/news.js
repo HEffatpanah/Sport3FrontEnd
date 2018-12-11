@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Template from '../components/template'
 import {Grid, Segment} from 'semantic-ui-react'
 import Adv from '../components/advertisement'
-import Newssummery from '../components/news/newsSummery'
+import NewsSummery from '../components/news/newsSummery'
 import NewsDetail from "../components/news/newsDetail";
 
 
@@ -90,7 +90,7 @@ class App extends Component {
                 <Grid.Row columns={3}>
                     <Grid.Column width={4}>
                         <Segment>
-                            <Newssummery newsData={this.state.newsData}/>
+                            <NewsSummery newsData={this.state.newsData}/>
                         </Segment>
                     </Grid.Column>
                     <Grid.Column width={9}>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {Table} from 'semantic-ui-react'
-import { Tab, Segment} from 'semantic-ui-react'
+import { Tab} from 'semantic-ui-react'
 import {Translate} from "react-localize-redux";
 
 
@@ -13,9 +13,9 @@ class MatchSummary extends Component {
 
         return (
             <Table.Row style={{'width':'100%'}}>
-                <Table.Cell width={2}>{info['team1Name']}</Table.Cell>
+                <Table.Cell width={2}><a href={info['team1Link']} target='_blank'>{info['team1Name']}</a></Table.Cell>
                 <Table.Cell width={1}>{info['team1Goal']+'-'+info['team2Goal']}</Table.Cell>
-                <Table.Cell width={2}>{info['team2Name']}</Table.Cell>
+                <Table.Cell width={2}><a href={info['team2Link']} target='_blank'>{info['team2Name']}</a></Table.Cell>
                 <Table.Cell width={1}>{info['date']}</Table.Cell>
             </Table.Row>
         )
@@ -33,7 +33,7 @@ export default class MatchesSummaryTable extends Component{
                         <MatchSummary matchData={data}/>
                     )
                 }
-            )
+            );
         return(
             <Table>
              <Table.Header>
@@ -57,7 +57,7 @@ export default class MatchesSummaryTable extends Component{
         ];
 
         const MatchesTable =
-                <Tab panes={panes} />
+                <Tab panes={panes} />;
         return (
                     MatchesTable
         );

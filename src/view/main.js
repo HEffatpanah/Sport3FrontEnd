@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import { Tab, Segment, Grid} from 'semantic-ui-react'
+import {Segment, Grid} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 import MatchesSummaryTable from "../components/matchSummary";
 import Adv from "../components/advertisement";
-import Newssummery from '../components/news/newsSummery'
 import globalTranslations from "../translations/global";
 import {Translate, withLocalize} from "react-localize-redux";
-
+import NewsSummeryWithTab from '../components/news/newsSummaryWithTab'
 
 const matchData = [
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
 ];
 
 
@@ -46,42 +45,22 @@ const newsData=[
     {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
     {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
     {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-]
+];
 
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedSport : "football"
+            selectedSport : "football",
         };
         console.log(this.props);
         this.props.addTranslation(globalTranslations);
     }
-    handleSelectorChange = (selectedOption) => {
-        this.setState({selectedSport:selectedOption.value});
-    };
+
+
     render() {
 
-        const options = [
-            { value: 'football', label: 'فوتبال' },
-            { value: 'basketball', label: 'بسکتبال' },
-        ];
-        // const news =
-        //     <Segment>
-        //
-        //         <a id="ew" href="https://www.google.com">news</a><br/>
-        //         <a href="https://www.google.com">news</a><br/>
-        //         <a href="https://www.google.com">news</a><br/>
-        //         <a href="https://www.google.com">news</a><br/>
-        //         <a href="https://www.google.com">news</a><br/>
-        //         <a href="https://www.google.com">news</a><br/>
-        //         <a href="https://www.google.com">news</a><br/>
-        //         <a href="https://www.google.com">news</a><br/>
-        //     </Segment>;
-
-        const Selectbar =
-            <Select placeholder={<Translate id="choose match" />}  search selection options={options} onChange={this.handleSelectorChange}/>;
         let body =
             <Grid style={{width:'100%'}}>
 
@@ -101,7 +80,7 @@ class App extends Component {
                                 </Grid.Column>
                                 <Grid.Column  style={{padding:0}} width={7}>
                                     <Segment>
-                                        <Newssummery newsData={newsData}/>
+                                    <NewsSummeryWithTab newsData={newsData}/>
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
@@ -125,7 +104,7 @@ class App extends Component {
                                 </Grid.Column>
                                 <Grid.Column  style={{padding:0}} width={7}>
                                     <Segment>
-                                        <Newssummery newsData={newsData}/>
+                                        <NewsSummeryWithTab newsData={newsData}/>
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>

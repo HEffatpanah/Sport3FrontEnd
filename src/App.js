@@ -16,8 +16,7 @@ import Page4 from './view/teams';
 import Page5 from './view/match';
 import Page6 from './view/signup';
 import Page7 from './view/player';
-import Page8 from './view/leags';
-import Page9 from './components/league/oldLeague';
+import Page8 from './view/leagues';
 
 
 const history = createBrowserHistory();
@@ -48,8 +47,7 @@ class App extends Component {
                         <Route exact path='/match' component={Page5} />
                         <Route exact path='/signup' component={Page6} />
                         <Route exact path='/player' component={Page7} />
-                        <Route exact path='/leage' component={Page8} />
-                        <Route exact path='/test' component={Page9} />
+                        <Route exact path='/league' component={Page8} />
                     </Switch>
                 </Router>
             </LocalizeProvider>

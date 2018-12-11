@@ -106,5 +106,9 @@
   "status": [
       "Status",
       "وضعیت"
+    ],
+  "opponent": [
+      "Opponent",
+      "حریف"
     ]
 }

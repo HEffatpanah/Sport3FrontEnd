@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import {Icon, List} from "semantic-ui-react";
 
 
-export default class Newssummery extends Component{
+export default class NewsSummery extends Component{
     state={
         newsData:this.props.newsData
-    }
+    };
     newsBody() {
         return (this.state.newsData.map(({title, link}) => {
                 return (

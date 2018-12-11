@@ -1,7 +1,6 @@
 import {Component} from "react";
 import _ from "lodash";
 import {Checkbox, Table} from "semantic-ui-react";
-import {Segment} from "semantic-ui-react";
 import {Grid} from "semantic-ui-react";
 import {Dropdown} from "semantic-ui-react";
 import React from "react";
@@ -41,10 +40,10 @@ export default class TeamMembers extends Component{
     handleCheckBox = () => {
         this.setState({filterEnable:!this.state.filterEnable});
     };
-    static getMemberName(name, isPlayer){
+    static getMemberName(name, isPlayer, link){
         if(isPlayer){
             return(
-                <a style={{color:'#00339e'}} href={'/players/'+name}>{name}</a>
+                <a href={link} target='_blank'>{name}</a>
             );
         }
         else{
@@ -57,12 +56,12 @@ export default class TeamMembers extends Component{
             { text:'دفاع', value: 'دفاع', style:{textAlign:'center'}},
         ];
         const {column, direction} = this.state;
-        const body = _.map(this.state.data, ({ name, age, position, photo, isPlayer}) => {
+        const body = _.map(this.state.data, ({playerPage,  name, age, position, photo, isPlayer}) => {
             if(this.state.filterEnable){
                 if(position===this.state.filterItem)
                     return (
                         <Table.Row>
-                            <Table.Cell>{TeamMembers.getMemberName(name, isPlayer)}</Table.Cell>
+                            <Table.Cell>{TeamMembers.getMemberName(name, isPlayer, playerPage)}</Table.Cell>
                             <Table.Cell>{age}</Table.Cell>
                             <Table.Cell>{position}</Table.Cell>
                             <Table.Cell style={{textAlign: 'center'}}>{photo}</Table.Cell>
@@ -73,7 +72,7 @@ export default class TeamMembers extends Component{
             else
                 return(
                     <Table.Row>
-                        <Table.Cell>{TeamMembers.getMemberName(name, isPlayer)}</Table.Cell>
+                        <Table.Cell>{TeamMembers.getMemberName(name, isPlayer, playerPage)}</Table.Cell>
                         <Table.Cell>{age}</Table.Cell>
                         <Table.Cell>{position}</Table.Cell>
                         <Table.Cell style={{textAlign: 'center'}}>{photo}</Table.Cell>
@@ -83,7 +82,6 @@ export default class TeamMembers extends Component{
 
         return (
             <div>
-                <Segment>
                     <Grid >
                         <Grid.Row columns={2}>
                             <Grid.Column>
@@ -133,7 +131,6 @@ export default class TeamMembers extends Component{
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                </Segment>
             </div>
         )
     }

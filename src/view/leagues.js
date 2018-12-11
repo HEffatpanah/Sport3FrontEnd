@@ -133,7 +133,7 @@ class App extends Component {
                         <LeagueTable leagueData={leagueData}/>
                         </Grid.Row>
                         <Grid.Row>
-                            <MatchesSummaryTable/>
+                            {/*<MatchesSummaryTable/>*/}
                         </Grid.Row>
                     </Grid.Column>
 
