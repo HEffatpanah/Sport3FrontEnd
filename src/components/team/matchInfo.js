@@ -29,10 +29,12 @@ export default class MatchesTable extends Component{
     };
 
     getTableData (){
+        let active = true;
         return(
             this.state.matchesData.map((data) => {
+                    active = !active;
                     return(
-                        <Table.Row>
+                        <Table.Row active={active}>
                             <Table.Cell>{data['owerTeamGoal']+'-'+data['opponentTeamGoal']}</Table.Cell>
                             <Table.Cell>{data['date']}</Table.Cell>
                             <Table.Cell>{data['score']}</Table.Cell>
@@ -41,7 +43,7 @@ export default class MatchesTable extends Component{
                         </Table.Row>
 
                         // <MatchInfo matchData={data}/>
-                )
+                    )
                 }
             )
         )
@@ -53,28 +55,32 @@ export default class MatchesTable extends Component{
                 <Table.Header>
                     <Table.Row >
                         <Table.HeaderCell
-
+                            style={{backgroundColor:'#0ba700', color:'white'}}
                         >
                             {<Translate id="result" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
+                            style={{backgroundColor:'#0ba700', color:'white'}}
                             sorted={column === 'date' ? direction : null}
                             onClick={this.handleSort('date')}
                         >
                             {<Translate id="date" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
+                            style={{backgroundColor:'#0ba700', color:'white'}}
                             sorted={column === 'score' ? direction : null}
                             onClick={this.handleSort('score')}
                         >
                             {<Translate id="point" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
+                            style={{backgroundColor:'#0ba700', color:'white'}}
                             sorted={column === 'win/lose/draw' ? direction : null}
                             onClick={this.handleSort('win/lose/draw')}
                         >
                             {<Translate id="status" />}</Table.HeaderCell>
                         <Table.HeaderCell
+                            style={{backgroundColor:'#0ba700', color:'white'}}
                         >
                             {<Translate id="opponent" />}</Table.HeaderCell>
                     </Table.Row>

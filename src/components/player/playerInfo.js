@@ -9,9 +9,10 @@ export default class PlayerInfoTable extends Component{
             height: '16vh',
             width: '10vw',
         };
+        let active = false;
         return (
             this.props.playerInfo['tableData'].map(({featureName, featureValue}) => {
-
+                    active = !active
                     if (featureName === 'image') {
                         return (
                             <Table.Header>
@@ -23,7 +24,7 @@ export default class PlayerInfoTable extends Component{
                         )
                     }
                     return (
-                        <Table.Row columns={2}>
+                        <Table.Row active={active} columns={2}>
                             <Table.Cell>{featureName}</Table.Cell>
                             <Table.Cell>{featureValue}</Table.Cell>
 

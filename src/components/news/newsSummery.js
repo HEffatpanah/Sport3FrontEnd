@@ -10,7 +10,7 @@ export default class NewsSummery extends Component{
         return (this.state.newsData.map(({title, link}) => {
                 return (
                     <div>
-                        <Icon name='angle double left' />
+                        <Icon name='asterisk' color={"blue"} />
                     <List.Item href={link} target={'_blank'} style={{color:'black'}}>{title}</List.Item>
                     </div>
                 )
@@ -19,7 +19,7 @@ export default class NewsSummery extends Component{
     }
     render() {
         return (
-            <List style={{ maxHeight: '150vh', overflow: 'auto', wordWrap:'break-word', direction:'rtl'}}>
+            <List style={{ maxHeight: '150vh', overflow: 'auto', wordWrap:'break-word'}}>
                 {/*<List.Item>yt</List.Item>*/}
                 {this.newsBody()}
             </List>

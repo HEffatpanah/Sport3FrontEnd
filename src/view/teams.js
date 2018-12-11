@@ -51,13 +51,45 @@ const image_style={
     width:'5vw',
 };
 
-const membersData = [
-    {playerPage:'https://www.google.com',  name:'علی', age:'22', position:'حمله', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
-    {playerPage:'https://www.google.com',  name:'مهدی', age:'25', position:'دفاع', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
-    {playerPage:'https://www.google.com',  name:'عابباس', age:'21', position:'حمله', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
-    {playerPage:'https://www.google.com',  name:'ممد', age:'29', position:'دفاع', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:true},
-    {playerPage:'https://www.google.com',  name:'اهبر', age:'29', position:'مربی', photo:<img style={image_style} src={require('../images/horse.jpg')}/>, isPlayer:false},
-];
+const membersData = {
+    tableHeader:['نام', 'سن', 'پست', 'عکس'],
+    tableBody:[
+        {
+            memberInfo:[
+                {featureName:'playerName',featureValue:'علی', featureLink:'https://www.google.com'},
+                {featureName:'age',featureValue:23, featureLink: null},
+                {featureName:'position',featureValue:'دفاع', featureLink: null},
+                {featureName:'photo',featureValue:'http://www.gstatic.com/tv/thumb/persons/673351/673351_v9_ba.jpg', featureLink: null},
+            ]
+        },
+        {
+            memberInfo:[
+                {featureName:'playerName',featureValue:'علی', featureLink:'https://www.google.com'},
+                {featureName:'age',featureValue:23, featureLink: null},
+                {featureName:'position',featureValue:'حمله', featureLink: null},
+                {featureName:'photo',featureValue:'http://www.gstatic.com/tv/thumb/persons/673351/673351_v9_ba.jpg', featureLink: null},
+            ]
+        },
+        {
+            memberInfo:[
+               {featureName:'playerName',featureValue:'علی اصغر', featureLink:null},
+                {featureName:'age',featureValue:23, featureLink: null},
+                {featureName:'position',featureValue:'مدیر', featureLink: null},
+                {featureName:'photo',featureValue:'http://www.gstatic.com/tv/thumb/persons/673351/673351_v9_ba.jpg', featureLink: null},
+            ]
+        },
+        {
+            memberInfo:[
+                {featureName:'playerPage',featureValue:null},
+                {featureName:'playerName',featureValue:'علی'},
+                {featureName:'age',featureValue:23},
+                {featureName:'position',featureValue:'مربی'},
+                {featureName:'photo',featureValue:'http://www.gstatic.com/tv/thumb/persons/673351/673351_v9_ba.jpg'},
+            ]
+        },
+
+    ]
+};
 
 
 

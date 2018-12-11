@@ -8,44 +8,73 @@ import globalTranslations from "../translations/global";
 import {Translate, withLocalize} from "react-localize-redux";
 import NewsSummeryWithTab from '../components/news/newsSummaryWithTab'
 
-const matchData = [
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-];
+const matchData = {
+    tableHeader:['نام تیم', 'نتیجه','نام تیم','تاریخ'],
+    tableBody:[
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    ]
+};
 
 
-const newsData=[
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-    {title:'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link:'https://www.google.com'},
-];
+const newsData= {
+    favorite: [
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+        {title: 'پدیده تیم بسیار چرتی میباشد!!', link: 'https://www.google.com'},
+    ],
+    last: [
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+        {title: 'تراکتور سازی تبریز ، تیم چرت پدیده را ۱۰ بر هیچ شکست داد', link: 'https://www.google.com'},
+    ]
+};
 
 
 class App extends Component {
@@ -69,40 +98,50 @@ class App extends Component {
                         <Grid>
                             <Grid.Row >
                                 <Grid.Column>
-                                    <Segment style={{textAlign:'center'}}>
+                                    <Segment style={{textAlign:'center', backgroundColor:'#09c800', color:'white'}}>
                                         {<Translate id="football" />}
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row columns={2}>
-                                <Grid.Column  style={{padding:0}} width={9}>
+                                <Grid.Column   width={9}>
+                                    <Grid.Row>
                                     <MatchesSummaryTable matchesData={matchData}/>
+                                    </Grid.Row>
+                                    <Grid.Row style={{marginTop:'1vh'}}>
+                                        <Adv advertisement={'https://static.farakav.com/v3/static/bpx/00910571.gif'}/>
+                                    </Grid.Row>
                                 </Grid.Column>
-                                <Grid.Column  style={{padding:0}} width={7}>
+                                <Grid.Column   width={7}>
                                     <Segment>
-                                    <NewsSummeryWithTab newsData={newsData}/>
+                                        <NewsSummeryWithTab newsData={newsData}/>
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
                     </Grid.Column>
-                    <Grid.Column  style={{padding:0}} width={2}>
+                    <Grid.Column   width={2}>
                         <Adv link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'} advertisement={'https://static.farakav.com/v3/static/bpx/00910575.gif'}/>
                     </Grid.Column>
                     <Grid.Column width={7}>
                         <Grid>
                             <Grid.Row >
                                 <Grid.Column>
-                                    <Segment style={{textAlign:'center'}}>
+                                    <Segment style={{textAlign:'center', backgroundColor:'#1500ff', color:'white'}}>
                                         {<Translate id="basketball" />}
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
                             <Grid.Row columns={2}>
-                                <Grid.Column  style={{padding:0}} width={9}>
+                                <Grid.Column   width={9}>
+                                    <Grid.Row>
                                     <MatchesSummaryTable matchesData={matchData}/>
+                                    </Grid.Row>
+                                    <Grid.Row style={{marginTop:'1vh'}}>
+                                        <Adv advertisement={'https://static.farakav.com/v3/static/bpx/00910379.gif'}/>
+                                    </Grid.Row>
                                 </Grid.Column>
-                                <Grid.Column  style={{padding:0}} width={7}>
+                                <Grid.Column   width={7}>
                                     <Segment>
                                         <NewsSummeryWithTab newsData={newsData}/>
                                     </Segment>

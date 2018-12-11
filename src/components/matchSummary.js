@@ -5,22 +5,6 @@ import {Translate} from "react-localize-redux";
 
 
 
-class MatchSummary extends Component {
-
-    render() {
-
-        const info = this.props.matchData;
-
-        return (
-            <Table.Row style={{'width':'100%'}}>
-                <Table.Cell width={2}><a href={info['team1Link']} target='_blank'>{info['team1Name']}</a></Table.Cell>
-                <Table.Cell width={1}>{info['team1Goal']+'-'+info['team2Goal']}</Table.Cell>
-                <Table.Cell width={2}><a href={info['team2Link']} target='_blank'>{info['team2Name']}</a></Table.Cell>
-                <Table.Cell width={1}>{info['date']}</Table.Cell>
-            </Table.Row>
-        )
-    }
-}
 
 
 export default class MatchesSummaryTable extends Component{
@@ -28,28 +12,38 @@ export default class MatchesSummaryTable extends Component{
         matchesData:this.props.matchesData,
     };
     getTableData (){
-        const v = this.state.matchesData.map((data) => {
-                    return(
-                        <MatchSummary matchData={data}/>
-                    )
-                }
-            );
+        let active = true;
+        const tableBody = this.state.matchesData['tableBody'].map((data) => {
+            active = !active
+            return(
+                    <Table.Row active={active} style={{'width':'100%'}}>
+                        <Table.Cell width={2}><a href={data['team1Link']} target='_blank'>{data['team1Name']}</a></Table.Cell>
+                        <Table.Cell width={1}>{data['team1Goal']+'-'+data['team2Goal']}</Table.Cell>
+                        <Table.Cell width={2}><a href={data['team2Link']} target='_blank'>{data['team2Name']}</a></Table.Cell>
+                        <Table.Cell width={1}>{data['date']}</Table.Cell>
+                    </Table.Row>
+                )
+            }
+        );
+        const tableHeader = this.state.matchesData['tableHeader'].map((data) => {
+                return(
+                     <Table.HeaderCell style={{backgroundColor:'#ff005a', color:'white'}}> {data}</Table.HeaderCell>
+                )
+            }
+        );
         return(
             <Table>
-             <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell> {<Translate id="team name" />}</Table.HeaderCell>
-                        <Table.HeaderCell> {<Translate id="result" />}</Table.HeaderCell>
-                        <Table.HeaderCell> {<Translate id="team name" />}</Table.HeaderCell>
-                        <Table.HeaderCell> {<Translate id="date" />}</Table.HeaderCell>
+                <Table.Header>
+                    <Table.Row style={{backgroundColor:'#ff005a'}}>
+                        {tableHeader}
                     </Table.Row>
                 </Table.Header>
-                <Table.Body>{v}</Table.Body>
+                <Table.Body>{tableBody}</Table.Body>
             </Table>
         )
     };
     render() {
-           const all=<Translate id="all" />;
+        const all=<Translate id="all" />;
         const fav=<Translate id="favorite" />;
         const panes = [
             { menuItem:  { key: 'all', content:all} , render: () => <Tab.Pane>{this.getTableData()}</Tab.Pane> },
@@ -57,9 +51,9 @@ export default class MatchesSummaryTable extends Component{
         ];
 
         const MatchesTable =
-                <Tab panes={panes} />;
+            <Tab panes={panes} />;
         return (
-                    MatchesTable
+            MatchesTable
         );
     }
 }

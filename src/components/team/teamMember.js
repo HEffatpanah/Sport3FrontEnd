@@ -6,20 +6,20 @@ import {Dropdown} from "semantic-ui-react";
 import React from "react";
 import {Translate} from "react-localize-redux";
 
-export default class TeamMembers extends Component{
+export default class TeamMembers extends Component {
     state = {
         data: this.props.teamMembersData,
         direction: null,
         filterItem: null,
-        filterEnable:false,
-        column:null
+        filterEnable: false,
+        column: null
     };
 
     handleSort = clickedColumn => () => {
         const {data, column, direction} = this.state;
         if (column !== clickedColumn) {
             this.setState({
-                data:_.sortBy(data, [clickedColumn]),
+                data: _.sortBy(data, [clickedColumn]),
                 column: clickedColumn,
                 direction: 'ascending',
             });
@@ -34,103 +34,110 @@ export default class TeamMembers extends Component{
     };
 
     handleFilter = (selectedOption, {value}) => {
-        this.setState({ filterItem: value, filterEnable:true });
+        this.setState({filterItem: value, filterEnable: true});
 
     };
     handleCheckBox = () => {
-        this.setState({filterEnable:!this.state.filterEnable});
+        this.setState({filterEnable: !this.state.filterEnable, filterItem: null});
     };
-    static getMemberName(name, isPlayer, link){
-        if(isPlayer){
-            return(
+
+    static getMemberName(name, isPlayer, link) {
+        if (isPlayer) {
+            return (
                 <a href={link} target='_blank'>{name}</a>
             );
         }
-        else{
+        else {
             return name;
         }
     }
+
     render() {
         const options = [
-            { text:'حمله', value: 'حمله', style:{textAlign:'center'}},
-            { text:'دفاع', value: 'دفاع', style:{textAlign:'center'}},
+            {text: 'حمله', value: 'حمله', style: {textAlign: 'center'}},
+            {text: 'دفاع', value: 'دفاع', style: {textAlign: 'center'}},
         ];
         const {column, direction} = this.state;
-        const body = _.map(this.state.data, ({playerPage,  name, age, position, photo, isPlayer}) => {
-            if(this.state.filterEnable){
-                if(position===this.state.filterItem)
-                    return (
-                        <Table.Row>
-                            <Table.Cell>{TeamMembers.getMemberName(name, isPlayer, playerPage)}</Table.Cell>
-                            <Table.Cell>{age}</Table.Cell>
-                            <Table.Cell>{position}</Table.Cell>
-                            <Table.Cell style={{textAlign: 'center'}}>{photo}</Table.Cell>
-                        </Table.Row>
-                    )
-            }
+        let active = true;
+        const body = this.props.teamMembersData['tableBody'].map(({memberInfo}) => {
 
-            else
-                return(
-                    <Table.Row>
-                        <Table.Cell>{TeamMembers.getMemberName(name, isPlayer, playerPage)}</Table.Cell>
-                        <Table.Cell>{age}</Table.Cell>
-                        <Table.Cell>{position}</Table.Cell>
-                        <Table.Cell style={{textAlign: 'center'}}>{photo}</Table.Cell>
+            let show = true;
+            let rowItems = [];
+            memberInfo.map(({featureName, featureValue, featureLink}) => {
+                console.log(featureValue);
+                if (featureValue === this.state.filterItem) {
+                    show = false
+                }
+                if (featureName === 'photo') {
+                    rowItems.push(<Table.Cell style={{textAlign:'center'}}><img style={{width: '5vw', height: '9vh'}}
+                                                   src={featureValue}/></Table.Cell>)
+                }
+                else {
+                    if (featureLink)
+                        rowItems.push(<Table.Cell><a href={featureLink}>{featureValue}</a></Table.Cell>)
+                    else
+                        rowItems.push(<Table.Cell>{featureValue}</Table.Cell>)
+                }
+
+            });
+            if (show) {
+                active = !active;
+                return (
+                    <Table.Row active={active}>
+                        {rowItems}
                     </Table.Row>
                 )
-        });
+            }
 
+
+        });
+        const header = this.props.teamMembersData['tableHeader'].map((headerTitle) => {
+            return (
+                <Table.HeaderCell
+                    style={{backgroundColor:'#ff007a', color:'white'}}
+                    sorted={column === headerTitle ? direction : null}
+                    onClick={this.handleSort(headerTitle)}
+                >
+                    {headerTitle}
+                </Table.HeaderCell>
+
+            )
+        });
         return (
             <div>
-                    <Grid >
-                        <Grid.Row columns={2}>
-                            <Grid.Column>
-                                <Checkbox slider label={<Translate id="enable filter" />} checked={this.state.filterEnable} onClick={this.handleCheckBox}/>
-                            </Grid.Column>
-                            <Grid.Column style={{textAlign:'left'}}>
-                                <Dropdown  text={<Translate id="posts filter" />} icon='filter'>
-                                    <Dropdown.Menu >
-                                        {/*<Dropdown placeholder='Select Sport' search selection options={options} onChange={(e,{value}) => {console.log(value)}}/>*/}
-                                        <Dropdown.Menu scrolling >
-                                            {options.map(option => <Dropdown.Item  {...option} onClick={this.handleFilter}/>)}
-                                        </Dropdown.Menu>
+                <Grid>
+                    <Grid.Row columns={2}>
+                        <Grid.Column>
+                            <Checkbox slider label={<Translate id="enable filter"/>} checked={this.state.filterEnable}
+                                      onClick={this.handleCheckBox}/>
+                        </Grid.Column>
+                        <Grid.Column style={{textAlign: 'left'}}>
+                            <Dropdown text={<Translate id="posts filter"/>} icon='filter'>
+                                <Dropdown.Menu>
+                                    {/*<Dropdown placeholder='Select Sport' search selection options={options} onChange={(e,{value}) => {console.log(value)}}/>*/}
+                                    <Dropdown.Menu scrolling>
+                                        {options.map(option => <Dropdown.Item  {...option}
+                                                                               onClick={this.handleFilter}/>)}
                                     </Dropdown.Menu>
-                                </Dropdown>
-                            </Grid.Column>
-                        </Grid.Row>
-                        <Grid.Row columns={1}>
-                            <Grid.Column>
-                                <Table sortable celled fixed>
-                                    <Table.Header >
-                                        <Table.Row>
-                                            <Table.HeaderCell
-                                                sorted={column === 'name' ? direction : null}
-                                                onClick={this.handleSort('name')}
-                                            >
-                                                {<Translate id="name" />}
-                                            </Table.HeaderCell>
-                                            <Table.HeaderCell
-                                                sorted={column === 'age' ? direction : null}
-                                                onClick={this.handleSort('age')}
-                                            >
-                                                {<Translate id="age" />}
-                                            </Table.HeaderCell>
-                                            <Table.HeaderCell
-                                                sorted={column === 'position' ? direction : null}
-                                                onClick={this.handleSort('position')}
-                                            >
-                                                {<Translate id="post" />}
-                                            </Table.HeaderCell>
-                                            <Table.HeaderCell>
-                                                {<Translate id="picture" />}</Table.HeaderCell>
-                                        </Table.Row>
-                                    </Table.Header>
-                                    <Table.Body>{body}
-                                    </Table.Body>
-                                </Table>
-                            </Grid.Column>
-                        </Grid.Row>
-                    </Grid>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row columns={1}>
+                        <Grid.Column>
+                            <Table sortable celled fixed structured>
+                                <Table.Header>
+                                    <Table.Row>
+                                        {header}
+                                    </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                    {body}
+                                </Table.Body>
+                            </Table>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
             </div>
         )
     }
