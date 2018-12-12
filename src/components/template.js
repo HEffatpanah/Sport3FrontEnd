@@ -55,16 +55,18 @@ class Navbar extends Component {
             this.setState({setName:true,name:localStorage.getItem('username')})
         }
         const Logout = () => {
-            localStorage.clear();
+            localStorage.removeItem('username');
             this.setState({change:!this.state.change});
         };
         const Login_Logout =() => {
+            console.log(localStorage.getItem('I_align'));
             if(localStorage.getItem('username') !== null) {
+
                 return (
                     <Menu.Item position={localStorage.getItem('I_align')} style={{height:'inherit'}}>
                         <Dropdown text={this.state.name} item pointing={'right top'}>
                             <Dropdown.Menu >
-                                <Dropdown.Item onClick={Logout}>خروج<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
+                                <Dropdown.Item onClick={Logout}>{<Translate id="logout" />}<Icon style={{textAlign:'center'}} name='log out'/></Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                     </Menu.Item>
@@ -147,7 +149,7 @@ class Footer extends Component{
                             <div style={{textAlign: 'center'}}>
                                 ProducedBy : HosseinEffatPanah & AliAsgharKhani
                                 <br/>
-                                <a href={'https://sharif.ir'}>SUT</a>
+                                <a href={'//www.sharif.ir'}>SUT</a>
                             </div>
                         </Grid.Column>
                     </Grid.Row>

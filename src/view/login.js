@@ -22,10 +22,10 @@ class LoginForm extends Component {
         }
     handleSubmit(event) {
         let userAuth = false;
-        _.map(this.state.loginData, ({user, pass}) => {
+        this.state.loginData.map(({user, pass}) => {
             if(event.target.user.value === user && pass === event.target.pass.value)
             {
-                localStorage.setItem('username',event.target.user.value);
+                localStorage.setItem('username',user);
                 this.props.history.goBack();
                 userAuth = true;
             }
