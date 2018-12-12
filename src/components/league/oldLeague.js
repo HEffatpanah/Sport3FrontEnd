@@ -5,7 +5,9 @@ import {Grid, Menu, Segment, Tab} from 'semantic-ui-react'
 export default class OldLeague extends Component {
     state = {activeItem: 'فوتبال'}
     handleItemClick = (e, {name}) => this.setState({activeItem: name})
+    handleLeagueClick(session){
 
+    }
     getTableContent() {
         return (
             this.props.leaguesData.map((leagueData) => {
@@ -17,7 +19,7 @@ export default class OldLeague extends Component {
                         <div>
                             {leagueData['sessions'].map((session) => {
                                 return(
-                                    <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}}>{session}</a>
+                                    <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}}onClick={this.handleLeagueClick(session)}>{session}</a>
                                 )
                             })}
                         </div>

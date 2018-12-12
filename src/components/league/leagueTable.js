@@ -4,21 +4,41 @@ import {Table} from "semantic-ui-react";
 export default class LeagueTable extends Component {
     getTableRows() {
         let active = false;
-        let counter = 0;
+        let counter = 1;
+
         return this.props.leagueData['tableData'].map((rows) => {
-            const row = rows.map((value) => {
-                    return (
+            let cells = [<Table.Cell>{counter}</Table.Cell>];
+            counter += 1;
+            rows['teamInfo'].map(({featureName, featureValue, featureLink}) =>{
+                if(featureLink)
+                    cells.push(
+                        <Table.Cell><a href={featureLink}>{featureValue}</a></Table.Cell>
+                    )
+                else
+                    cells.push(
                         <Table.Cell>
-                            {value}
+                            {featureValue}
                         </Table.Cell>
                     )
-                }
-            );
-            active = !active;
-            counter += 1;
-            return (<Table.Row active={active}>
-                <Table.Cell>{counter}</Table.Cell>{row}
-            </Table.Row>)
+            })
+            return(
+                <Table.Row>
+                    {cells}
+                </Table.Row>
+            )
+            // const row = rows.map((value) => {
+            //         return (
+            //             <Table.Cell>
+            //                 {value}
+            //             </Table.Cell>
+            //         )
+            //     }
+            // );
+            // active = !active;
+            // counter += 1;
+            // return (<Table.Row active={active}>
+            //     <Table.Cell>{counter}</Table.Cell>{row}
+            // </Table.Row>)
         })
     }
 
