@@ -41,7 +41,7 @@ export default class PlayerRecordTable extends Component{
             <Table>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell colSpan='2' style={{ backgroundColor:'#ffd800', color:'white'}}>
+                        <Table.HeaderCell colSpan='2' style={{ backgroundColor:'#ebc004', color:'white'}}>
                             <div style={{display:'flex', justifyContent:'space-between'}}>
                                 {this.props.playerRecords['tableName']}
                                 <Dropdown text='انتخاب فصل' options={options} onChange={this.handleSelect}/>

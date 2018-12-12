@@ -7,7 +7,7 @@ export default class TimeLine extends Component{
         let tableCells = [];
         for (let i=1;i<this.props.minutes + 1;i++){
                 tableCells.push(
-                    <Table.Cell style={{verticalAlign: 'bottom', fontSize: '1.2em', textAlign: 'center'}}>
+                    <Table.Cell style={{verticalAlign: 'bottom', fontSize: '1.2em', textAlign: 'center', backgroundColor:'#096d71'}}>
                         <strong>{i % 5 === 0 ? i : ''}</strong>
                     </Table.Cell>
                 )

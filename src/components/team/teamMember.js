@@ -93,7 +93,7 @@ export default class TeamMembers extends Component {
         const header = this.props.teamMembersData['tableHeader'].map((headerTitle) => {
             return (
                 <Table.HeaderCell
-                    style={{backgroundColor:'#ff007a', color:'white'}}
+                    style={{backgroundColor:'#bc001a', color:'white'}}
                     sorted={column === headerTitle ? direction : null}
                     onClick={this.handleSort(headerTitle)}
                 >

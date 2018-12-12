@@ -25,7 +25,7 @@ export default class LeagueTable extends Component {
     getHeader() {
         return (
             <Table.Header>
-                <Table.Row style={{backgroundColor: '#2ecc71', color: 'white'}}>
+                <Table.Row style={{backgroundColor: '#179c36', color: 'white'}}>
                     <Table.Cell colSpan='11' style={{textAlign: 'center'}}>
                         {this.props.leagueData['tableName']}
                     </Table.Cell>

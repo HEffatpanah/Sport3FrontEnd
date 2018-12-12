@@ -27,14 +27,14 @@ export default class MatchesSummaryTable extends Component{
         );
         const tableHeader = this.state.matchesData['tableHeader'].map((data) => {
                 return(
-                     <Table.HeaderCell style={{backgroundColor:'#ff005a', color:'white'}}> {data}</Table.HeaderCell>
+                     <Table.HeaderCell style={{backgroundColor:'#bc001a', color:'white'}}> {data}</Table.HeaderCell>
                 )
             }
         );
         return(
             <Table>
                 <Table.Header>
-                    <Table.Row style={{backgroundColor:'#ff005a'}}>
+                    <Table.Row>
                         {tableHeader}
                     </Table.Row>
                 </Table.Header>

@@ -55,32 +55,32 @@ export default class MatchesTable extends Component{
                 <Table.Header>
                     <Table.Row >
                         <Table.HeaderCell
-                            style={{backgroundColor:'#0ba700', color:'white'}}
+                            style={{backgroundColor:'#179c36', color:'white'}}
                         >
                             {<Translate id="result" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
-                            style={{backgroundColor:'#0ba700', color:'white'}}
+                            style={{backgroundColor:'#179c36', color:'white'}}
                             sorted={column === 'date' ? direction : null}
                             onClick={this.handleSort('date')}
                         >
                             {<Translate id="date" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
-                            style={{backgroundColor:'#0ba700', color:'white'}}
+                            style={{backgroundColor:'#179c36', color:'white'}}
                             sorted={column === 'score' ? direction : null}
                             onClick={this.handleSort('score')}
                         >
                             {<Translate id="point" />}
                         </Table.HeaderCell>
                         <Table.HeaderCell
-                            style={{backgroundColor:'#0ba700', color:'white'}}
+                            style={{backgroundColor:'#179c36', color:'white'}}
                             sorted={column === 'win/lose/draw' ? direction : null}
                             onClick={this.handleSort('win/lose/draw')}
                         >
                             {<Translate id="status" />}</Table.HeaderCell>
                         <Table.HeaderCell
-                            style={{backgroundColor:'#0ba700', color:'white'}}
+                            style={{backgroundColor:'#179c36', color:'white'}}
                         >
                             {<Translate id="opponent" />}</Table.HeaderCell>
                     </Table.Row>

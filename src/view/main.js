@@ -98,7 +98,7 @@ class App extends Component {
                         <Grid>
                             <Grid.Row >
                                 <Grid.Column>
-                                    <Segment style={{textAlign:'center', backgroundColor:'#09c800', color:'white'}}>
+                                    <Segment style={{textAlign:'center', backgroundColor:'#179c36', color:'white'}}>
                                         {<Translate id="football" />}
                                     </Segment>
                                 </Grid.Column>
@@ -127,7 +127,7 @@ class App extends Component {
                         <Grid>
                             <Grid.Row >
                                 <Grid.Column>
-                                    <Segment style={{textAlign:'center', backgroundColor:'#1500ff', color:'white'}}>
+                                    <Segment style={{textAlign:'center', backgroundColor:'#ebc004', color:'white'}}>
                                         {<Translate id="basketball" />}
                                     </Segment>
                                 </Grid.Column>
