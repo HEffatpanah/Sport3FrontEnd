@@ -20,7 +20,6 @@ class Navbar extends Component {
         first: true
     };
     changeLanguage(code){
-        this.props.setActiveLanguage(code);
         switch(code){
             case 'fa':
                 localStorage.setItem('lan','fa');
