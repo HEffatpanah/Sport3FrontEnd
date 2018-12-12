@@ -166,7 +166,17 @@ class Template extends Component {
     constructor(props){
         super(props);
     }
+    componentDidMount(){
+        var all=document.querySelectorAll('*:not(i)');
+        for (var i=0, max=all.length; i < max; i++) {
+            const font=localStorage.getItem('lan')==='en'?'font-family :Helvetica !important':'font-family :B Yekan !important';
+            if(all[i].getAttribute('style'))
+                all[i].setAttribute('style',all[i].getAttribute('style')+font);
+            else all[i].setAttribute('style',font);
+        }
+    }
     render() {
+        // this.ali();
         const zerostyle = {
             color:'#bec8dc',
             'text-align': 'center',
@@ -189,15 +199,19 @@ class Template extends Component {
         const thirdstyle = {
             height:'15vh',
         };
+        const style={
+            direction:localStorage.getItem('dir'),
+            textAlign:localStorage.getItem('align')
+        };
         return (
-            <div style={{fontFamily:localStorage.getItem('lan')==='en'? "Helvetica":"B Yekan",direction:localStorage.getItem('dir'),textAlign:localStorage.getItem('align')}}>
+            <div id= 'mamad' style={style}>
                 <div style={{'height': '100vh' }}>
                     <Grid  style={{ 'height': '100%'}}>
                         <Grid.Row style={zerostyle}>
                             <Grid.Column style={{textAlign: 'center'}}>
                                 <img style={{float:'right'}} src={require("../images/2.png")}/>
-                                <img style={{float:'center',marginTop:'5vh'}} src={require("../images/6.png")}/>
-                                <img style={{float:'left',marginTop:'2vh'}} src={require("../images/10.png")}/>
+                                <img style={{float:'center',marginTop:'5vh', height:'10vh'}} src={require("../images/6.png")}/>
+                                <img style={{float:'left',margin:'2vh'}} src={require("../images/10.png")}/>
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row style={firststyle}>

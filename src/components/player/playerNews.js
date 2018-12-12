@@ -26,7 +26,6 @@ export default class PlayerNews extends Component{
     }
     getNews(){
         return (this.state.newsData.map(({title, link, headLine, image}) => {
-            console.log(typeof(image), image);
             return(
 
                 <Grid href={link}>

@@ -61,12 +61,11 @@ export default class TeamMembers extends Component {
         let active = true;
         const body = this.props.teamMembersData['tableBody'].map(({memberInfo}) => {
 
-            let show = true;
+            let show = false;
             let rowItems = [];
             memberInfo.map(({featureName, featureValue, featureLink}) => {
-                console.log(featureValue);
-                if (featureValue === this.state.filterItem) {
-                    show = false
+                if (featureValue === this.state.filterItem||!this.state.filterEnable) {
+                    show = true
                 }
                 if (featureName === 'photo') {
                     rowItems.push(<Table.Cell style={{textAlign:'center'}}><img style={{width: '5vw', height: '9vh'}}
@@ -103,15 +102,16 @@ export default class TeamMembers extends Component {
 
             )
         });
+
         return (
             <div>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column>
-                            <Checkbox slider label={<Translate id="enable filter"/>} checked={this.state.filterEnable}
+                            <Checkbox slider label='فعال کردن فیلتر' checked={this.state.filterEnable}
                                       onClick={this.handleCheckBox}/>
                         </Grid.Column>
-                        <Grid.Column style={{textAlign: 'left'}}>
+                        <Grid.Column style={{textAlign: localStorage.getItem('I_align')}}>
                             <Dropdown text={<Translate id="posts filter"/>} icon='filter'>
                                 <Dropdown.Menu>
                                     {/*<Dropdown placeholder='Select Sport' search selection options={options} onChange={(e,{value}) => {console.log(value)}}/>*/}

@@ -94,7 +94,7 @@ export default class NewsDetail extends Component {
             <div  style={{display: 'flex', flexDirection:'row', position:'relative', bottom:'0px', clear:'both', fontSize:'0.8em'}}><strong>تگ ها</strong>&ensp; :&ensp;  {this.getTages()}</div>
         </Segment>;
         const comments =
-            <Segment style={{textAlign:localStorage.getItem('align')}}>
+            <Segment>
                 <Comment.Group style={{margin:'auto'}} >
                     {this.getComment()}
                     <Form reply onSubmit={this.handleCommentSubmit}>

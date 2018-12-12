@@ -37,7 +37,7 @@ export default class OldLeague extends Component {
                 <Menu pointing secondary >
                     <Menu.Item
                         name='فوتبال'
-                        style={{width: '50%', textAlign:'right'}}
+                        style={{width: '50%'}}
                         onClick={this.handleItemClick}
                         active={this.state.activeItem === 'فوتبال'}
                     />

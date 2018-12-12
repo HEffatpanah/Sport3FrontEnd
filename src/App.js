@@ -26,7 +26,14 @@ class App extends Component {
         c:false,
     }
     render() {
-        console.log(localStorage.getItem('lan'))
+        if(!localStorage.getItem('lan'))
+            localStorage.setItem('lan','fa');
+        if(!localStorage.getItem('dir'))
+            localStorage.setItem('dir','rtl');
+        if(!localStorage.getItem('align'))
+            localStorage.setItem('align','right');
+        if(!localStorage.getItem('I_align'))
+            localStorage.setItem('I_align','left');
         return (
             <LocalizeProvider initialize={{
                 languages: [

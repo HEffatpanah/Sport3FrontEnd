@@ -5,9 +5,6 @@ import {Grid, Menu, Segment, Tab} from 'semantic-ui-react'
 export default class NewLeague extends Component {
     state = {activeItem: 'فوتبال'}
     handleItemClick = (e, {name}) => this.setState({activeItem: name})
-    handleLink(){
-        console.log('ali')
-    }
     getTableContent() {
         return (
             this.props.leaguesData.map((leagueData) => {
@@ -39,7 +36,7 @@ export default class NewLeague extends Component {
                 <Menu pointing secondary>
                     <Menu.Item
                         name='فوتبال'
-                        style={{width: '50%', textAlign:'right'}}
+                        style={{width: '50%'}}
                         onClick={this.handleItemClick}
                         active={this.state.activeItem === 'فوتبال'}
                     />
