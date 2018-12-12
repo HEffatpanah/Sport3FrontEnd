@@ -4,7 +4,7 @@ import {Checkbox, Table} from "semantic-ui-react";
 import {Grid} from "semantic-ui-react";
 import {Dropdown} from "semantic-ui-react";
 import React from "react";
-import {Translate} from "react-localize-redux";
+import {getTranslate, Translate} from "react-localize-redux";
 
 export default class TeamMembers extends Component {
     state = {
@@ -102,14 +102,17 @@ export default class TeamMembers extends Component {
 
             )
         });
-
+        console.log(this.props);
         return (
             <div>
                 <Grid>
                     <Grid.Row columns={2}>
                         <Grid.Column>
-                            <Checkbox slider label='فعال کردن فیلتر' checked={this.state.filterEnable}
-                                      onClick={this.handleCheckBox}/>
+                            <Translate>
+  {({ translate }) => <Checkbox slider label={translate('enable filter')} checked={this.state.filterEnable}
+                                      onClick={this.handleCheckBox}/>}
+</Translate>
+
                         </Grid.Column>
                         <Grid.Column style={{textAlign: localStorage.getItem('I_align')}}>
                             <Dropdown text={<Translate id="posts filter"/>} icon='filter'>
