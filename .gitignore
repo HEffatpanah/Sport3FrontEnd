@@ -1,3 +1,4 @@
 node_modules/
 *.json
 !global.json
+.idea
