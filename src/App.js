@@ -48,14 +48,14 @@ class App extends Component {
             }}>
                 <Router history={history}>
                     <Switch>
-                        <Route {...this.props} exact path='/' component={Page1} />
-                        <Route exact path='/login' component={Page2} />
-                        <Route exact path='/news' component={Page3} />
-                        <Route exact path='/teams' component={Page4} />
-                        <Route exact path='/match' component={Page5} />
-                        <Route exact path='/signup' component={Page6} />
-                        <Route exact path='/player' component={Page7} />
-                        <Route exact path='/league' component={Page8} />
+                        <Route {...this.props} exact path='/sport3' component={Page1} />
+                        <Route exact path='/sport3/login' component={Page2} />
+                        <Route exact path='/sport3/news/:id' component={Page3} />
+                        <Route exact path='/sport3/teams' component={Page4} />
+                        <Route exact path='/sport3/match' component={Page5} />
+                        <Route exact path='/sport3/signup' component={Page6} />
+                        <Route exact path='/sport3/player' component={Page7} />
+                        <Route exact path='/sport3/league' component={Page8} />
                     </Switch>
                 </Router>
             </LocalizeProvider>

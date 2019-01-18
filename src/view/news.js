@@ -4,6 +4,7 @@ import {Grid, Segment} from 'semantic-ui-react'
 import Adv from '../components/advertisement'
 import NewsSummery from '../components/news/newsSummery'
 import NewsDetail from "../components/news/newsDetail";
+import axios from "axios";
 
 
 const newsData=[
@@ -74,17 +75,16 @@ class App extends Component {
     state = {
         newsData: newsData,
         newDetail:newDetail,
+        ok:'no',
     };
+    componentWillMount(){
+        let url = window.location.href
+        url = url.replace('3', '8')
+        // axios.defaults.withCredentials = true;
+        axios.get(url).then(response => this.setState({ok:response.data['ok']}))
+    }
 
     render() {
-        const advertise = <Segment>advertise</Segment>;
-        const news_image = <img src={require("images/horse.jpg")}
-                                style={{"width": "12vw", "height": "12vh", "float": "right"}}/>;
-        const news = <Segment style={{"overflow": "auto"}}>
-            {news_image}
-            <header style={{"text-decoration": "underline"}}><h2>Strong Hossein</h2></header>
-            <div>Strong Hossein is back</div>
-        </Segment>;
         const body =
             <Grid style={{width: '100%'}}>
                 <Grid.Row columns={3}>
@@ -104,7 +104,8 @@ class App extends Component {
             </Grid>;
         return (
             <div>
-                <Template {...this.props} body={body}/>
+
+                {this.state.ok}
             </div>);
     }
 }
