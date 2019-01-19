@@ -48,7 +48,7 @@ class App extends Component {
             }}>
                 <Router history={history}>
                     <Switch>
-                        <Route {...this.props} exact path='/sport3' component={Page1} />
+                        <Route {...this.props} exact path='/sport3/home' component={Page1} />
                         <Route exact path='/sport3/login' component={Page2} />
                         <Route exact path='/sport3/news/:id' component={Page3} />
                         <Route exact path='/sport3/teams' component={Page4} />

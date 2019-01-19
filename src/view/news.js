@@ -81,7 +81,7 @@ class App extends Component {
         let url = window.location.href
         url = url.replace('3', '8')
         // axios.defaults.withCredentials = true;
-        axios.get(url).then(response => this.setState({ok:response.data['ok']}))
+        axios.post(url).then(response => console.log(response.data))
     }
 
     render() {

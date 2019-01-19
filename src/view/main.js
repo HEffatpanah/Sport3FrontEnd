@@ -7,6 +7,7 @@ import Adv from "../components/advertisement";
 import globalTranslations from "../translations/global";
 import {Translate, withLocalize} from "react-localize-redux";
 import NewsSummeryWithTab from '../components/news/newsSummaryWithTab'
+import axios from "axios";
 
 const matchData = {
     tableHeader:['نام تیم', 'نتیجه','نام تیم','تاریخ'],
@@ -87,7 +88,13 @@ class App extends Component {
         this.props.addTranslation(globalTranslations);
     }
 
-
+    componentWillMount(){
+        let url = window.location.href
+        url = url.replace('3', '8')
+        console.log(url)
+        axios.defaults.withCredentials = true;
+        axios.get(url).then(response => console.log(response.data))
+    }
     render() {
 
         let body =
