@@ -51,7 +51,7 @@ class App extends Component {
                         <Route {...this.props} exact path='/sport3/home' component={Page1} />
                         <Route exact path='/sport3/login' component={Page2} />
                         <Route exact path='/sport3/news/:id' component={Page3} />
-                        <Route exact path='/sport3/teams' component={Page4} />
+                        <Route exact path='/sport3/team/:id' component={Page4} />
                         <Route exact path='/sport3/match' component={Page5} />
                         <Route exact path='/sport3/signup' component={Page6} />
                         <Route exact path='/sport3/player' component={Page7} />
