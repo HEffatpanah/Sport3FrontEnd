@@ -13,6 +13,7 @@ export default class MatchesSummaryTable extends Component{
     };
     getTableData (){
         let active = true;
+        console.log('salamsalam           ', this.state.matchesData['tableBody'])
         const tableBody = this.state.matchesData['tableBody'].map((data) => {
             active = !active
             return(

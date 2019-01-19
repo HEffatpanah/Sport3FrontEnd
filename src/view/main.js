@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Segment, Grid} from 'semantic-ui-react'
+import {Segment, Grid, Loader} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 import MatchesSummaryTable from "../components/matchSummary";
@@ -83,20 +83,22 @@ class App extends Component {
         super(props);
         this.state = {
             selectedSport : "football",
+            matchesData : '',
+            ok:2
         };
         console.log(this.props);
         this.props.addTranslation(globalTranslations);
+        this.alijoon()
     }
 
-    componentWillMount(){
+    alijoon(){
         let url = window.location.href
         url = url.replace('3', '8')
-        console.log(url)
         axios.defaults.withCredentials = true;
-        axios.get(url).then(response => console.log(response.data))
+        axios.get(url).then(response => this.setState({matchData:response.data}))
     }
     render() {
-
+        if(this.state.matchData===undefined)return(<Loader/>);
         let body =
             <Grid style={{width:'100%'}}>
 
@@ -113,7 +115,7 @@ class App extends Component {
                             <Grid.Row columns={2}>
                                 <Grid.Column   width={9}>
                                     <Grid.Row>
-                                    <MatchesSummaryTable matchesData={matchData}/>
+                                    <MatchesSummaryTable matchesData={this.state.matchData}/>
                                     </Grid.Row>
                                     <Grid.Row style={{marginTop:'1vh'}}>
                                         <Adv advertisement={'https://static.farakav.com/v3/static/bpx/00910571.gif'}/>
@@ -162,6 +164,7 @@ class App extends Component {
         return (
             <div>
                 <Template {...this.props} body={body}  />
+                {/*{this.state.ok}*/}
             </div>
         );
     }
