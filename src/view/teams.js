@@ -8,10 +8,10 @@ import NewsSummery from '../components/news/newsSummery'
 
 
 const matchData = [
-    { owerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"برد", opponent:'پدیده' , opponentLink:'https://www.google.com' },
-    { owerTeamGoal:'2', opponentTeamGoal:'0', date:'1998-09-12', score:1, status:"برد", opponent:'پدیده' , opponentLink:'https://www.google.com' },
-    { owerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"برد", opponent:'پدیده' , opponentLink:'https://www.google.com' },
-    { owerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"برد", opponent:'پدیده' , opponentLink:'https://www.google.com' },
+    { ownerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"برد", opponent:'پدیده' , opponentLink:'https://www.google.com' },
+    { ownerTeamGoal:'2', opponentTeamGoal:'0', date:'1998-09-12', score:1, status:"برد", opponent:'پدیده' , opponentLink:'https://www.google.com' },
+    { ownerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"برد", opponent:'پدیده' , opponentLink:'https://www.google.com' },
+    { ownerTeamGoal:'3', opponentTeamGoal:'0', date:'1998-09-12', score:3, status:"برد", opponent:'پدیده' , opponentLink:'https://www.google.com' },
 ];
 
 // const center_vertically={

@@ -83,22 +83,33 @@ class App extends Component {
         super(props);
         this.state = {
             selectedSport : "football",
-            matchesData : '',
+            footballMatchesData : '',
+            footballNewsData : '',
+            basketballMatchesData : '',
+            basketballNewsData : '',
+            get:false,
             ok:2
         };
         console.log(this.props);
         this.props.addTranslation(globalTranslations);
-        this.alijoon()
+        this.get_data()
     }
 
-    alijoon(){
+    get_data(){
         let url = window.location.href
         url = url.replace('3', '8')
         axios.defaults.withCredentials = true;
-        axios.get(url).then(response => this.setState({matchData:response.data}))
+        axios.get(url).then(response => this.setState({
+            footballMatchesData:response.data['football']['matchesTable'],
+            footballNewsData:response.data['football']['newsTable'],
+            basketballMatchesData:response.data['basketball']['matchesTable'],
+            basketballNewsData:response.data['basketball']['newsTable'],
+            get:true,
+        }))
     }
     render() {
-        if(this.state.matchData===undefined)return(<Loader/>);
+        if(this.state.get===false)return(<Loader/>);
+        console.log(this.state.footballMatchesData)
         let body =
             <Grid style={{width:'100%'}}>
 
@@ -115,7 +126,7 @@ class App extends Component {
                             <Grid.Row columns={2}>
                                 <Grid.Column   width={9}>
                                     <Grid.Row>
-                                    <MatchesSummaryTable matchesData={this.state.matchData}/>
+                                    <MatchesSummaryTable matchesData={this.state.footballMatchesData}/>
                                     </Grid.Row>
                                     <Grid.Row style={{marginTop:'1vh'}}>
                                         <Adv advertisement={'https://static.farakav.com/v3/static/bpx/00910571.gif'}/>
@@ -123,7 +134,7 @@ class App extends Component {
                                 </Grid.Column>
                                 <Grid.Column   width={7}>
                                     <Segment>
-                                        <NewsSummeryWithTab newsData={newsData}/>
+                                        <NewsSummeryWithTab newsData={this.state.footballNewsData}/>
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
@@ -144,7 +155,7 @@ class App extends Component {
                             <Grid.Row columns={2}>
                                 <Grid.Column   width={9}>
                                     <Grid.Row>
-                                    <MatchesSummaryTable matchesData={matchData}/>
+                                    <MatchesSummaryTable matchesData={this.state.basketballMatchesData}/>
                                     </Grid.Row>
                                     <Grid.Row style={{marginTop:'1vh'}}>
                                         <Adv advertisement={'https://static.farakav.com/v3/static/bpx/00910379.gif'}/>
@@ -152,7 +163,7 @@ class App extends Component {
                                 </Grid.Column>
                                 <Grid.Column   width={7}>
                                     <Segment>
-                                        <NewsSummeryWithTab newsData={newsData}/>
+                                        <NewsSummeryWithTab newsData={this.state.basketballNewsData}/>
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
