@@ -9,6 +9,7 @@ export default class NewsSummeryWithTab extends Component{
     };
     newsBody() {
         if(this.state.activeItem === 'آخرین ها')
+
             return (this.state.newsData['last'].map(({title, link}) => {
                     return (
                         <div>

@@ -28,40 +28,40 @@ export default class NewsDetail extends Component {
         );
     }
 
-    getComment(){
-        return (
-            this.state.newDetail['comments'].map(({name, comment, date}) => {
-                    return(
-                        <Comment>
-                            <Comment.Content>
-                                <Comment.Author>{name}</Comment.Author>
-                                <Comment.Metadata>
-                                    <div>{date}</div>
-                                </Comment.Metadata>
-                                <Comment.Text>
-                                    <p>
-                                        {comment}
-                                    </p>
-                                </Comment.Text>
-                                <Comment.Actions>
-                                    <Comment.Action>پاسخ</Comment.Action>
-                                </Comment.Actions>
-                            </Comment.Content>
-                        </Comment>
-                    )
-                }
-            )
-        );
-
-
-    }
+    // getComment(){
+    //     return (
+    //         this.state.newDetail['comments'].map(({name, comment, date}) => {
+    //                 return(
+    //                     <Comment>
+    //                         <Comment.Content>
+    //                             <Comment.Author>{name}</Comment.Author>
+    //                             <Comment.Metadata>
+    //                                 <div>{date}</div>
+    //                             </Comment.Metadata>
+    //                             <Comment.Text>
+    //                                 <p>
+    //                                     {comment}
+    //                                 </p>
+    //                             </Comment.Text>
+    //                             <Comment.Actions>
+    //                                 <Comment.Action>پاسخ</Comment.Action>
+    //                             </Comment.Actions>
+    //                         </Comment.Content>
+    //                     </Comment>
+    //                 )
+    //             }
+    //         )
+    //     );
+    //
+    //
+    // }
     getMoreImages(){
         return (
             this.state.newDetail['moreImagesUrl'].map((url) => {
                 console.log(url) ;
                 return(
 
-                        <Image src={require("../../" + url)} style={{"width": "30vw", "height": "30vh", margin:'1em auto'}}/>
+                        <Image src={require("../../../../../Backend/" + url)} style={{"width": "30vw", "height": "30vh", margin:'1em auto'}}/>
 
                     )
                 }
@@ -81,7 +81,7 @@ export default class NewsDetail extends Component {
         const image_body = this.state.newDetail['body'];
         const moreImagesUrl = this.state.newDetail['moreImagesUrl'];
         const news_image =
-            <img src={require("../../" + image_url)} style={{"width": "10vw", "height": "9vh", "float": localStorage.getItem('I_align'), margin:'0.4em'}}/>;
+            <img src={require("../../../../../Backend/" + image_url)}  style={{"width": "10vw", "height": "9vh", "float": localStorage.getItem('I_align'), margin:'0.4em'}}/>;
 
         const news = <Segment style={{"overflow": "auto", fontSize:'1.3em', lineHeight:'1.4em'}}>
             <div>{news_image}</div>
@@ -96,7 +96,7 @@ export default class NewsDetail extends Component {
         const comments =
             <Segment>
                 <Comment.Group style={{margin:'auto'}} >
-                    {this.getComment()}
+                    {/*{this.getComment()}*/}
                     <Form reply onSubmit={this.handleCommentSubmit}>
                         <Form.Input name='name'  label='نام'/>
                         <Form.TextArea name='comment' label='نظر'/>
@@ -131,7 +131,7 @@ export default class NewsDetail extends Component {
         </Segment>;
         return (<Segment>
                 {news}
-                {comments}
+                {/*{comments}*/}
 
             </Segment>
         );

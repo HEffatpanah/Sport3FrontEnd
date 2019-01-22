@@ -69,7 +69,7 @@ export default class TeamMembers extends Component {
                 }
                 if (featureName === 'photo') {
                     rowItems.push(<Table.Cell style={{textAlign:'center'}}><img style={{width: '5vw', height: '9vh'}}
-                                                   src={featureValue}/></Table.Cell>)
+                                                   src={require("../../../../../Backend/" + featureValue)}/></Table.Cell>)
                 }
                 else {
                     if (featureLink)

@@ -5,7 +5,7 @@ import MatchesTable from '../components/team/matchInfo'
 import TeamMembers from "../components/team/teamMember";
 import NewsSummery from '../components/news/newsSummery'
 import axios from "axios";
-
+import globalTranslations from "../translations/global";
 
 
 const matchData = [
@@ -18,34 +18,40 @@ const newsData=[
     {title:'perspoliasdaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkwwwwwwwwwwwwwwwwwwwwjjjjjjjjjjjjjjs', link:'https://www.google.com'},
 ];
 
-const image_style={
-    height:'8vh',
-    width:'5vw',
+const image_style = {
+    height: '8vh',
+    width: '5vw',
 };
 
 const membersData = {
-    tableHeader:['نام', 'سن', 'پست', 'عکس'],
-    tableBody:[
+    tableHeader: ['نام', 'سن', 'پست', 'عکس'],
+    tableBody: [
         {
-            memberInfo:[
-                {featureName:'playerName',featureValue:'علی', featureLink:'https://www.google.com'},
-                {featureName:'age',featureValue:23, featureLink: null},
-                {featureName:'position',featureValue:'دفاع', featureLink: null},
-                {featureName:'photo',featureValue:'http://www.gstatic.com/tv/thumb/persons/673351/673351_v9_ba.jpg', featureLink: null},
+            memberInfo: [
+                {featureName: 'playerName', featureValue: 'علی', featureLink: 'https://www.google.com'},
+                {featureName: 'age', featureValue: 23, featureLink: null},
+                {featureName: 'position', featureValue: 'دفاع', featureLink: null},
+                {
+                    featureName: 'photo',
+                    featureValue: 'http://www.gstatic.com/tv/thumb/persons/673351/673351_v9_ba.jpg',
+                    featureLink: null
+                },
             ]
         },
         {
-            memberInfo:[
-                {featureName:'playerName',featureValue:'علی', featureLink:'https://www.google.com'},
-                {featureName:'age',featureValue:23, featureLink: null},
-                {featureName:'position',featureValue:'دفاع', featureLink: null},
-                {featureName:'photo',featureValue:'http://www.gstatic.com/tv/thumb/persons/673351/673351_v9_ba.jpg', featureLink: null},
+            memberInfo: [
+                {featureName: 'playerName', featureValue: 'علی', featureLink: 'https://www.google.com'},
+                {featureName: 'age', featureValue: 23, featureLink: null},
+                {featureName: 'position', featureValue: 'دفاع', featureLink: null},
+                {
+                    featureName: 'photo',
+                    featureValue: 'http://www.gstatic.com/tv/thumb/persons/673351/673351_v9_ba.jpg',
+                    featureLink: null
+                },
             ]
         },
     ]
 };
-
-
 
 
 class App extends Component {
@@ -70,10 +76,11 @@ class App extends Component {
             get:true,
         }))
     }
-    render(){
-        if(this.state.get===false)return(<Loader/>);
+
+    render() {
+        if (this.state.get === false) return (<Loader/>);
         const body =
-            <Grid style={{width:'100%'}}>
+            <Grid style={{width: '100%'}}>
                 <Grid.Row columns={3}>
                     <Grid.Column width={4}>
                         <Segment><NewsSummery newsData={this.state.newData}/></Segment>
@@ -87,10 +94,11 @@ class App extends Component {
                 </Grid.Row>
             </Grid>;
 
-        return(
-            <Template {...this.props} body={body} />
+        return (
+            <Template {...this.props} body={body}/>
 
         )
     }
 }
+
 export default App

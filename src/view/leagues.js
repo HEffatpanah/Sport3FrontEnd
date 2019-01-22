@@ -45,18 +45,102 @@ const leagueData = {
 };
 
 const matchSummaryData = {
-    tableHeader:['نام تیم', 'نتیجه','نام تیم','تاریخ'],
-    tableBody:[
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
-        { team1Name:'mancity', team1Link:'https://www.google.com',  team2Name:'arsenal', team2Link:'https://www.google.com',  team1Goal:'2',team2Goal:'1', date:'امروز'},
+    tableHeader: ['نام تیم', 'نتیجه', 'نام تیم', 'تاریخ'],
+    tableBody: [
+        {
+            league_season: 'لیگ برتر(97-98)',
+            matches: [{
+                team1Name: 'mancity',
+                team1Link: 'https://www.google.com',
+                team2Name: 'arsenal',
+                team2Link: 'https://www.google.com',
+                team1Goal: '2',
+                team2Goal: '1',
+                date: 'امروز'
+            },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+                {
+                    team1Name: 'mancity',
+                    team1Link: 'https://www.google.com',
+                    team2Name: 'arsenal',
+                    team2Link: 'https://www.google.com',
+                    team1Goal: '2',
+                    team2Goal: '1',
+                    date: 'امروز'
+                },
+            ]
+        },
     ]
 };
 
@@ -64,27 +148,27 @@ const matchSummaryData = {
 const newLeaguesData = [
     {
         leagueName: 'لیگ قهرمانان اروپا',
-        sessions: ['لیگ برتر(94-95)','لیگ برتر(95-96)', 'لیگ برتر(96-97)', 'لیگ برتر(97-98)']
+        sessions: ['لیگ برتر(94-95)', 'لیگ برتر(95-96)', 'لیگ برتر(96-97)', 'لیگ برتر(97-98)']
     },
 
 ];
 
 const matchData = [
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
-    { team1Name:'mancity', team2Name:'arsenal',team1Goal:'2',team2Goal:'1', date:'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
+    {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
 ];
 const oldLeaguesData = [
     {
         leagueName: 'لیگ قهرمانان اروپا',
-        sessions: ['لیگ برتر(94-95)','لیگ برتر(95-96)', 'لیگ برتر(96-97)', 'لیگ برتر(97-98)']
+        sessions: ['لیگ برتر(94-95)', 'لیگ برتر(95-96)', 'لیگ برتر(96-97)', 'لیگ برتر(97-98)']
     },
 
 
@@ -95,7 +179,7 @@ class App extends Component {
         super(props);
         this.state = {
             selectedSport: "football",
-            session:'لیگ برتر(97-98)',
+            session: 'لیگ برتر(97-98)',
         };
         this.setSession = this.setSession.bind(this)
     }
@@ -115,10 +199,12 @@ class App extends Component {
             )
         })
     }
-    setSession (session){
+
+    setSession(session) {
         console.log('man', this.state.session);
-        this.setState({session:session})
+        this.setState({session: session})
     }
+
     render() {
 
         const options = [
@@ -134,14 +220,14 @@ class App extends Component {
                         <Grid.Row>
                             <LeagueTable session={this.state.session} leagueData={leagueData}/>
                         </Grid.Row>
-                        <Grid.Row style={{marginTop:'2vh'}}>
-                            <MatchesSummaryTable matchesData={matchSummaryData}/>
+                        <Grid.Row style={{marginTop: '2vh'}}>
+                            <MatchesSummaryTable session={this.state.session} matchesData={matchSummaryData}/>
                         </Grid.Row>
                     </Grid.Column>
 
                     <Grid.Column width={4}>
 
-                        <Grid.Row style={{margin:'1vh auto'}}>
+                        <Grid.Row style={{margin: '1vh auto'}}>
                             <OldLeague sessionName={this.setSession} leaguesData={oldLeaguesData}/>
                         </Grid.Row>
                         <Grid.Row>
