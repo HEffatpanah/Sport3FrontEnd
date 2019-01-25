@@ -20,7 +20,7 @@ export default class MatchesSummaryTable extends Component {
                             <Table.Row active={active} style={{'width': '100%'}}>
                                 <Table.Cell width={2}><a href={data['team1Link']}
                                                          target='_blank'>{data['team1Name']}</a></Table.Cell>
-                                <Table.Cell width={1}>{data['team1Goal'] + '-' + data['team2Goal']}</Table.Cell>
+                                <Table.Cell width={1}>{data['team2Goal'] + '-' + data['team1Goal']}</Table.Cell>
                                 <Table.Cell width={2}><a href={data['team2Link']}
                                                          target='_blank'>{data['team2Name']}</a></Table.Cell>
                                 <Table.Cell width={1}>{data['date']}</Table.Cell>

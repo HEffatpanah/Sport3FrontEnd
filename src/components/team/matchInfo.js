@@ -35,7 +35,7 @@ export default class MatchesTable extends Component{
                     active = !active;
                     return(
                         <Table.Row active={active}>
-                            <Table.Cell>{data['owerTeamGoal']+'-'+data['opponentTeamGoal']}</Table.Cell>
+                            <Table.Cell>{data['opponentTeamGoal']+'-'+data['ownerTeamGoal']}</Table.Cell>
                             <Table.Cell>{data['date']}</Table.Cell>
                             <Table.Cell>{data['score']}</Table.Cell>
                             <Table.Cell>{data['status']}</Table.Cell>

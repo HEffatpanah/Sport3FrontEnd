@@ -61,7 +61,7 @@ export default class NewsDetail extends Component {
                 console.log(url) ;
                 return(
 
-                        <Image src={require("../../../../../Backend/" + url)} style={{"width": "30vw", "height": "30vh", margin:'1em auto'}}/>
+                        <Image src={require("../../../../../Backend/images/" + url)} style={{"width": "30vw", "height": "30vh", margin:'1em auto'}}/>
 
                     )
                 }
@@ -81,7 +81,7 @@ export default class NewsDetail extends Component {
         const image_body = this.state.newDetail['body'];
         const moreImagesUrl = this.state.newDetail['moreImagesUrl'];
         const news_image =
-            <img src={require("../../../../../Backend/" + image_url)}  style={{"width": "10vw", "height": "9vh", "float": localStorage.getItem('I_align'), margin:'0.4em'}}/>;
+            <img src={require("../../../../../Backend/images/" + image_url)}  style={{"width": "10vw", "height": "9vh", "float": localStorage.getItem('I_align'), margin:'0.4em'}}/>;
 
         const news = <Segment style={{"overflow": "auto", fontSize:'1.3em', lineHeight:'1.4em'}}>
             <div>{news_image}</div>

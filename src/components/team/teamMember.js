@@ -56,6 +56,9 @@ export default class TeamMembers extends Component {
         const options = [
             {text: 'حمله', value: 'حمله', style: {textAlign: 'center'}},
             {text: 'دفاع', value: 'دفاع', style: {textAlign: 'center'}},
+            {text: 'هافبک میانی', value: 'هافبک میانی', style: {textAlign: 'center'}},
+            {text: 'دروازه بان', value: 'دروازه بان', style: {textAlign: 'center'}},
+            {text: 'هافبک کناری', value: 'هافبک کناری', style: {textAlign: 'center'}},
         ];
         const {column, direction} = this.state;
         let active = true;
@@ -69,7 +72,7 @@ export default class TeamMembers extends Component {
                 }
                 if (featureName === 'photo') {
                     rowItems.push(<Table.Cell style={{textAlign:'center'}}><img style={{width: '5vw', height: '9vh'}}
-                                                   src={require("../../../../../Backend/" + featureValue)}/></Table.Cell>)
+                                                   src={require("../../../../../Backend/images/" + featureValue)}/></Table.Cell>)
                 }
                 else {
                     if (featureLink)
