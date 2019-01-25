@@ -9,40 +9,388 @@ import OldLeague from '../components/league/oldLeague'
 import NewLeague from '../components/league/newLeague'
 
 
+const leagueData = [
+    {
+        leagueName: 'لیگ برتر(97-98)',
+        tableName: 'لیگ برترایران',
+        header: ['تیم', 'بازیها', 'برد', 'مساوی', 'باخت', 'گل زده', 'گل خورده', 'تفاضل گل', 'امتیاز'],
+        tableData: [
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'تراکتور', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'استقلال', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
+            // {
+            //     teamInfo:[
+            //         {featureName:'teamName',featureValue:'سپاهان', featureLink:'https://www.google.com'},
+            //         {featureName:'matches',featureValue:23, featureLink: null},
+            //         {featureName:'win',featureValue:2, featureLink: null},
+            //         {featureName:'draw',featureValue:3,featureLink: null},
+            //         {featureName:'loose',featureValue:3, featureLink: null},
+            //         {featureName:'goalZ',featureValue:3, featureLink: null},
+            //         {featureName:'goalK',featureValue:3, featureLink: null},
+            //         {featureName:'goalSub',featureValue:3, featureLink: null},
+            //         {featureName:'score',featureValue:3, featureLink: null},
+            //     ]
+            // },
 
-const leagueData = {
-    leagueName: 'لیگ برتر(96-97)',
-    tableName: 'لیگ برترایران',
-    header: ['تیم', 'بازیها', 'برد', 'مساوی', 'باخت', 'گل زده', 'گل خورده', 'تفاضل گل', 'امتیاز'],
-    tableData: [
-        {
-            teamInfo: [
-                {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
-                {featureName: 'matches', featureValue: 23, featureLink: null},
-                {featureName: 'win', featureValue: 2, featureLink: null},
-                {featureName: 'draw', featureValue: 3, featureLink: null},
-                {featureName: 'loose', featureValue: 3, featureLink: null},
-                {featureName: 'goalZ', featureValue: 3, featureLink: null},
-                {featureName: 'goalK', featureValue: 3, featureLink: null},
-                {featureName: 'goalSub', featureValue: 3, featureLink: null},
-                {featureName: 'score', featureValue: 3, featureLink: null},
-            ]
-        },
-        {
-            teamInfo: [
-                {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
-                {featureName: 'matches', featureValue: 23, featureLink: null},
-                {featureName: 'win', featureValue: 2, featureLink: null},
-                {featureName: 'draw', featureValue: 3, featureLink: null},
-                {featureName: 'loose', featureValue: 3, featureLink: null},
-                {featureName: 'goalZ', featureValue: 3, featureLink: null},
-                {featureName: 'goalK', featureValue: 3, featureLink: null},
-                {featureName: 'goalSub', featureValue: 3, featureLink: null},
-                {featureName: 'score', featureValue: 3, featureLink: null},
-            ]
-        },
-    ]
-};
+        ]
+    },
+    {
+        leagueName: 'لیگ برتر(96-97)',
+        tableName: 'لیگ برترایران',
+        header: ['تیم', 'بازیها', 'برد', 'مساوی', 'باخت', 'گل زده', 'گل خورده', 'تفاضل گل', 'امتیاز'],
+        tableData: [
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+            {
+                teamInfo: [
+                    {featureName: 'teamName', featureValue: 'سپاهان', featureLink: 'https://www.google.com'},
+                    {featureName: 'matches', featureValue: 23, featureLink: null},
+                    {featureName: 'win', featureValue: 2, featureLink: null},
+                    {featureName: 'draw', featureValue: 3, featureLink: null},
+                    {featureName: 'loose', featureValue: 3, featureLink: null},
+                    {featureName: 'goalZ', featureValue: 3, featureLink: null},
+                    {featureName: 'goalK', featureValue: 3, featureLink: null},
+                    {featureName: 'goalSub', featureValue: 3, featureLink: null},
+                    {featureName: 'score', featureValue: 3, featureLink: null},
+                ]
+            },
+
+        ]
+    }
+];
 
 const matchSummaryData = {
     tableHeader: ['نام تیم', 'نتیجه', 'نام تیم', 'تاریخ'],
