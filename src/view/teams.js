@@ -340,10 +340,10 @@ class App extends Component {
                             <Segment><NewsSummery newsData={this.state.newsData}/></Segment>
                         </Grid.Row>
                     </Grid.Column>
-                    <Grid.Column width={8}>
+                    <Grid.Column width={7}>
                         <TeamMembers teamMembersData={this.state.membersData}/>
                     </Grid.Column>
-                    <Grid.Column width={4}>
+                    <Grid.Column width={5}>
                         <MatchesTable matchesData={this.state.matchData}/>
                     </Grid.Column>
                 </Grid.Row>
