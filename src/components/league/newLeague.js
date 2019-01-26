@@ -15,10 +15,13 @@ export default class NewLeague extends Component {
                             {leagueData['leagueName']}
                         </div>
                         <div>
-                            {leagueData['sessions'].map((session) => {
-                                sessionNames.push(session);
+                            {leagueData['sessions'].map(({name, link}) => {
+                                sessionNames.push(name);
+                                // return(
+                                //     <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}} onClick={this.handleLink}>{session}</a>
+                                // )
                                 return(
-                                    <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}} onClick={this.handleLink}>{session}</a>
+                                    <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}} href={link}>{name}</a>
                                 )
                             })}
                         </div>

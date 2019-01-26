@@ -330,7 +330,7 @@ class App extends Component {
                 <Grid.Row columns={3}>
                     <Grid.Column width={4}>
                         <Grid.Row style={{textAlign:'center'}}>
-                            <img src={require("../../../../Backend/images/" + this.state.logo)}/>
+                            <img src={require("../../../Backend/images/" + this.state.logo)}/>
                         </Grid.Row>
                         <Grid.Row style={{textAlign:'center', fontSize:'2em', fontStyle:'bold', marginBottom:'0.3em'}}>
 
@@ -340,10 +340,10 @@ class App extends Component {
                             <Segment><NewsSummery newsData={this.state.newsData}/></Segment>
                         </Grid.Row>
                     </Grid.Column>
-                    <Grid.Column width={7}>
+                    <Grid.Column width={8}>
                         <TeamMembers teamMembersData={this.state.membersData}/>
                     </Grid.Column>
-                    <Grid.Column width={5}>
+                    <Grid.Column width={4}>
                         <MatchesTable matchesData={this.state.matchData}/>
                     </Grid.Column>
                 </Grid.Row>

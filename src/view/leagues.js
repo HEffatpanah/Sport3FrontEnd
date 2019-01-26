@@ -7,6 +7,7 @@ import Adv from "../components/advertisement";
 import LeagueTable from '../components/league/leagueTable'
 import OldLeague from '../components/league/oldLeague'
 import NewLeague from '../components/league/newLeague'
+import axios from "axios";
 
 
 const leagueData = [
@@ -496,7 +497,7 @@ const matchSummaryData = {
 const newLeaguesData = [
     {
         leagueName: 'لیگ قهرمانان اروپا',
-        sessions: ['لیگ برتر(94-95)', 'لیگ برتر(95-96)', 'لیگ برتر(96-97)', 'لیگ برتر(97-98)']
+        sessions: [{name:'لیگ برتر(94-95)', link:null}, {name:'لیگ برتر(95-96)', link: null}, {name:'لیگ برتر(96-97)', link:null}, {name:'لیگ برتر(97-98)', link:null}]
     },
 
 ];
@@ -530,7 +531,20 @@ class App extends Component {
             session: 'لیگ برتر(97-98)',
         };
         this.setSession = this.setSession.bind(this)
+        this.get_data()
     }
+
+
+    get_data() {
+        let url = window.location.href
+        url = url.replace('3', '8')
+        axios.defaults.withCredentials = true;
+        console.log('ali')
+        axios.get(url).then(response => {
+            console.log('ail', response)
+        })
+    }
+
 
     handleSelectorChange = (selectedOption) => {
         this.setState({selectedSport: selectedOption.value});
