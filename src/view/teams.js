@@ -330,7 +330,7 @@ class App extends Component {
                 <Grid.Row columns={3}>
                     <Grid.Column width={4}>
                         <Grid.Row style={{textAlign:'center'}}>
-                            <img src={require("../../../Backend/images/" + this.state.logo)}/>
+                            <img src={require("../../../../Backend/images/" + this.state.logo)}/>
                         </Grid.Row>
                         <Grid.Row style={{textAlign:'center', fontSize:'2em', fontStyle:'bold', marginBottom:'0.3em'}}>
 
