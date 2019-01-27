@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import {Tab, Segment, Grid, Table} from 'semantic-ui-react'
+import {Tab, Segment, Grid, Table, Loader} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 import MatchesSummaryTable from "../components/matchSummary";
 import Adv from "../components/advertisement";
 import LeagueTable from '../components/league/leagueTable'
-import OldLeague from '../components/league/oldLeague'
-import NewLeague from '../components/league/newLeague'
+// import OldLeague from '../components/league/oldLeague'
+import LeagueSeasons from '../components/league/leagueSeasons'
 import axios from "axios";
 
 
@@ -494,13 +494,29 @@ const matchSummaryData = {
 };
 
 
-const newLeaguesData = [
+const currentLeaguesData =
     {
-        leagueName: 'لیگ قهرمانان اروپا',
-        sessions: [{name:'لیگ برتر(94-95)', link:null}, {name:'لیگ برتر(95-96)', link: null}, {name:'لیگ برتر(96-97)', link:null}, {name:'لیگ برتر(97-98)', link:null}]
-    },
+        football: [
+                {
+                    leagueName: 'لیگ قهرمانان اروپا',
+                    sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
+                        name: 'لیگ برتر(95-96)',
+                        link: null
+                    }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
+                },
 
-];
+            ],
+        basketball:[
+                {
+                    leagueName: 'لیگ قهرمانان اروپا',
+                    sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
+                        name: 'لیگ برتر(95-96)',
+                        link: null
+                    }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
+                },
+
+            ],
+    };
 
 const matchData = [
     {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
@@ -514,14 +530,29 @@ const matchData = [
     {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
     {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
 ];
-const oldLeaguesData = [
-    {
-        leagueName: 'لیگ قهرمانان اروپا',
-        sessions: ['لیگ برتر(94-95)', 'لیگ برتر(95-96)', 'لیگ برتر(96-97)', 'لیگ برتر(97-98)']
-    },
+const oldLeaguesData = {
+        football: [
+                {
+                    leagueName: 'لیگ قهرمانان اروپا',
+                    sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
+                        name: 'لیگ برتر(95-96)',
+                        link: null
+                    }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
+                },
 
+            ],
+        basketball:[
+                {
+                    leagueName: 'لیگ قهرمانان اروپا',
+                    sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
+                        name: 'لیگ برتر(95-96)',
+                        link: null
+                    }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
+                },
 
-];
+            ],
+    };
+
 
 class App extends Component {
     constructor(props) {
@@ -529,6 +560,11 @@ class App extends Component {
         this.state = {
             selectedSport: "football",
             session: 'لیگ برتر(97-98)',
+            teams: null,
+            matchSummaryData: null,
+            current_leagues: null,
+            old_leagues: null,
+            get: false,
         };
         this.setSession = this.setSession.bind(this)
         this.get_data()
@@ -539,9 +575,14 @@ class App extends Component {
         let url = window.location.href
         url = url.replace('3', '8')
         axios.defaults.withCredentials = true;
-        console.log('ali')
         axios.get(url).then(response => {
-            console.log('ail', response)
+            this.setState({
+                teams: response.data['teams'],
+                matchSummaryData: response.data['matchSummaryData'],
+                current_leagues:response.data['current_leagues'],
+                old_leagues:response.data['old_leagues'],
+                get: true,
+            })
         })
     }
 
@@ -568,7 +609,8 @@ class App extends Component {
     }
 
     render() {
-
+        console.log('asdfasdfasdfasdfasdfasdfasdf')
+        if (this.state.get === false) return (<Loader/>);
         const options = [
             {value: 'football', label: 'فوتبال'},
             {value: 'basketball', label: 'بسکتبال'},
@@ -580,22 +622,23 @@ class App extends Component {
 
                     <Grid.Column width={9}>
                         <Grid.Row>
-                            <LeagueTable session={this.state.session} leagueData={leagueData}/>
+                            <LeagueTable session={this.state.session} leagueData={this.state.teams}/>
                         </Grid.Row>
                         <Grid.Row style={{marginTop: '2vh'}}>
-                            <MatchesSummaryTable session={this.state.session} matchesData={matchSummaryData}/>
+                            <MatchesSummaryTable session={this.state.session}
+                                                 matchesData={this.state.matchSummaryData}/>
                         </Grid.Row>
                     </Grid.Column>
 
                     <Grid.Column width={4}>
 
-                        <Grid.Row style={{margin: '1vh auto'}}>
-                            <OldLeague sessionName={this.setSession} leaguesData={oldLeaguesData}/>
-                        </Grid.Row>
-                        <Grid.Row>
-                            <NewLeague sessionName={this.setSession} leaguesData={newLeaguesData}/>
-                        </Grid.Row>
 
+                        <Grid.Row>
+                            <LeagueSeasons sessionName={this.setSession} type={'لیگ های جاری'} leaguesData={this.state.current_leagues}/>
+                        </Grid.Row>
+                        <Grid.Row style={{margin: '1vh auto'}}>
+                            <LeagueSeasons sessionName={this.setSession} type={'لیگ های قدیمی'} leaguesData={this.state.old_leagues}/>
+                        </Grid.Row>
                     </Grid.Column>
                     <Grid.Column width={3}>
                         <Adv

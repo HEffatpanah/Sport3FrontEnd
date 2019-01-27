@@ -17,7 +17,7 @@ export default class PlayerInfoTable extends Component{
                         return (
                             <Table.Header>
                             <Table.Row style={{textAlign: 'center'}}>
-                                <Table.HeaderCell colSpan='2'><img style={image_style} src={require('../../' + featureValue)}/></Table.HeaderCell>
+                                <Table.HeaderCell colSpan='2'><img style={image_style} src={require('../../../../Backend/images/' + featureValue)}/></Table.HeaderCell>
                                 {/*<Table.Cell style={{textAlign: 'center'}}>{this.props.playerInfo['tableName']}</Table.Cell>*/}
                             </Table.Row>
                             </Table.Header>

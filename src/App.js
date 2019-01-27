@@ -54,8 +54,8 @@ class App extends Component {
                         <Route exact path='/sport3/team/:name/:id' component={Page4} />
                         <Route exact path='/sport3/match' component={Page5} />
                         <Route exact path='/sport3/signup' component={Page6} />
-                        <Route exact path='/sport3/player' component={Page7} />
-                        <Route exact path='/sport3/league/:name/:id' component={Page8} />
+                        <Route exact path='/sport3/player/:name/:id' component={Page7} />
+                        <Route exact path='/sport3/league/:league_name/:season_name/:id' component={Page8} />
                     </Switch>
                 </Router>
             </LocalizeProvider>

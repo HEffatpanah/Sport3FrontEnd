@@ -13,7 +13,8 @@ export default class MatchesSummaryTable extends Component {
         let active = true;
         console.log('salamsalam           ', this.state.matchesData['tableBody'])
         const tableBody = this.state.matchesData['tableBody'].map((session) => {
-                if ((session['league_season'] === this.props.session) || this.props.session === 'all') {
+                // if ((session['league_season'] === this.props.session) || this.props.session === 'all') {
+                if (true) {
                     return session['matches'].map((data) => {
                         active = !active;
                         return (

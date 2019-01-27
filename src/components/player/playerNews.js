@@ -31,7 +31,7 @@ export default class PlayerNews extends Component{
                 <Grid href={link}>
                     <Grid.Row columns={2}>
                         <Grid.Column>
-                            <Image alt={'salam'} src={require('../../images/horse.jpg')} />
+                            <Image alt={'salam'} src={require('../../../../Backend/images/' + image)} />
                         </Grid.Column>
                         <Grid.Column style={{overflow: 'hidden', maxHeight:'9vh'}}>
                                 <strong >{title}</strong>

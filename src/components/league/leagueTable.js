@@ -5,9 +5,9 @@ export default class LeagueTable extends Component {
     getTableRows() {
         let active = true;
         let counter = 1;
-
         return this.props.leagueData.map((leagues) => {
-            if (leagues['leagueName'] === this.props.session) {
+            // if (leagues['leagueName'] === this.props.session) {
+            if (true) {
                 return leagues['tableData'].map(({teamInfo}) => {
 
                     let cells = [<Table.Cell>{counter}</Table.Cell>];
@@ -47,7 +47,8 @@ export default class LeagueTable extends Component {
         {
             return this.props.leagueData.map((leagues) => {
                 console.log(this.props.session, leagues['leagueName'] );
-                if (leagues['leagueName'] === this.props.session) {
+                // if (leagues['leagueName'] === this.props.session) {
+                if (true) {
                     return (
                         <Table.Header>
                             <Table.Row>
