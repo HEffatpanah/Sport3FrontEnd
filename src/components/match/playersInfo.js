@@ -19,7 +19,7 @@ export default class sInfo extends Component {
                     }
                     if(YellowCards!==0)
                         yellow=(<div style={{display:'inline-block'}}><img src={require("../../images/yc.png")}/>{YellowCards}</div>);
-                    if(ReplaceTime!==null)
+                    if(ReplaceTime!=='null')
                         replace=(<div style={{display:'inline-block'}}><img src={require("../../images/subout.png")}/>{ReplaceTime}</div>);
                     active=!active;
 
@@ -51,7 +51,7 @@ export default class sInfo extends Component {
                     }
                     if(YellowCards!==0)
                         yellow=(<div style={{display:'inline-block'}}><img src={require("../../images/yc.png")}/>{YellowCards}</div>);
-                    if(ReplaceTime!==null)
+                    if(ReplaceTime!=='null')
                         replace=(<div style={{display:'inline-block'}}><img src={require("../../images/subin.png")}/>{ReplaceTime}</div>);
                     active=!active;
                     return (

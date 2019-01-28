@@ -16,7 +16,7 @@ export default class MultiMedia extends Component{
     getMedia() {
         return (
             this.props.media.map(({url}) => {
-                return <img alt={'salam'} src={require('../../'+url)}/>
+                return <img alt={'salam'} src={require('../../../../Backend/images/'+url)}/>
             })
         )
     }

@@ -9,8 +9,9 @@ import NewsSummery from '../components/news/newsSummery'
 import {Translate, withLocalize} from "react-localize-redux";
 
 
-import {Grid, Segment} from 'semantic-ui-react'
+import {Grid, Loader, Segment} from 'semantic-ui-react'
 import Template from '../components/template'
+import axios from "axios";
 
 
 
@@ -57,7 +58,7 @@ const matchInfo =
                         {featureName: 'درصد مالکیت توپ', featureValue: "52.8%"},
                     ],
                     events:[
-                        {featureName:'yc',featureValue:[10,70,80]},
+                        {featureName:'yc',featureValue:[70,15,80]},
                         {featureName:'drc',featureValue:[85]},
                         {featureName:'syc',featureValue:[90]},
                         {featureName:'g',featureValue:[35,47,50,76,92]},
@@ -246,43 +247,67 @@ const medias =[
 
 
 export default class Match extends Component {
-    constructor(prop) {
-        super(prop);
+    constructor(props) {
+        super(props);
+        this.state = {
+            newsData: null,
+            medias: null,
+            matchInfo: null,
+            get: false
+        };
+        this.get_data()
     }
 
+    get_data() {
+        let url = window.location.href
+        url = url.replace('3', '8')
+        axios.defaults.withCredentials = true;
+        console.log('ali')
+        axios.get(url).then(response => {
+            console.log(response)
+            this.setState({
+                newsData: response.data['newsData'],
+                matchInfo: response.data['matchInfo'],
+                medias:response.data['medias'],
+                get: true,
+            })
+
+        })
+    }
     render() {
+        if (this.state.get === false) return (<Loader/>);
         const body =
             <Grid style={{width:'100%'}}>
                 <Grid.Row>
                     <Grid.Column width={16}>
                     <div style={{maxWidth:'100%', overflow:'auto'}}>
-                    <TimeLine minutes={matchInfo['tableData']['matchMinutes']} matchData={matchInfo['tableData']}/>
+                    <TimeLine minutes={matchInfo['tableData']['matchMinutes']} matchData={this.state.matchInfo['tableData']}/>
                     </div>
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={4}>
-                    <Grid.Column width={4}><PlayersInfo  playerInfo={matchInfo['tableData']['team1']['players']}/></Grid.Column>
-                    <Grid.Column width={4}><MatchInfo matchRecord={matchInfo['tableData']['team1']}/></Grid.Column>
-                    <Grid.Column width={4}><MatchInfo matchRecord={matchInfo['tableData']['team2']}/></Grid.Column>
-                    <Grid.Column width={4}><PlayersInfo playerInfo={matchInfo['tableData']['team2']['players']}/></Grid.Column>
+                    <Grid.Column width={4}><PlayersInfo  playerInfo={this.state.matchInfo['tableData']['team1']['players']}/></Grid.Column>
+                    <Grid.Column width={4}><MatchInfo matchRecord={this.state.matchInfo['tableData']['team1']}/></Grid.Column>
+                    <Grid.Column width={4}><MatchInfo matchRecord={this.state.matchInfo['tableData']['team2']}/></Grid.Column>
+                    <Grid.Column width={4}><PlayersInfo playerInfo={this.state.matchInfo['tableData']['team2']['players']}/></Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={2}>
                     <Grid.Column>
                         <div style={{fontSize:'1.5em'}}><Translate id="online news" /></div>
                         <Segment  style={{maxHeight:'40vh', overflow:'auto'}}>
-                            <NewsSummery newsData={newsData}/>
+                            <NewsSummery newsData={this.state.newsData}/>
                         </Segment>
                     </Grid.Column>
                     <Grid.Column>
                         <div style={{fontSize:'1.5em'}}><Translate id='fringe news'/></div>
                         <Segment  style={{maxHeight:'40vh', overflow:'auto'}}>
 
-                            <NewsSummery newsData={newsData}/>
+                            <NewsSummery newsData={this.state.newsData}/>
                         </Segment>
                     </Grid.Column>
                 </Grid.Row>
                 <Grid.Row columns={1} style={{textAlign:'center', justifyContent: 'space-evenly'}}>
-                    <Grid.Column width={6}><MultiMedia media={medias}/></Grid.Column>
+                    <Grid.Column width={6}><MultiMedia media={this.state.medias}/></Grid.Column>
                 </Grid.Row>
             </Grid>;
         return(
