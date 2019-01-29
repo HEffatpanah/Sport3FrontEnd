@@ -93,8 +93,8 @@ class App extends Component {
                             <Grid.Row columns={2}>
                                 <Grid.Column width={9}>
                                     <Grid.Row>
-                                        {/*<MatchesSummaryTable matchesData={this.state.basketballMatchesData}*/}
-                                                             {/*session={'all'}/>*/}
+                                        <MatchesSummaryTable matchesData={this.state.basketballMatchesData}
+                                                             session={'all'}/>
                                     </Grid.Row>
                                     <Grid.Row style={{marginTop: '1vh'}}>
                                         <Adv advertisement={'https://static.farakav.com/v3/static/bpx/00910379.gif'}/>
