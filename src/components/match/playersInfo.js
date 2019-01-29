@@ -11,7 +11,7 @@ export default class sInfo extends Component {
                     let yellow = null;
                     let replace = null;
                     let shirt = null;
-                    if(Post==='goalkeeper')
+                    if(Post==='دروازه بان')
                         shirt=<img src={require("../../images/shirt-icon_b.png")}/>
                     else shirt=<img src={require("../../images/shirt-icon_w.png")}/>
                     for (i=0;i<Goals;i++) {
@@ -43,7 +43,7 @@ export default class sInfo extends Component {
                     let yellow = null;
                     let replace = null;
                     let shirt = null;
-                    if(Post==='goalkeeper')
+                    if(Post==='دروازه بان')
                         shirt=<img src={require("../../images/shirt-icon_b.png")}/>
                     else shirt=<img src={require("../../images/shirt-icon_w.png")}/>
                     for (i=0;i<Goals;i++) {

@@ -30,6 +30,7 @@ class App extends Component {
         url = url.replace('3', '8')
         axios.defaults.withCredentials = true;
         axios.get(url).then(response => {
+            console.log(response.data)
             this.setState({
                 footballMatchesData: response.data['football']['matchesTable'],
                 footballNewsData: response.data['football']['newsTable'],
@@ -59,6 +60,7 @@ class App extends Component {
                             <Grid.Row columns={2}>
                                 <Grid.Column width={9}>
                                     <Grid.Row>
+
                                         <MatchesSummaryTable matchesData={this.state.footballMatchesData}
                                                              session={'all'}/>
                                     </Grid.Row>
@@ -91,8 +93,8 @@ class App extends Component {
                             <Grid.Row columns={2}>
                                 <Grid.Column width={9}>
                                     <Grid.Row>
-                                        <MatchesSummaryTable matchesData={this.state.basketballMatchesData}
-                                                             session={'all'}/>
+                                        {/*<MatchesSummaryTable matchesData={this.state.basketballMatchesData}*/}
+                                                             {/*session={'all'}/>*/}
                                     </Grid.Row>
                                     <Grid.Row style={{marginTop: '1vh'}}>
                                         <Adv advertisement={'https://static.farakav.com/v3/static/bpx/00910379.gif'}/>
