@@ -30,14 +30,14 @@ export default class MatchesSummaryTable extends Component {
                         return (
                             <Table.Row onClick={this.foo.bind(this, data['matchLink'])} active={active}
                                        style={{'width': '100%'}}>
-                                {/*<a href={data['matchLink']}>h</a>*/}
+                                <a href={data['matchLink']}>
                                 <Table.Cell width={2}><a href={data['team1Link']}
                                                          target='_blank'>{data['team1Name']}</a></Table.Cell>
                                 <Table.Cell width={1}>{data['team2Goal'] + '-' + data['team1Goal']}</Table.Cell>
                                 <Table.Cell width={2}><a href={data['team2Link']}
                                                          target='_blank'>{data['team2Name']}</a></Table.Cell>
                                 <Table.Cell width={1}>{data['date']}</Table.Cell>
-
+                                </a>
                             </Table.Row>
                         )
                     })
