@@ -1,65 +1,89 @@
-import React ,{Component} from 'react';
+import React, {Component} from 'react';
 import {Button, Form, Grid, Header, Icon, Message, Segment} from 'semantic-ui-react';
 import Template from "../components/template";
 import _ from 'lodash'
 import {Translate} from "react-localize-redux";
+import axios from "axios";
 
-const members=[
-    {user:'ali', pass:'123'},
-    {user:'hossein', pass:'456'},
+const members = [
+    {user: 'ali', pass: '123'},
+    {user: 'hossein', pass: '456'},
 ]
 
 class LoginForm extends Component {
-    constructor(prop){
+    constructor(prop) {
         super(prop);
 
-        this.handleSubmit=this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    state={
-            path:'/login',
-            loginData:members,
-            hiddenLoginError:true,
-        }
+
+    state = {
+        path: '/login',
+        loginData: members,
+        hiddenLoginError: true,
+    };
+
     handleSubmit(event) {
-        let userAuth = false;
-        this.state.loginData.map(({user, pass}) => {
-            if(event.target.user.value === user && pass === event.target.pass.value)
-            {
-                localStorage.setItem('username',user);
-                this.props.history.goBack();
+        let url = window.location.href;
+        let userAuth = false
+        url = url.replace('3', '8');
+        axios.defaults.withCredentials = true;
+        console.log(event.target.user.value, event.target.pass.value);
+        let user = event.target.user.value
+        let self = this
+        axios.post(url, {
+            username: event.target.user.value,
+            password: event.target.pass.value
+        }).then(function (response) {
+            if (response['data']['message'].localeCompare("successful") === 0) {
+                localStorage.setItem('username', user);
+                self.props.history.goBack();
                 userAuth = true;
             }
         });
         if(!userAuth){
             this.setState({hiddenLoginError:false})
         }
+        // let userAuth = false;
+        // this.state.loginData.map(({user, pass}) => {
+        //     if(event.target.user.value === user && pass === event.target.pass.value)
+        //     {
+        //         localStorage.setItem('username',user);
+        //         this.props.history.goBack();
+        //         userAuth = true;
+        //     }
+        // });
+        // if(!userAuth){
+        //     this.setState({hiddenLoginError:false})
+        // }
 
 
     }
 
     render() {
         const loginForm =
-            <Grid textAlign='center' style={{width:'100%', height: '100%'}} verticalAlign='middle'>
+            <Grid textAlign='center' style={{width: '100%', height: '100%'}} verticalAlign='middle'>
                 <Grid.Column style={{maxWidth: 450}}>
-                    <Message hidden={this.state.hiddenLoginError} error={true} >
-                        {<Translate id="wrong user" />}
+                    <Message hidden={this.state.hiddenLoginError} error={true}>
+                        {<Translate id="wrong user"/>}
                     </Message>
                     <Form size='large' onSubmit={this.handleSubmit}>
-                        <Segment >
-                            <Form.Input name='user' fluid icon='user' label={<Translate id="username" />}  required/>
+                        <Segment>
+                            <Form.Input name='user' fluid icon='user' label={<Translate id="username"/>} required/>
                             <Form.Input name='pass' required
                                         fluid
                                         icon='lock'
-                                        label={<Translate id="password" />}
+                                        label={<Translate id="password"/>}
                                         type='password'
                             />
 
-                            <Button type='submit' content={<Translate id="sign in" />} color='teal' fluid size='large'>
+                            <Button type='submit' content={<Translate id="sign in"/>} color='teal' fluid size='large'>
                             </Button>
                         </Segment>
                     </Form>
-                    <Message   style={{textAlign:'center'}}>
-                        {<Translate id="dont register?" />}<a href='../signup'>{<Translate id="register" />}</a>
+                    <Message style={{textAlign: 'center'}}>
+                        {<Translate id="dont register?"/>}<a href='http://localhost:3000/sport3/signup'>{<Translate
+                        id="register"/>}</a>
                     </Message>
                 </Grid.Column>
             </Grid>
@@ -67,4 +91,5 @@ class LoginForm extends Component {
     }
 
 }
+
 export default LoginForm

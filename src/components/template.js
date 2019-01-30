@@ -79,7 +79,7 @@ class Navbar extends Component {
                         name='login'
                         active={this.props.location.pathname === '/login'}
                         onClick={this.handleItemClick}
-                        path = '/login'
+                        path = '/sport3/login'
                         position={localStorage.getItem('I_align')}
                     ><Icon name='user'/></Menu.Item>
 
