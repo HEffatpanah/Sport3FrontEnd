@@ -313,7 +313,7 @@ class App extends Component {
         axios.defaults.withCredentials = true;
 
         // let bodyFormData = new FormData();
-        axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('Authorization');
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
         console.log('asasasas', sessionStorage.getItem('Authorization'));
         // bodyFormData.set('username', localStorage.getItem('username'));
         // axios({

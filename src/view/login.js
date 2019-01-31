@@ -48,7 +48,7 @@ class LoginForm extends Component {
         }).then(function (response) {
             if (response['data']['message'].localeCompare("successful") === 0) {
                 localStorage.setItem('username', user);
-                // localStorage.setItem('Authorization', 'Token ' + response.data["token"]);
+                localStorage.setItem('Authorization', 'Token ' + response.data["token"]);
                 const cookies = new Cookies();
                 cookies.set('Token', response.data['token']);
                 window.location.replace("http://localhost:3000/sport3/home");

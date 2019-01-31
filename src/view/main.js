@@ -30,9 +30,10 @@ class App extends Component {
         let url = window.location.href
         url = url.replace('3', '8')
         axios.defaults.withCredentials = true;
-        // axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        console.log('token', localStorage.getItem('Authorization'));
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
         const cookies = new Cookies();
-        axios.defaults.headers.common['Authorization'] = Cookies.get('Token');
+        // axios.defaults.headers.common['Authorization'] = cookies.get('Token');
         console.log('asasasas', sessionStorage.getItem('Authorization'));
         axios.get(url).then(response => {
             console.log(response.data)
