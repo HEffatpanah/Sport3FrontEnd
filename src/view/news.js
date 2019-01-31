@@ -101,6 +101,7 @@ class App extends Component {
     get_data(){
         let url = window.location.href
         url = url.replace('3', '8')
+        axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('Authorization');
         axios.defaults.withCredentials = true;
         axios.get(url).then(response => {
             console.log(response);

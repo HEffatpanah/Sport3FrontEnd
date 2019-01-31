@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Grid, Loader, Segment} from 'semantic-ui-react'
+import {Checkbox, Grid, Loader, Segment} from 'semantic-ui-react'
 import Template from '../components/template'
 import MatchesTable from '../components/team/matchInfo'
 import TeamMembers from "../components/team/teamMember";
@@ -297,20 +297,33 @@ class App extends Component {
             newsData: null,
             membersData: null,
             matchData: null,
-            teamName:null,
+            teamName: null,
             logo: null,
-            get: false
+            get: false,
+            logged_in: false,
+            subscribed: false
         };
-        this.get_data()
+        this.get_data();
+        this.handleCheckBox = this.handleCheckBox.bind(this)
     }
 
     get_data() {
-        let url = window.location.href
-        url = url.replace('3', '8')
+        let url = window.location.href;
+        url = url.replace('3', '8');
         axios.defaults.withCredentials = true;
-        console.log('ali')
+
+        // let bodyFormData = new FormData();
+        axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('Authorization');
+        console.log('asasasas', sessionStorage.getItem('Authorization'));
+        // bodyFormData.set('username', localStorage.getItem('username'));
+        // axios({
+        //     method: 'post',
+        //     url: url,
+        //     data: bodyFormData,
+        //     config: {headers: {'Content-Type': 'multipart/form-data'}}
+        // });
         axios.get(url).then(response => {
-            console.log(response)
+            console.log(response);
             this.setState({
                 newsData: response.data['newsData'],
                 membersData: response.data['membersData'],
@@ -318,9 +331,35 @@ class App extends Component {
                 teamName: response.data['teamName'],
                 logo: response.data['logo'],
                 get: true,
+                logged_in: response.data['logged_in']
             })
 
         })
+    }
+
+    handleCheckBox(e, {checked}) {
+        axios.defaults.withCredentials = true;
+        if (checked) {
+            let bodyFormData = new FormData();
+            bodyFormData.set('username', localStorage.getItem('username'));
+            bodyFormData.set('type', 'team1');
+            bodyFormData.set('name', this.state.teamName);
+            axios({
+                method: 'post',
+                url: 'http://localhost:8000/sport3/subscribe',
+                data: bodyFormData,
+                config: {headers: {'Content-Type': 'multipart/form-data'}}
+            });
+        }
+
+    }
+
+    get_checkbox() {
+        if (this.state.logged_in === 'yes')
+            return (
+                <Checkbox slider label='مورد علاقه' checked={this.state.subscribed}
+                          onClick={this.handleCheckBox}/>)
+        return
     }
 
     render() {
@@ -329,10 +368,13 @@ class App extends Component {
             <Grid style={{width: '100%'}}>
                 <Grid.Row columns={3}>
                     <Grid.Column width={4}>
-                        <Grid.Row style={{textAlign:'center'}}>
-                            <img src={require("../../../Backend/images/" + this.state.logo)}/>
+                        {this.get_checkbox()}
+                        <Grid.Row style={{textAlign: 'center'}}>
+                            <img style={{maxWidth: "100%"}}
+                                 src={require("../../../Backend/images/" + this.state.logo)}/>
                         </Grid.Row>
-                        <Grid.Row style={{textAlign:'center', fontSize:'2em', fontStyle:'bold', marginBottom:'0.3em'}}>
+                        <Grid.Row
+                            style={{textAlign: 'center', fontSize: '2em', fontStyle: 'bold', marginBottom: '0.3em'}}>
 
                             {this.state.teamName}
                         </Grid.Row>

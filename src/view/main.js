@@ -8,6 +8,7 @@ import globalTranslations from "../translations/global";
 import {Translate, withLocalize} from "react-localize-redux";
 import NewsSummeryWithTab from '../components/news/newsSummaryWithTab'
 import axios from "axios";
+import Cookies from "universal-cookie";
 
 
 class App extends Component {
@@ -16,9 +17,9 @@ class App extends Component {
         this.state = {
             selectedSport: "football",
             footballMatchesData: '',
-            footballNewsData: '',
+            footballNewsData: [],
             basketballMatchesData: '',
-            basketballNewsData: '',
+            basketballNewsData: [],
             get: false,
         };
         this.props.addTranslation(globalTranslations);
@@ -29,6 +30,10 @@ class App extends Component {
         let url = window.location.href
         url = url.replace('3', '8')
         axios.defaults.withCredentials = true;
+        // axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        const cookies = new Cookies();
+        axios.defaults.headers.common['Authorization'] = Cookies.get('Token');
+        console.log('asasasas', sessionStorage.getItem('Authorization'));
         axios.get(url).then(response => {
             console.log(response.data)
             this.setState({

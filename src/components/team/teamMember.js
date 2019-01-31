@@ -37,7 +37,7 @@ export default class TeamMembers extends Component {
         this.setState({filterItem: value, filterEnable: true});
 
     };
-    handleCheckBox = () => {
+    handleCheckBox = (e, {checked}) => {
         this.setState({filterEnable: !this.state.filterEnable, filterItem: null});
     };
 

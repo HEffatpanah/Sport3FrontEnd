@@ -574,6 +574,7 @@ class App extends Component {
     get_data() {
         let url = window.location.href
         url = url.replace('3', '8')
+        axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
         axios.defaults.withCredentials = true;
         axios.get(url).then(response => {
             this.setState({
@@ -609,7 +610,6 @@ class App extends Component {
     }
 
     render() {
-        console.log('asdfasdfasdfasdfasdfasdfasdf')
         if (this.state.get === false) return (<Loader/>);
         const options = [
             {value: 'football', label: 'فوتبال'},

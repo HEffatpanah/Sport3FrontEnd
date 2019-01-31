@@ -1,50 +1,44 @@
 import React, {Component} from 'react'
 import {Button, Form, Grid, Segment} from 'semantic-ui-react'
-import Template from '../components/template'
+import Template from '../template'
 import {findDOMNode} from 'react-dom';
 import axios from "axios";
 
 
-class SignupForm extends Component {
+class ChangePass extends Component {
     constructor(props) {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.name = this.name.bind(this)
+        // this.name = this.name.bind(this)
         this.passConfirmCheck = this.passConfirmCheck.bind(this)
         this.passSave = this.passSave.bind(this)
-        this.error= this.error.bind(this)
-
+        this.error = this.error.bind(this)
+        this.state = {
+            equal: true,
+            pass: null,
+            errors: null
+        };
     }
 
-    state = {
-        equal: true,
-        pass: null,
-        errors: null
-    };
 
-    name(e) {
-        let user = findDOMNode(e.refs.uname).value.trim()
-        let pass = findDOMNode(e.refs.pass).value.trim()
-        console.log(user, pass)
-    }
+    // name(e) {
+    //     let user = findDOMNode(e.refs.uname).value.trim()
+    //     let pass = findDOMNode(e.refs.pass).value.trim()
+    //     console.log(user, pass)
+    // }
 
     handleSubmit(event) {
         event.preventDefault();
         let url = window.location.href;
-        let self = this
+        let self = this;
+        const user_id = this.props.match.params.user_id;
         url = url.replace('3', '8');
-        console.log(event.target.rule.checked);
         axios.defaults.withCredentials = true;
-
         let bodyFormData = new FormData();
-        bodyFormData.set('username', event.target.user.value);
-        bodyFormData.set('password', event.target.pass.value);
-        bodyFormData.set('first_name', event.target.first_name.value);
-        bodyFormData.set('last_name', event.target.last_name.value);
-        bodyFormData.set('email', event.target.email.value);
+        bodyFormData.set('user_id', user_id);
+        bodyFormData.set('password', event.target.password.value);
         bodyFormData.set('confirm_pass', event.target.confirm_pass.value);
-        bodyFormData.set('rules', event.target.rules.value);
 
 
         axios({
@@ -54,19 +48,11 @@ class SignupForm extends Component {
             config: {headers: {'Content-Type': 'multipart/form-data'}}
         }).then(function (response) {
             console.log(response['data']['message']);
-            if (response['data']['message'].localeCompare("user created") === 0) {
-                window.location.replace("http://localhost:3000/sport3/signup_confirm");
-            } else if (response['data']['message'].localeCompare("empty_fields") === 0) {
+            if (response['data']['message'].localeCompare("pass changed") === 0) {
+                window.location.replace("http://localhost:3000/sport3/login");
+            } else if (response['data']['message'].localeCompare("pass and confirm are not equal") === 0) {
                 self.setState({
-                    errors: response['data']['fields'].map((field) => {
-                            return (<div>{field + 'is empty'}</div>)
-                        }
-                    )
-                })
-            }
-            else if(response['data']['message'].localeCompare("pass and confirm are not equal") === 0){
-                self.setState({
-                    errors:<div>رمز وارد شده و تکرار رمز یکسان نمیباشند!</div>
+                    errors: <div>رمز وارد شده و تکرار رمز یکسان نمیباشند!</div>
                 })
             }
         });
@@ -88,23 +74,15 @@ class SignupForm extends Component {
     }
 
     render() {
+
         return (
             <Segment>
                 <div>{this.error()}</div>
                 <Form onSubmit={this.handleSubmit}>
-
-                    <Form.Input name="first_name" fluid label='نام' required/>
-                    <Form.Input name="last_name" fluid label='نام خانوادگی' required/>
-                    <Form.Input name="username" fluid label='نام کاربری' required/>
                     <Form.Input name="password" fluid label='رمز عبور' required onChange={this.passSave}
                                 type="password"/>
                     <Form.Input name="confirm_pass" fluid label='تایید رمز عبور' required
                                 onChange={this.passConfirmCheck} error={!this.state.equal} type="password"/>
-                    <Form.Input name="email" fluid label='ایمیل' placeholder='Email@example.com' type="email" required/>
-                    {/*<Form.Checkbox name="rules" label='قوانین و شرایط را قبول دارم' required/>*/}
-                    <label htmlFor="other">قوانین و شرایط را قبول دارم</label>
-                    <Form.Input type="checkbox" name="rule" id="other" ref="rule" required/>
-
                     <Button color='teal' fluid type='submit'>تایید</Button>
                 </Form>
             </Segment>
@@ -121,7 +99,7 @@ class App extends Component {
             <Grid verticalAlign='middle' textAlign='center' style={{width: '100%', height: '100%'}}>
                 <Grid.Row>
                     <Grid.Column style={{maxWidth: '30vw'}}>
-                        <SignupForm/>
+                        <ChangePass {...this.props}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>;

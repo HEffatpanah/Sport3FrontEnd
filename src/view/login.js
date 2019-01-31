@@ -4,6 +4,7 @@ import Template from "../components/template";
 import _ from 'lodash'
 import {Translate} from "react-localize-redux";
 import axios from "axios";
+import Cookies from 'universal-cookie';
 
 const members = [
     {user: 'ali', pass: '123'},
@@ -21,29 +22,63 @@ class LoginForm extends Component {
         path: '/login',
         loginData: members,
         hiddenLoginError: true,
+        error: '',
     };
 
     handleSubmit(event) {
+
         let url = window.location.href;
         let userAuth = false
         url = url.replace('3', '8');
         axios.defaults.withCredentials = true;
         console.log(event.target.user.value, event.target.pass.value);
-        let user = event.target.user.value
-        let self = this
-        axios.post(url, {
-            username: event.target.user.value,
-            password: event.target.pass.value
+        let user = event.target.user.value;
+        let self = this;
+
+        let bodyFormData = new FormData();
+        bodyFormData.set('username', event.target.user.value);
+        bodyFormData.set('password', event.target.pass.value);
+        let flag = 0;
+
+        axios({
+            method: 'post',
+            url: url,
+            data: bodyFormData,
+            config: {headers: {'Content-Type': 'multipart/form-data'}}
         }).then(function (response) {
             if (response['data']['message'].localeCompare("successful") === 0) {
                 localStorage.setItem('username', user);
-                self.props.history.goBack();
-                userAuth = true;
+                // localStorage.setItem('Authorization', 'Token ' + response.data["token"]);
+                const cookies = new Cookies();
+                cookies.set('Token', response.data['token']);
+                window.location.replace("http://localhost:3000/sport3/home");
+            } else if (response['data']['message'].localeCompare("not confirmed") === 0) {
+                self.setState({hiddenLoginError: false, error: 'حساب فعال نشده است'})
+
+            } else {
+                self.setState({hiddenLoginError: false, error: 'رمز عبور یا نام کاربری استباه است!'})
+
             }
-        });
-        if(!userAuth){
-            this.setState({hiddenLoginError:false})
-        }
+        })
+
+
+        //
+        // axios.post(url, ({
+        //     username: event.target.user.value,
+        //     password: event.target.pass.value
+        // })).then(function (response) {
+        //     console.log(response['data']['message'])
+        //     if (response['data']['message'].localeCompare("successful") === 0) {
+        //         localStorage.setItem('username', user);
+        //         window.location.replace("http://localhost:3000/sport3/home");
+        //     } else if (response['data']['message'].localeCompare("not confirmed") === 0) {
+        //         self.setState({hiddenLoginError: false, error: 'حساب فعال نشده است'})
+        //     } else {
+        //         self.setState({hiddenLoginError: false, error: 'رمز عبور یا نام کاربری استباه است!'})
+        //     }
+        // });
+
+
         // let userAuth = false;
         // this.state.loginData.map(({user, pass}) => {
         //     if(event.target.user.value === user && pass === event.target.pass.value)
@@ -65,7 +100,7 @@ class LoginForm extends Component {
             <Grid textAlign='center' style={{width: '100%', height: '100%'}} verticalAlign='middle'>
                 <Grid.Column style={{maxWidth: 450}}>
                     <Message hidden={this.state.hiddenLoginError} error={true}>
-                        {<Translate id="wrong user"/>}
+                        {this.state.error}
                     </Message>
                     <Form size='large' onSubmit={this.handleSubmit}>
                         <Segment>
@@ -83,7 +118,8 @@ class LoginForm extends Component {
                     </Form>
                     <Message style={{textAlign: 'center'}}>
                         {<Translate id="dont register?"/>}<a href='http://localhost:3000/sport3/signup'>{<Translate
-                        id="register"/>}</a>
+                        id="register"/>}</a><br/>
+                        <a href='http://localhost:3000/sport3/pass_forgotten'>{<Translate id="pass_forgotten"/>}</a>
                     </Message>
                 </Grid.Column>
             </Grid>

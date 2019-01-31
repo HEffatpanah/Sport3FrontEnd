@@ -1,134 +1,150 @@
 {
-    "language": [
-      "Language",
-      "زبان"
-    ],
+  "language": [
+    "Language",
+    "زبان"
+  ],
   "news": [
-      "News",
-      "اخبار"
-    ],
+    "News",
+    "اخبار"
+  ],
   "player": [
-      "Player",
-      "بازیکن"
-    ],
+    "Player",
+    "بازیکن"
+  ],
   "team": [
-      "Team",
-      "تیم"
-    ],
+    "Team",
+    "تیم"
+  ],
   "home": [
-      "Home",
-      "خانه"
-    ],
+    "Home",
+    "خانه"
+  ],
   "dont register?": [
-      "Dont register?",
-      "ثبت نام نکرده اید؟"
-    ],
+    "Dont register?",
+    "ثبت نام نکرده اید؟"
+  ],
   "register": [
-      "Register",
-      "ثبت نام"
-    ],
+    "Register",
+    "ثبت نام"
+  ],
   "sign in": [
-      "Sign in",
-      "ورود"
-    ],
+    "Sign in",
+    "ورود"
+  ],
   "password": [
-      "Password",
-      "رمز عبور"
-    ],
+    "Password",
+    "رمز عبور"
+  ],
   "username": [
-      "Username",
-      "نام کاربری"
-    ],
+    "Username",
+    "نام کاربری"
+  ],
+  "email": [
+    "Email",
+    "رایانامه"
+  ],
   "wrong user": [
-      "Username or Password is wrong",
-      "نام کاربری یا رمز اشتباه میباشد!"
-    ],
+    "Username or Password is wrong",
+    "نام کاربری یا رمز اشتباه میباشد!"
+  ],
   "enable filter": [
-      "Enable filter",
-      "فعال کردن فیلتر"
-    ],
+    "Enable filter",
+    "فعال کردن فیلتر"
+  ],
   "posts filter": [
-      "Post filter",
-      "فیلتر پست ها"
-    ],
+    "Post filter",
+    "فیلتر پست ها"
+  ],
   "choose match": [
-      "Choose match",
-      "انتخاب ورزش"
-    ],
+    "Choose match",
+    "انتخاب ورزش"
+  ],
   "basketball": [
-      "Basketball",
-      "بسکتبال"
-    ],
+    "Basketball",
+    "بسکتبال"
+  ],
   "football": [
-      "Football",
-      "فوتبال"
-    ],
+    "Football",
+    "فوتبال"
+  ],
   "team name": [
-      "Team name",
-      "نام تیم"
-    ],
+    "Team name",
+    "نام تیم"
+  ],
   "result": [
-      "Result",
-      "نتیجه"
-    ],
+    "Result",
+    "نتیجه"
+  ],
   "date": [
-      "Date",
-      "تاریخ"
-    ],
+    "Date",
+    "تاریخ"
+  ],
   "all": [
-      "All",
-      "همه"
-    ],
+    "All",
+    "همه"
+  ],
   "favorite": [
-      "Favorite",
-      "مورد علاقه"
-    ],
+    "Favorite",
+    "مورد علاقه"
+  ],
   "name": [
-      "Name",
-      "نام"
-    ],
+    "Name",
+    "نام"
+  ],
   "age": [
-      "Age",
-      "سن"
-    ],
+    "Age",
+    "سن"
+  ],
   "post": [
-      "Post",
-      "پست"
-    ],
+    "Post",
+    "پست"
+  ],
+  "league": [
+    "Leagues",
+    "لیگ ها"
+  ],
   "picture": [
-      "Picture",
-      "عکس"
-    ],
+    "Picture",
+    "عکس"
+  ],
   "point": [
-      "Point",
-      "امتیاز"
-    ],
+    "Point",
+    "امتیاز"
+  ],
   "status": [
-      "Status",
-      "وضعیت"
-    ],
+    "Status",
+    "وضعیت"
+  ],
   "opponent": [
-      "Opponent",
-      "حریف"
-    ],
+    "Opponent",
+    "حریف"
+  ],
   "player record": [
-      "Player record",
-      "انتخاب فصل"
-    ],
+    "Player record",
+    "انتخاب فصل"
+  ],
   "online news": [
-      "online news",
-      "اخبار لحظه ای"
-    ],
+    "online news",
+    "اخبار لحظه ای"
+  ],
   "fringe news": [
-      "fringe news",
-      "اخبار حاشیه"
-    ],
+    "fringe news",
+    "اخبار حاشیه"
+  ],
   "add comment": [
-      "Add comment",
-      "افزودن نظر"
-    ],
+    "Add comment",
+    "افزودن نظر"
+  ],
   "logout": [
-      "log out",
-      "خروج"
-    ]
+    "log out",
+    "خروج"
+  ],
+  "send password": [
+    "send password",
+    "ارسال رمز"
+  ],
+  "pass_forgotten": [
+    "password forgotten",
+    "فراموشی رمز عبور"
+  ]
 }
