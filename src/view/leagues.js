@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Tab, Segment, Grid, Table, Loader} from 'semantic-ui-react'
+import {Tab, Segment, Grid, Table, Loader, Menu, Dropdown} from 'semantic-ui-react'
 import Template from '../components/template'
 import Select from 'react-select';
 import MatchesSummaryTable from "../components/matchSummary";
@@ -497,25 +497,25 @@ const matchSummaryData = {
 const currentLeaguesData =
     {
         football: [
-                {
-                    leagueName: 'لیگ قهرمانان اروپا',
-                    sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
-                        name: 'لیگ برتر(95-96)',
-                        link: null
-                    }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
-                },
+            {
+                leagueName: 'لیگ قهرمانان اروپا',
+                sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
+                    name: 'لیگ برتر(95-96)',
+                    link: null
+                }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
+            },
 
-            ],
-        basketball:[
-                {
-                    leagueName: 'لیگ قهرمانان اروپا',
-                    sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
-                        name: 'لیگ برتر(95-96)',
-                        link: null
-                    }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
-                },
+        ],
+        basketball: [
+            {
+                leagueName: 'لیگ قهرمانان اروپا',
+                sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
+                    name: 'لیگ برتر(95-96)',
+                    link: null
+                }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
+            },
 
-            ],
+        ],
     };
 
 const matchData = [
@@ -531,27 +531,27 @@ const matchData = [
     {team1Name: 'mancity', team2Name: 'arsenal', team1Goal: '2', team2Goal: '1', date: 'امروز'},
 ];
 const oldLeaguesData = {
-        football: [
-                {
-                    leagueName: 'لیگ قهرمانان اروپا',
-                    sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
-                        name: 'لیگ برتر(95-96)',
-                        link: null
-                    }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
-                },
+    football: [
+        {
+            leagueName: 'لیگ قهرمانان اروپا',
+            sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
+                name: 'لیگ برتر(95-96)',
+                link: null
+            }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
+        },
 
-            ],
-        basketball:[
-                {
-                    leagueName: 'لیگ قهرمانان اروپا',
-                    sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
-                        name: 'لیگ برتر(95-96)',
-                        link: null
-                    }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
-                },
+    ],
+    basketball: [
+        {
+            leagueName: 'لیگ قهرمانان اروپا',
+            sessions: [{name: 'لیگ برتر(94-95)', link: null}, {
+                name: 'لیگ برتر(95-96)',
+                link: null
+            }, {name: 'لیگ برتر(96-97)', link: null}, {name: 'لیگ برتر(97-98)', link: null}]
+        },
 
-            ],
-    };
+    ],
+};
 
 
 class App extends Component {
@@ -567,6 +567,8 @@ class App extends Component {
             get: false,
         };
         this.setSession = this.setSession.bind(this)
+        this.getWeeks = this.getWeeks.bind(this)
+        this.get_weeks_match = this.get_weeks_match.bind(this)
         this.get_data()
     }
 
@@ -582,8 +584,8 @@ class App extends Component {
             this.setState({
                 teams: response.data['teams'],
                 matchSummaryData: response.data['matchSummaryData'],
-                current_leagues:response.data['current_leagues'],
-                old_leagues:response.data['old_leagues'],
+                current_leagues: response.data['current_leagues'],
+                old_leagues: response.data['old_leagues'],
                 get: true,
             })
         })
@@ -610,6 +612,40 @@ class App extends Component {
         this.setState({session: session})
     }
 
+    getWeeks() {
+        let options = [];
+        for (let i = 1; i < this.state.teams[0]['tableData'].length * 2 - 1; i++) {
+            options.push({key: i, text: i, value: i})
+        }
+        return options;
+    }
+
+    get_weeks_match(event, data) {
+        this.setState({
+            get: false,
+        })
+        let url = window.location.href;
+        url = url.replace('3', '8');
+        axios.defaults.withCredentials = true;
+        let self = this
+        let bodyFormData = new FormData();
+        bodyFormData.set('type', 'mtach_weeks');
+        bodyFormData.set('week', data.value);
+        axios({
+            method: 'post',
+            url: url,
+            data: bodyFormData,
+            config: {headers: {'Content-Type': 'multipart/form-data'}}
+        }).then(response => {
+            console.log(response);
+            self.setState({
+                matchSummaryData:response.data['matchSummaryData'],
+                get: true,
+            })
+
+        })
+    }
+
     render() {
         if (this.state.get === false) return (<Loader/>);
         const options = [
@@ -626,6 +662,10 @@ class App extends Component {
                             <LeagueTable leagueData={this.state.teams}/>
                         </Grid.Row>
                         <Grid.Row style={{marginTop: '2vh'}}>
+                            <Menu compact>
+                                <Dropdown onChange={this.get_weeks_match} closeOnChange placeholder='هفته'
+                                          options={this.getWeeks()} item/>
+                            </Menu>
                             <MatchesSummaryTable matchesData={this.state.matchSummaryData}/>
                         </Grid.Row>
                     </Grid.Column>
