@@ -21,31 +21,53 @@ class App extends Component {
             basketballMatchesData: '',
             basketballNewsData: [],
             get: false,
+            update:false,
+            logged_in:'no',
         };
         this.props.addTranslation(globalTranslations);
-        this.get_data()
+        this.get_data();
+        this.refresh_news_number = this.refresh_news_number.bind(this)
+    }
+
+    refresh_news_number(event) {
+        this.setState({get:false});
+        let url = window.location.href;
+        let userAuth = false;
+        url = url.replace('3', '8');
+        axios.defaults.withCredentials = true;
+        let self = this;
+        let bodyFormData = new FormData();
+        bodyFormData.set('number_of_news', event.target.news_number.value);
+        axios({
+            method: 'post',
+            url: url,
+            data: bodyFormData,
+            config: {headers: {'Content-Type': 'multipart/form-data'}}
+        }).then(function (response) {
+            self.setState({
+                footballNewsData: response.data['football']['newsTable'],
+                basketballNewsData: response.data['basketball']['newsTable'],
+                get: true,
+                logged_in:response.data['logged_in'],
+            })
+        })
     }
 
     get_data() {
-        let url = window.location.href
-        url = url.replace('3', '8')
+        let url = window.location.href;
+        url = url.replace('3', '8');
         axios.defaults.withCredentials = true;
-        console.log('token', localStorage.getItem('Authorization'));
         if (localStorage.getItem('Authorization') != null) {
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
         }
-        console.log('asasasas', sessionStorage.getItem('Authorization'));
-        const cookies = new Cookies();
-        // axios.defaults.headers.common['Authorization'] = cookies.get('Token');
-        console.log('asasasas', sessionStorage.getItem('Authorization'));
         axios.get(url).then(response => {
-            console.log(response.data)
             this.setState({
                 footballMatchesData: response.data['football']['matchesTable'],
                 footballNewsData: response.data['football']['newsTable'],
                 basketballMatchesData: response.data['basketball']['matchesTable'],
                 basketballNewsData: response.data['basketball']['newsTable'],
                 get: true,
+                logged_in:response.data['logged_in']
             })
 
         })
@@ -79,7 +101,8 @@ class App extends Component {
                                 </Grid.Column>
                                 <Grid.Column width={7}>
                                     <Segment>
-                                        <NewsSummeryWithTab newsData={this.state.footballNewsData}/>
+                                        <NewsSummeryWithTab logged_in={this.state.logged_in} refresh_news_number={this.refresh_news_number}
+                                                            newsData={this.state.footballNewsData}/>
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
@@ -111,7 +134,7 @@ class App extends Component {
                                 </Grid.Column>
                                 <Grid.Column width={7}>
                                     <Segment>
-                                        <NewsSummeryWithTab newsData={this.state.basketballNewsData}/>
+                                        <NewsSummeryWithTab logged_in={this.state.logged_in} refresh_news_number={this.refresh_news_number} newsData={this.state.basketballNewsData}/>
                                     </Segment>
                                 </Grid.Column>
                             </Grid.Row>
