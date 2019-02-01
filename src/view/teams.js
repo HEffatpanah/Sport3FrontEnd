@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {Checkbox, Grid, Loader, Segment} from 'semantic-ui-react'
+import {Checkbox, Grid, Loader, Segment, Button} from 'semantic-ui-react'
+import {Translate, withLocalize} from "react-localize-redux";
 import Template from '../components/template'
 import MatchesTable from '../components/team/matchInfo'
 import TeamMembers from "../components/team/teamMember";
@@ -294,17 +295,18 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            newsData: null,
+            newsData: [],
             membersData: null,
             matchData: null,
             teamName: null,
             logo: null,
             get: false,
             logged_in: false,
-            subscribed: false
+            subscribed: false,
         };
         this.get_data();
         this.handleCheckBox = this.handleCheckBox.bind(this)
+        this.getRelatedNews = this.getRelatedNews.bind(this)
     }
 
     get_data() {
@@ -362,8 +364,36 @@ class App extends Component {
         return
     }
 
+    getRelatedNews(e,{mode}) {
+        this.setState({
+            get:false,
+        })
+        let url = window.location.href;
+        url = url.replace('3', '8');
+        axios.defaults.withCredentials = true;
+        let self=this
+        let bodyFormData = new FormData();
+        bodyFormData.set('username', localStorage.getItem('username'));
+        bodyFormData.set('type', 'relatedNews');
+        bodyFormData.set('mode', mode);
+        axios({
+            method: 'post',
+            url: url,
+            data: bodyFormData,
+            config: {headers: {'Content-Type': 'multipart/form-data'}}
+        }).then(response => {
+            console.log(response);
+            self.setState({
+                newsData: response.data['newsData'],
+                get:true,
+            })
+
+        })
+    }
+
     render() {
         if (this.state.get === false) return (<Loader/>);
+        console.log(1)
         const body =
             <Grid style={{width: '100%'}}>
                 <Grid.Row columns={3}>
@@ -374,12 +404,24 @@ class App extends Component {
                                  src={require("../../../Backend/images/" + this.state.logo)}/>
                         </Grid.Row>
                         <Grid.Row
-                            style={{textAlign: 'center', fontSize: '2em', fontStyle: 'bold', marginBottom: '0.3em'}}>
+                            style={{
+                                textAlign: 'center',
+                                fontSize: '2em',
+                                fontStyle: 'bold',
+                                marginBottom: '0.3em'
+                            }}>
 
                             {this.state.teamName}
                         </Grid.Row>
                         <Grid.Row>
-                            <Segment><NewsSummery newsData={this.state.newsData}/></Segment>
+                            <Segment>
+                                <Button.Group color='blue'>
+                                    <Button mode={1} onClick={this.getRelatedNews}>{<Translate id="news_title"/>}</Button>
+                                    <Button mode={2} onClick={this.getRelatedNews}>{<Translate id="news_tags"/>}</Button>
+                                    <Button mode={3} onClick={this.getRelatedNews}>{<Translate id="news_body"/>}</Button>
+                                </Button.Group>
+                                <NewsSummery newsData={this.state.newsData}/>
+                            </Segment>
                         </Grid.Row>
                     </Grid.Column>
                     <Grid.Column width={8}>

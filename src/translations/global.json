@@ -146,5 +146,17 @@
   "pass_forgotten": [
     "password forgotten",
     "فراموشی رمز عبور"
+  ],
+  "news_title": [
+    "News Title",
+    "عنوان خبر"
+  ],
+  "news_tags": [
+    "News Tags",
+    "تگ های خبر"
+  ],
+  "news_body": [
+    "News Body",
+    "متن خبر"
   ]
 }

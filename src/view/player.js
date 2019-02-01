@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Grid, Loader, Segment} from 'semantic-ui-react'
+import {Grid, Loader, Segment,Button} from 'semantic-ui-react'
 import Template from '../components/template'
 import PlayerInfoTable from "../components/player/playerInfo";
 import PlayerRecordTable from "../components/player/playerRecord";
@@ -7,6 +7,7 @@ import Adv from "../components/advertisement";
 import PlayerNews from '../components/player/playerNews'
 import NewsSummery from '../components/news/newsSummery'
 import axios from "axios";
+import {Translate} from "react-localize-redux";
 
 
 const playerInfo = {
@@ -115,6 +116,7 @@ class App extends Component {
             get: false,
         };
         this.get_data()
+        this.getRelatedNews = this.getRelatedNews.bind(this)
     }
 
     get_data() {
@@ -134,18 +136,50 @@ class App extends Component {
         })
     }
 
+    getRelatedNews(e, {mode}) {
+        this.setState({
+            get: false,
+        })
+        let url = window.location.href;
+        url = url.replace('3', '8');
+        axios.defaults.withCredentials = true;
+        let self = this
+        let bodyFormData = new FormData();
+        bodyFormData.set('username', localStorage.getItem('username'));
+        bodyFormData.set('type', 'relatedNews');
+        bodyFormData.set('mode', mode);
+        axios({
+            method: 'post',
+            url: url,
+            data: bodyFormData,
+            config: {headers: {'Content-Type': 'multipart/form-data'}}
+        }).then(response => {
+            console.log(response);
+            self.setState({
+                relatedNewsData: response.data['relatedNewsData'],
+                get: true,
+            })
+
+        })
+    }
+
     render() {
         if (this.state.get === false) return (<Loader/>);
         const body =
             <Grid style={{width: '100%'}}>
                 <Grid.Row columns={4}>
                     <Grid.Column width={1}/>
-                    <Grid.Column width={3}>
-                        <Segment><NewsSummery newsData={this.state.relatedNewsData}/></Segment>
+                    <Grid.Column width={4}>
+                        <Segment>
+                            <Button.Group color='blue'>
+                                <Button mode={1} onClick={this.getRelatedNews}>{<Translate id="news_title"/>}</Button>
+                                <Button mode={2} onClick={this.getRelatedNews}>{<Translate id="news_tags"/>}</Button>
+                                <Button mode={3} onClick={this.getRelatedNews}>{<Translate id="news_body"/>}</Button>
+                            </Button.Group>
+                            <NewsSummery newsData={this.state.relatedNewsData}/>
+                        </Segment>
                     </Grid.Column>
-
-
-                    <Grid.Column width={5}>
+                    <Grid.Column width={4}>
                         <Grid.Row>
                             <Adv
                                 link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'}
