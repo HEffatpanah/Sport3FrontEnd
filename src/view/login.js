@@ -49,8 +49,6 @@ class LoginForm extends Component {
             if (response['data']['message'].localeCompare("successful") === 0) {
                 localStorage.setItem('username', user);
                 localStorage.setItem('Authorization', 'Token ' + response.data["token"]);
-                const cookies = new Cookies();
-                cookies.set('Token', response.data['token']);
                 window.location.replace("http://localhost:3000/sport3/home");
             } else if (response['data']['message'].localeCompare("not confirmed") === 0) {
                 self.setState({hiddenLoginError: false, error: 'حساب فعال نشده است'})

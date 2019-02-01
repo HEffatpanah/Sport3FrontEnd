@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Grid, Loader, Segment} from 'semantic-ui-react'
+import {Checkbox, Grid, Loader, Segment} from 'semantic-ui-react'
 import Template from '../components/template'
 import PlayerInfoTable from "../components/player/playerInfo";
 import PlayerRecordTable from "../components/player/playerRecord";
@@ -113,14 +113,19 @@ class App extends Component {
             playerRecords: null,
             playerInfo: null,
             get: false,
+            logged_in: false,
+            subscribed: false
         };
+        this.handleCheckBox = this.handleCheckBox.bind(this)
         this.get_data()
     }
 
     get_data() {
         let url = window.location.href
         url = url.replace('3', '8')
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        if (localStorage.getItem('Authorization') != null) {
+            axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        }
         axios.defaults.withCredentials = true;
         axios.get(url).then(response => {
             console.log(response.data)
@@ -130,10 +135,47 @@ class App extends Component {
                 playerRecords: response.data['playerRecords'],
                 playerInfo: response.data['playerInfo'],
                 get: true,
+                logged_in: response.data['logged_in'],
+                subscribed:(response.data['subscribed'] === 'yes'),
             })
         })
     }
 
+    handleCheckBox(e, {checked}) {
+        let player_info = this.state.playerInfo['tableData']
+        let player_name;
+        player_info.map(({featureName, featureValue}) => {
+            if (featureName === 'نام'){
+                player_name = featureValue
+            }
+        })
+        axios.defaults.withCredentials = true;
+        let bodyFormData = new FormData();
+            bodyFormData.set('username', localStorage.getItem('username'));
+            bodyFormData.set('name', player_name);
+        if (checked) {
+            bodyFormData.set('type', 'player1');
+        }else {
+            bodyFormData.set('type', 'player0');
+        }
+
+            axios({
+                method: 'post',
+                url: 'http://localhost:8000/sport3/subscribe',
+                data: bodyFormData,
+                config: {headers: {'Content-Type': 'multipart/form-data'}}
+            });
+        this.setState({subscribed:!this.state.subscribed})
+
+    }
+
+    get_checkbox() {
+        if (this.state.logged_in === 'yes')
+            return (
+                <Checkbox slider label='مورد علاقه' checked={this.state.subscribed}
+                          onClick={this.handleCheckBox}/>)
+
+    }
     render() {
         if (this.state.get === false) return (<Loader/>);
         const body =
@@ -141,6 +183,7 @@ class App extends Component {
                 <Grid.Row columns={4}>
                     <Grid.Column width={1}/>
                     <Grid.Column width={3}>
+                        {this.get_checkbox()}
                         <Segment><NewsSummery newsData={this.state.relatedNewsData}/></Segment>
                     </Grid.Column>
 

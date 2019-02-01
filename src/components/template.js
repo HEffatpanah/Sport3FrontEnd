@@ -62,16 +62,13 @@ class Navbar extends Component {
             // url = url.replace('3', '8');
             axios.defaults.withCredentials = true;
             let self = this;
-            let bodyFormData = new FormData();
-            bodyFormData.set('username', localStorage.getItem('username'));
-            axios({
-                method: 'post',
-                url: 'http://localhost:8000/sport3/logout',
-                data: bodyFormData,
-                config: {headers: {'Content-Type': 'multipart/form-data'}}
-            }).then(function (response) {
+            // let bodyFormData = new FormData();
+            // bodyFormData.set('username', localStorage.getItem('username'));
+            axios.get('http://localhost:8000/sport3/logout').then(function (response) {
                 localStorage.removeItem('username');
+                localStorage.removeItem('Authorization');
                 self.setState({change: !self.state.change});
+                window.location.reload()
             });
 
         };
