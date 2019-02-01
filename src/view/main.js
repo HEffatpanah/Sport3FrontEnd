@@ -31,7 +31,10 @@ class App extends Component {
         url = url.replace('3', '8')
         axios.defaults.withCredentials = true;
         console.log('token', localStorage.getItem('Authorization'));
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        if (localStorage.getItem('Authorization') != null) {
+            axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        }
+        console.log('asasasas', sessionStorage.getItem('Authorization'));
         const cookies = new Cookies();
         // axios.defaults.headers.common['Authorization'] = cookies.get('Token');
         console.log('asasasas', sessionStorage.getItem('Authorization'));

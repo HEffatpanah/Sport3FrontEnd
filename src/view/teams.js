@@ -312,11 +312,11 @@ class App extends Component {
     get_data() {
         let url = window.location.href;
         url = url.replace('3', '8');
-        axios.defaults.withCredentials = true;
-
         // let bodyFormData = new FormData();
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
-        console.log('asasasas', sessionStorage.getItem('Authorization'));
+        if (localStorage.getItem('Authorization') != null) {
+            axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        }
+        axios.defaults.withCredentials = true;
         // bodyFormData.set('username', localStorage.getItem('username'));
         // axios({
         //     method: 'post',
@@ -333,26 +333,32 @@ class App extends Component {
                 teamName: response.data['teamName'],
                 logo: response.data['logo'],
                 get: true,
-                logged_in: response.data['logged_in']
+                logged_in: response.data['logged_in'],
+                subscribed:(response.data['subscribed'] === 'yes')
             })
 
         })
     }
 
     handleCheckBox(e, {checked}) {
+
         axios.defaults.withCredentials = true;
-        if (checked) {
-            let bodyFormData = new FormData();
+        let bodyFormData = new FormData();
             bodyFormData.set('username', localStorage.getItem('username'));
-            bodyFormData.set('type', 'team1');
             bodyFormData.set('name', this.state.teamName);
-            axios({
-                method: 'post',
-                url: 'http://localhost:8000/sport3/subscribe',
-                data: bodyFormData,
-                config: {headers: {'Content-Type': 'multipart/form-data'}}
-            });
+        if (checked) {
+            bodyFormData.set('type', 'team1');
         }
+        else {
+            bodyFormData.set('type', 'team0');
+        }
+        axios({
+            method: 'post',
+            url: 'http://localhost:8000/sport3/subscribe',
+            data: bodyFormData,
+            config: {headers: {'Content-Type': 'multipart/form-data'}}
+        })
+        this.setState({subscribed:!this.state.subscribed})
 
     }
 

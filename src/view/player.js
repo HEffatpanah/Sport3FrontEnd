@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Grid, Loader, Segment,Button} from 'semantic-ui-react'
+import {Checkbox, Grid, Loader, Segment} from 'semantic-ui-react'
 import Template from '../components/template'
 import PlayerInfoTable from "../components/player/playerInfo";
 import PlayerRecordTable from "../components/player/playerRecord";
@@ -7,7 +7,6 @@ import Adv from "../components/advertisement";
 import PlayerNews from '../components/player/playerNews'
 import NewsSummery from '../components/news/newsSummery'
 import axios from "axios";
-import {Translate} from "react-localize-redux";
 
 
 const playerInfo = {
@@ -114,15 +113,19 @@ class App extends Component {
             playerRecords: null,
             playerInfo: null,
             get: false,
+            logged_in: false,
+            subscribed: false
         };
+        this.handleCheckBox = this.handleCheckBox.bind(this)
         this.get_data()
-        this.getRelatedNews = this.getRelatedNews.bind(this)
     }
 
     get_data() {
         let url = window.location.href
         url = url.replace('3', '8')
-        axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        if (localStorage.getItem('Authorization') != null) {
+            axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
+        }
         axios.defaults.withCredentials = true;
         axios.get(url).then(response => {
             console.log(response.data)
@@ -132,54 +135,60 @@ class App extends Component {
                 playerRecords: response.data['playerRecords'],
                 playerInfo: response.data['playerInfo'],
                 get: true,
+                logged_in: response.data['logged_in'],
+                subscribed:(response.data['subscribed'] === 'yes'),
             })
         })
     }
 
-    getRelatedNews(e, {mode}) {
-        this.setState({
-            get: false,
+    handleCheckBox(e, {checked}) {
+        let player_info = this.state.playerInfo['tableData']
+        let player_name;
+        player_info.map(({featureName, featureValue}) => {
+            if (featureName === 'نام'){
+                player_name = featureValue
+            }
         })
-        let url = window.location.href;
-        url = url.replace('3', '8');
         axios.defaults.withCredentials = true;
-        let self = this
         let bodyFormData = new FormData();
-        bodyFormData.set('username', localStorage.getItem('username'));
-        bodyFormData.set('type', 'relatedNews');
-        bodyFormData.set('mode', mode);
-        axios({
-            method: 'post',
-            url: url,
-            data: bodyFormData,
-            config: {headers: {'Content-Type': 'multipart/form-data'}}
-        }).then(response => {
-            console.log(response);
-            self.setState({
-                relatedNewsData: response.data['relatedNewsData'],
-                get: true,
-            })
+            bodyFormData.set('username', localStorage.getItem('username'));
+            bodyFormData.set('name', player_name);
+        if (checked) {
+            bodyFormData.set('type', 'player1');
+        }else {
+            bodyFormData.set('type', 'player0');
+        }
 
-        })
+            axios({
+                method: 'post',
+                url: 'http://localhost:8000/sport3/subscribe',
+                data: bodyFormData,
+                config: {headers: {'Content-Type': 'multipart/form-data'}}
+            });
+        this.setState({subscribed:!this.state.subscribed})
+
     }
 
+    get_checkbox() {
+        if (this.state.logged_in === 'yes')
+            return (
+                <Checkbox slider label='مورد علاقه' checked={this.state.subscribed}
+                          onClick={this.handleCheckBox}/>)
+
+    }
     render() {
         if (this.state.get === false) return (<Loader/>);
         const body =
             <Grid style={{width: '100%'}}>
                 <Grid.Row columns={4}>
                     <Grid.Column width={1}/>
-                    <Grid.Column width={4}>
-                        <Segment>
-                            <Button.Group color='blue'>
-                                <Button mode={1} onClick={this.getRelatedNews}>{<Translate id="news_title"/>}</Button>
-                                <Button mode={2} onClick={this.getRelatedNews}>{<Translate id="news_tags"/>}</Button>
-                                <Button mode={3} onClick={this.getRelatedNews}>{<Translate id="news_body"/>}</Button>
-                            </Button.Group>
-                            <NewsSummery newsData={this.state.relatedNewsData}/>
-                        </Segment>
+                    <Grid.Column width={3}>
+                        {this.get_checkbox()}
+                        <Segment><NewsSummery newsData={this.state.relatedNewsData}/></Segment>
                     </Grid.Column>
-                    <Grid.Column width={4}>
+
+
+                    <Grid.Column width={5}>
                         <Grid.Row>
                             <Adv
                                 link={'http://ads.farakav.com/clk?av=7_QN&amp;gl=cfcd208495d565ef66e7dff9f98764da&amp;lc=1'}
