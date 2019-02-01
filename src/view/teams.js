@@ -317,13 +317,6 @@ class App extends Component {
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
         }
         axios.defaults.withCredentials = true;
-        // bodyFormData.set('username', localStorage.getItem('username'));
-        // axios({
-        //     method: 'post',
-        //     url: url,
-        //     data: bodyFormData,
-        //     config: {headers: {'Content-Type': 'multipart/form-data'}}
-        // });
         axios.get(url).then(response => {
             console.log(response);
             this.setState({
@@ -341,23 +334,23 @@ class App extends Component {
     }
 
     handleCheckBox(e, {checked}) {
-
+        let url = window.location.href;
+        url = url.replace('3', '8');
         axios.defaults.withCredentials = true;
         let bodyFormData = new FormData();
-            bodyFormData.set('username', localStorage.getItem('username'));
-            bodyFormData.set('name', this.state.teamName);
+        bodyFormData.set('type', 'subscribe');
         if (checked) {
-            bodyFormData.set('type', 'team1');
+            bodyFormData.set('add_remove', 'add');
         }
         else {
-            bodyFormData.set('type', 'team0');
+            bodyFormData.set('add_remove', 'remove');
         }
         axios({
             method: 'post',
-            url: 'http://localhost:8000/sport3/subscribe',
+            url: url,
             data: bodyFormData,
             config: {headers: {'Content-Type': 'multipart/form-data'}}
-        })
+        });
         this.setState({subscribed:!this.state.subscribed})
 
     }
@@ -367,7 +360,7 @@ class App extends Component {
             return (
                 <Checkbox slider label='مورد علاقه' checked={this.state.subscribed}
                           onClick={this.handleCheckBox}/>)
-        return
+
     }
 
     getRelatedNews(e,{mode}) {
@@ -379,7 +372,6 @@ class App extends Component {
         axios.defaults.withCredentials = true;
         let self=this
         let bodyFormData = new FormData();
-        bodyFormData.set('username', localStorage.getItem('username'));
         bodyFormData.set('type', 'relatedNews');
         bodyFormData.set('mode', mode);
         axios({

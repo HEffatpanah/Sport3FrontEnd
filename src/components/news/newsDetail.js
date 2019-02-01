@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Segment, Form, Input, TextArea, Button, Comment, Image, Divider} from "semantic-ui-react";
 import {Translate} from "react-localize-redux";
+import axios from "axios";
 
 export default class NewsDetail extends Component {
     constructor(props) {
@@ -28,33 +29,33 @@ export default class NewsDetail extends Component {
         );
     }
 
-    // getComment(){
-    //     return (
-    //         this.state.newDetail['comments'].map(({name, comment, date}) => {
-    //                 return(
-    //                     <Comment>
-    //                         <Comment.Content>
-    //                             <Comment.Author>{name}</Comment.Author>
-    //                             <Comment.Metadata>
-    //                                 <div>{date}</div>
-    //                             </Comment.Metadata>
-    //                             <Comment.Text>
-    //                                 <p>
-    //                                     {comment}
-    //                                 </p>
-    //                             </Comment.Text>
-    //                             <Comment.Actions>
-    //                                 <Comment.Action>پاسخ</Comment.Action>
-    //                             </Comment.Actions>
-    //                         </Comment.Content>
-    //                     </Comment>
-    //                 )
-    //             }
-    //         )
-    //     );
-    //
-    //
-    // }
+    getComment(){
+        return (
+            this.state.newDetail['comments'].map(({name, comment, date}) => {
+                    return(
+                        <Comment>
+                            <Comment.Content>
+                                <Comment.Author>{name}</Comment.Author>
+                                <Comment.Metadata>
+                                    <div>{date}</div>
+                                </Comment.Metadata>
+                                <Comment.Text>
+                                    <p>
+                                        {comment}
+                                    </p>
+                                </Comment.Text>
+                                <Comment.Actions>
+                                    <Comment.Action>پاسخ</Comment.Action>
+                                </Comment.Actions>
+                            </Comment.Content>
+                        </Comment>
+                    )
+                }
+            )
+        );
+
+
+    }
     getMoreImages(){
         return (
             this.state.newDetail['moreImagesUrl'].map((url) => {
@@ -69,10 +70,24 @@ export default class NewsDetail extends Component {
         );
     }
     handleCommentSubmit(e){
-        let aux = this.state.newDetail;
-        aux['comments'].push({name:e.target.name.value, comment:e.target.comment.value});
-        this.setState({newData:aux})
-        e.target.reset()
+        let url = window.location.href;
+        url = url.replace('3', '8');
+        axios.defaults.withCredentials = true;
+        let self = this;
+        let bodyFormData = new FormData();
+        bodyFormData.set('comment', e.target.comment.value);
+        axios({
+            method: 'post',
+            url: url,
+            data: bodyFormData,
+            config: {headers: {'Content-Type': 'multipart/form-data'}}
+        }).then(function (response) {
+            window.location.reload();
+        })
+        // let aux = this.state.newDetail;
+        // aux['comments'].push({name:e.target.name.value, comment:e.target.comment.value});
+        // this.setState({newData:aux})
+        // e.target.reset()
     }
     render() {
         const image_url = this.state.newDetail['image_url'];
@@ -96,42 +111,41 @@ export default class NewsDetail extends Component {
         const comments =
             <Segment>
                 <Comment.Group style={{margin:'auto'}} >
-                    {/*{this.getComment()}*/}
+                    {this.getComment()}
                     <Form reply onSubmit={this.handleCommentSubmit}>
-                        <Form.Input name='name'  label='نام'/>
                         <Form.TextArea name='comment' label='نظر'/>
                         <Button content={<Translate id='add comment'/>} labelPosition={localStorage.getItem('I_align')} icon='edit' primary />
                     </Form>
                 </Comment.Group>
             </Segment>;
-        const new_comment = <Segment >
-            <Form >
-                <Form.Group widths='equal' >
-                    <Form.Field
-                        id='form-input-control-first-name'
-                        control={Input}
-                        label='First name'
-                        placeholder='First name'
-                    />
-
-                </Form.Group>
-                <Form.Field
-                    id='form-textarea-control-opinion'
-                    control={TextArea}
-                    label='Opinion'
-                    placeholder='Opinion'
-                />
-                <Form.Field
-                    id='form-button-control-public'
-                    control={Button}
-                    content='Confirm'
-                    label='Label with htmlFor'
-                />
-            </Form>
-        </Segment>;
+        // const new_comment = <Segment >
+        //     <Form >
+        //         <Form.Group widths='equal' >
+        //             <Form.Field
+        //                 id='form-input-control-first-name'
+        //                 control={Input}
+        //                 label='First name'
+        //                 placeholder='First name'
+        //             />
+        //
+        //         </Form.Group>
+        //         <Form.Field
+        //             id='form-textarea-control-opinion'
+        //             control={TextArea}
+        //             label='Opinion'
+        //             placeholder='Opinion'
+        //         />
+        //         <Form.Field
+        //             id='form-button-control-public'
+        //             control={Button}
+        //             content='Confirm'
+        //             label='Label with htmlFor'
+        //         />
+        //     </Form>
+        // </Segment>;
         return (<Segment>
                 {news}
-                {/*{comments}*/}
+                {comments}
 
             </Segment>
         );

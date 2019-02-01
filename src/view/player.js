@@ -143,26 +143,21 @@ class App extends Component {
     }
 
     handleCheckBox(e, {checked}) {
+        let url = window.location.href
+        url = url.replace('3', '8')
         let player_info = this.state.playerInfo['tableData']
-        let player_name;
-        player_info.map(({featureName, featureValue}) => {
-            if (featureName === 'نام') {
-                player_name = featureValue
-            }
-        })
         axios.defaults.withCredentials = true;
         let bodyFormData = new FormData();
-        bodyFormData.set('username', localStorage.getItem('username'));
-        bodyFormData.set('name', player_name);
+        bodyFormData.set('type', 'subscribe');
         if (checked) {
-            bodyFormData.set('type', 'player1');
+            bodyFormData.set('add_remove', 'add');
         } else {
-            bodyFormData.set('type', 'player0');
+            bodyFormData.set('add_remove', 'remove');
         }
 
         axios({
             method: 'post',
-            url: 'http://localhost:8000/sport3/subscribe',
+            url: url,
             data: bodyFormData,
             config: {headers: {'Content-Type': 'multipart/form-data'}}
         });

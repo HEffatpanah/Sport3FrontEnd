@@ -607,7 +607,6 @@ class App extends Component {
     }
 
     setSession(session) {
-        console.log('man', this.state.session);
         this.setState({session: session})
     }
 
@@ -624,11 +623,10 @@ class App extends Component {
 
                     <Grid.Column width={9}>
                         <Grid.Row>
-                            <LeagueTable session={this.state.session} leagueData={this.state.teams}/>
+                            <LeagueTable leagueData={this.state.teams}/>
                         </Grid.Row>
                         <Grid.Row style={{marginTop: '2vh'}}>
-                            <MatchesSummaryTable session={this.state.session}
-                                                 matchesData={this.state.matchSummaryData}/>
+                            <MatchesSummaryTable matchesData={this.state.matchSummaryData}/>
                         </Grid.Row>
                     </Grid.Column>
 
@@ -636,10 +634,10 @@ class App extends Component {
 
 
                         <Grid.Row>
-                            <LeagueSeasons sessionName={this.setSession} type={'لیگ های جاری'} leaguesData={this.state.current_leagues}/>
+                            <LeagueSeasons type={'لیگ های جاری'} leaguesData={this.state.current_leagues}/>
                         </Grid.Row>
                         <Grid.Row style={{margin: '1vh auto'}}>
-                            <LeagueSeasons sessionName={this.setSession} type={'لیگ های قدیمی'} leaguesData={this.state.old_leagues}/>
+                            <LeagueSeasons type={'لیگ های قدیمی'} leaguesData={this.state.old_leagues}/>
                         </Grid.Row>
                     </Grid.Column>
                     <Grid.Column width={3}>

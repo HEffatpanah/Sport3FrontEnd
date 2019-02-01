@@ -28,18 +28,14 @@ class LoginForm extends Component {
     handleSubmit(event) {
 
         let url = window.location.href;
-        let userAuth = false
         url = url.replace('3', '8');
         axios.defaults.withCredentials = true;
-        console.log(event.target.user.value, event.target.pass.value);
         let user = event.target.user.value;
         let self = this;
 
         let bodyFormData = new FormData();
         bodyFormData.set('username', event.target.user.value);
         bodyFormData.set('password', event.target.pass.value);
-        let flag = 0;
-
         axios({
             method: 'post',
             url: url,

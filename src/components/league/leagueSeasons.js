@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import {Grid, Menu, Segment, Tab} from 'semantic-ui-react'
 import SearchBar from './searchBar'
 
-var sessionNames = [];
+// var sessionNames = [];
 export default class LeagueSeasons extends Component {
-    state = {activeItem: 'فوتبال'};
+    state = {activeItem: 'فوتبال', sessionNames:[]};
     handleItemClick = (e, {name}) => this.setState({activeItem: name})
     getTableContent() {
         if (this.state.activeItem === 'فوتبال') {
@@ -17,7 +17,7 @@ export default class LeagueSeasons extends Component {
                             </div>
                             <div>
                                 {leagueData['sessions'].map((session) => {
-                                    sessionNames.push(session['name']);
+                                    this.state.sessionNames.push([0, session['name'], session['link']]);
                                     return (
                                         <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}} href={session['link']}>{session['name']}</a>
                                     )
@@ -39,7 +39,7 @@ export default class LeagueSeasons extends Component {
                             </div>
                             <div>
                                 {leagueData['sessions'].map((session) => {
-                                    sessionNames.push(session['name']);
+                                    this.state.sessionNames.push([1, session['name'], session['link']]);
                                     return (
                                         <a style={{display:'inline-block', margin:'0.5vh 1vw', color:'black'}} href={session['link']}>{session['name']}</a>
                                     )
@@ -59,7 +59,7 @@ export default class LeagueSeasons extends Component {
                 <div style={{textAlign:'center', fontSize:'1.5em' , marginBottom:'1.4vh'}}>
                     {this.props.type}
                 </div>
-                <SearchBar sessionName={sessionNames} sessoinSelector={this.props.sessionName}/>
+                <SearchBar sport={this.state.activeItem === 'فوتبال' ? 0 : 1} sessionName={this.state.sessionNames}/>
                 <Menu pointing secondary>
                     <Menu.Item
                         name='فوتبال'

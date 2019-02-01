@@ -61,6 +61,7 @@ class App extends Component {
             axios.defaults.headers.common['Authorization'] = localStorage.getItem('Authorization');
         }
         axios.get(url).then(response => {
+            console.log(response.data['football']['matchesTable']);
             this.setState({
                 footballMatchesData: response.data['football']['matchesTable'],
                 footballNewsData: response.data['football']['newsTable'],
